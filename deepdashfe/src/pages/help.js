@@ -1,9 +1,13 @@
-import { Divider, colors } from '@mui/material';
+import { Divider, Tab, ThemeProvider, colors } from '@mui/material';
 import { alignProperty } from '@mui/material/styles/cssUtils';
 import React, { useState, useEffect } from 'react';
 import ReactMarkdown from 'react-markdown';
+import Tabs from '@mui/material/Tabs';
+import Box from '@mui/material/Box';
+import { useTheme } from '@mui/material/styles';
 
 function Help() {
+    const theme = useTheme();
     const [readmeContent, setReadmeContent] = useState('');
 
     useEffect(() => {
@@ -31,11 +35,18 @@ function Help() {
 
     return (
         <header className="App-header">
-        <h1>Project ReadMe</h1>
-        <p>This is kept up-to-date automatically</p>
-        <p className='ReadMe'>
-            <ReactMarkdown>{readmeContent}</ReactMarkdown>
-        </p>
+            <Box sx={{ width: '100%' }}>
+                <Tabs>
+                    <Tab label="Page One" href="/projectinformation" />
+                    <Tab label="Page Two" href="/projectinformation" />
+                    <Tab label="Page Three" href="/projectinformation" />
+                </Tabs>
+                <h1>Project ReadMe</h1>
+                <p>This is kept up-to-date automatically</p>
+                <p className='ReadMe'>
+                    <ReactMarkdown>{readmeContent}</ReactMarkdown>
+                </p>
+            </Box>
         </header>
     );
 }

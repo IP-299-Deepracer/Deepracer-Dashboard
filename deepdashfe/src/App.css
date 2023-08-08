@@ -72,13 +72,13 @@ body, html, #root {
 }
 
 ::-webkit-scrollbar-track{
-  background:#673ab7;
+  background:#aa00ff;
   /* margin-block: 5em; */
   /* border-radius: 10px; */
 }
 
 ::-webkit-scrollbar-thumb{
-  background: darkmagenta;
+  background: #FF4500;
   /* rounded  */
   border-radius: 10px;
   /* border the thumb with track colour by .25em */

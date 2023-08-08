@@ -13,17 +13,33 @@ import Help from './pages/help'
 
 const theme = createTheme({
   palette: {
+    mode: 'light',
     primary: {
-      light: '#757ce8',
-      main: colors.deepPurple[500],
-      dark: '#002884',
-      contrastText: '#fff',
+      main: '#aa00ff',
     },
     secondary: {
-      light: '#ff7961',
-      main: '#f44336',
-      dark: '#ba000d',
-      contrastText: '#000',
+      main: '#f06292',
+    },
+    text: {
+      primary: {
+        main: colors.grey[50],
+      },
+      // this is the tabs text colour, among other things
+      secondary: {
+        main: colors.grey[50],
+      },
+    },
+    background: {
+      // paper is the drawer background colour
+      paper: colors.pink[100],
+      default: colors.pink[100],
+    }
+  },
+  overrides: {
+    NavBar: {
+      colorPrimary: {
+        background: 'linear-gradient(to right, #fffff, #FF4500)', 
+      },
     },
   },
 });
