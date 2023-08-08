@@ -11,6 +11,7 @@ import ListItemText from '@mui/material/ListItemText';
 import LeaderboardIcon from '@mui/icons-material/Leaderboard';
 import FileUploadIcon from '@mui/icons-material/FileUpload';
 import StackedLineChartIcon from '@mui/icons-material/StackedLineChart';
+import HomeIcon from '@mui/icons-material/Home';
 import { Link } from 'react-router-dom';
 
 export default function TemporaryDrawer({state, setState, toggleDrawer}) {
@@ -23,33 +24,21 @@ export default function TemporaryDrawer({state, setState, toggleDrawer}) {
       onKeyDown={toggleDrawer(anchor, false)}
     >
       <List>
-        {['Leaderboard', 'Statistics', 'Upload Data'].map((text, index) => (
+        {['Home', 'Leaderboard', 'Statistics', 'Upload Data'].map((text, index) => (
           <ListItem key={text} disablePadding>
             {/* button links to trimmed (no whitespace) lowercase endpoint */}
-            <ListItemButton key={text.toLowerCase().trim()} component={Link} to={text.toLowerCase().trim()}>
+            <ListItemButton key={text.toLowerCase().trim()} component={Link} to={text.toLowerCase().replace(/\s/g, "")}>
               <ListItemIcon>
-                {index === 0 ? <LeaderboardIcon /> : <></>}
-                {index === 1 ? <StackedLineChartIcon /> : <></>}
-                {index === 2 ? <FileUploadIcon /> : <></>}
+                {index === 0 ? <HomeIcon /> : <></>}
+                {index === 1 ? <LeaderboardIcon /> : <></>}
+                {index === 2 ? <StackedLineChartIcon /> : <></>}
+                {index === 3 ? <FileUploadIcon /> : <></>}
               </ListItemIcon>
               <ListItemText primary={text} />
             </ListItemButton>
           </ListItem>
         ))}
       </List>
-      <Divider />
-      {/* <List>
-        {['All mail', 'Trash', 'Spam'].map((text, index) => (
-          <ListItem key={text} disablePadding>
-            <ListItemButton>
-              <ListItemIcon>
-                {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
-              </ListItemIcon>
-              <ListItemText primary={text} />
-            </ListItemButton>
-          </ListItem>
-        ))}
-      </List> */}
     </Box>
   );
 

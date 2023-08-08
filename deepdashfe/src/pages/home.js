@@ -1,12 +1,10 @@
 // import 'src/App.css';
-import { createTheme, colors, ThemeProvider } from '@mui/material';
+import logo from '.././assets/deepracer.png';
 
 
 
 function Home() {
     return (
-        <div className="App">
-        <NavBar></NavBar>
         <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
         <p>
@@ -21,7 +19,6 @@ function Home() {
             GitHub
         </a>
         </header>
-    </div>    
     );
 }
 
