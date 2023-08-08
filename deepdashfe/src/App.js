@@ -1,24 +1,49 @@
-import logo from './logo.svg';
+import logo from './assets/deepracer.png';
 import './App.css';
+import TabPanel from "./components/tabpanel/tabpanel"
+import { createTheme, colors, ThemeProvider } from '@mui/material';
+import NavBar from "./components/navbar/navbar"
+import TempDraw from "./components/drawer/temporarydrawer"
+
+const theme = createTheme({
+  palette: {
+    primary: {
+      light: '#757ce8',
+      main: colors.deepPurple[500],
+      dark: '#002884',
+      contrastText: '#fff',
+    },
+    secondary: {
+      light: '#ff7961',
+      main: '#f44336',
+      dark: '#ba000d',
+      contrastText: '#000',
+    },
+  },
+});
 
 function App() {
   return (
-    <div className="App">
+  <ThemeProvider theme={theme}>
+      <div className="App">
+      <NavBar></NavBar>
       <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
         <p>
-          Edit <code>src/App.js</code> and save to reload.
+          Deepracer Dash
         </p>
         <a
           className="App-link"
-          href="https://reactjs.org"
+          href="https://github.com/IP-299-Deepracer/Deepracer-Dashboard"
           target="_blank"
           rel="noopener noreferrer"
         >
-          Learn React
+          GitHub
         </a>
       </header>
     </div>
+  </ThemeProvider>
+    
   );
 }
 

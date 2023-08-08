@@ -1,0 +1,118 @@
+.leaderboard-container {
+  background: rgb(35, 35, 35);
+  min-height: 100vh;
+  color: white;
+  padding: 1rem;
+  .leaderboard-title {
+    background: linear-gradient(
+      90deg,
+      rgba(255, 255, 255, 1) 0%,
+      rgba(234, 130, 160, 1) 25%,
+      rgba(217, 28, 83, 1) 71%,
+      rgba(226, 31, 99, 1) 100%
+    );
+    height: 30rem;
+    border-radius: 0.3em;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 5rem;
+    margin: 2rem;
+
+    img {
+      width: auto;
+      height: auto;
+      object-fit: contain;
+    }
+
+    .leaderboard-rmit-logo {
+      margin-right: 40rem;
+      height: auto;
+      width: 40rem;
+    }
+
+    .deepracerLogo {
+      margin-left: -20rem;
+      height:auto;
+      
+    }
+  }
+  .leaderboard-table {
+    margin: 1rem 0;
+    .leaderboard-header {
+      display: flex;
+      flex-direction: row;
+      text-align: center;
+      padding: 0.2rem 0;
+      font-size: 5rem;
+      :nth-child(1) {
+        width: 18%;
+      }
+      :nth-child(2) {
+        width: 22%;
+      }
+      :nth-child(3) {
+        width: 30%;
+      }
+      :nth-child(4) {
+        width: 30%;
+      }
+    }
+    .leaderboard-ranking {
+      font-weight: 500;
+      display: flex;
+      flex-direction: column;
+      .leaderboard-row {
+        cursor: pointer;
+        display: flex;
+        flex-direction: row;
+        font-size: 3.5em;
+        text-align: center;
+        margin: 2.2rem 0;
+        height: 8rem;
+        align-items: center;
+        border-radius: 0.5em;
+        :nth-child(1) {
+          width: 18%;
+        }
+        :nth-child(2) {
+          width: 22%;
+        }
+        :nth-child(3) {
+          width: 30%;
+        }
+        :nth-child(4) {
+          width: 30%;
+        }
+        &:nth-child(1) {
+          background: linear-gradient(
+            90deg,
+            rgba(251, 227, 85, 1) 0%,
+            rgba(212, 152, 64, 1) 100%
+          );
+        }
+        &:nth-child(2) {
+          background: linear-gradient(
+            90deg,
+            rgba(206, 206, 209, 1) 0%,
+            rgba(112, 113, 117, 1) 100%
+          );
+        }
+        &:nth-child(3) {
+          background: linear-gradient(
+            90deg,
+            rgba(250, 192, 119, 1) 0%,
+            rgba(136, 90, 54, 1) 100%
+          );
+        }
+        &:nth-child(n + 4) {
+          background: linear-gradient(
+            90deg,
+            rgba(83, 108, 123, 1) 0%,
+            rgba(79, 51, 87, 1) 100%
+          );
+        }
+      }
+    }
+  }
+}
