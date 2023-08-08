@@ -1,9 +1,9 @@
 import logo from './assets/deepracer.png';
 import './App.css';
-import TabPanel from "./components/tabpanel/tabpanel"
+// import TabPanel from "./components/tabpanel/tabpanel"
 import { createTheme, colors, ThemeProvider } from '@mui/material';
 import NavBar from "./components/navbar/navbar"
-import TempDraw from "./components/drawer/temporarydrawer"
+// import TempDraw from "./components/drawer/temporarydrawer"
 
 const theme = createTheme({
   palette: {
@@ -22,28 +22,16 @@ const theme = createTheme({
   },
 });
 
+
+
 function App() {
   return (
-  <ThemeProvider theme={theme}>
+    <ThemeProvider theme={theme}>
       <div className="App">
-      <NavBar></NavBar>
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Deepracer Dash
-        </p>
-        <a
-          className="App-link"
-          href="https://github.com/IP-299-Deepracer/Deepracer-Dashboard"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          GitHub
-        </a>
-      </header>
+      <NavBar />
+      <Main />
     </div>
-  </ThemeProvider>
-    
+    </ThemeProvider>
   );
 }
 

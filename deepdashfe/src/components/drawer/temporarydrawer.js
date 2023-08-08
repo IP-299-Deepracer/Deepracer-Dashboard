@@ -11,6 +11,7 @@ import ListItemText from '@mui/material/ListItemText';
 import LeaderboardIcon from '@mui/icons-material/Leaderboard';
 import FileUploadIcon from '@mui/icons-material/FileUpload';
 import StackedLineChartIcon from '@mui/icons-material/StackedLineChart';
+import { Link } from 'react-router-dom';
 
 export default function TemporaryDrawer({state, setState, toggleDrawer}) {
 
@@ -24,7 +25,8 @@ export default function TemporaryDrawer({state, setState, toggleDrawer}) {
       <List>
         {['Leaderboard', 'Statistics', 'Upload Data'].map((text, index) => (
           <ListItem key={text} disablePadding>
-            <ListItemButton>
+            {/* button links to trimmed (no whitespace) lowercase endpoint */}
+            <ListItemButton key={text.toLowerCase().trim()} component={Link} to={text.toLowerCase().trim()}>
               <ListItemIcon>
                 {index === 0 ? <LeaderboardIcon /> : <></>}
                 {index === 1 ? <StackedLineChartIcon /> : <></>}
