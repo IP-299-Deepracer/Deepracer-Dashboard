@@ -1,10 +1,16 @@
-.App {
-  text-align: center;
+body, html, #root {
+  margin: 0;
+  padding: 0;
 }
 
 .App-logo {
   height: 40vmin;
   pointer-events: none;
+}
+
+.App {
+  min-height: 100vh;
+  background-color: #282c34;
 }
 
 .TabPanel {
@@ -19,13 +25,7 @@
   }
 }
 
-.Navbar {
-  color: white;
-}
-
 .App-header {
-  background-color: #282c34;
-  min-height: 100vh;
   display: flex;
   flex-direction: column;
   align-items: center;
