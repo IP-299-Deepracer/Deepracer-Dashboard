@@ -12,6 +12,7 @@ import LeaderboardIcon from '@mui/icons-material/Leaderboard';
 import FileUploadIcon from '@mui/icons-material/FileUpload';
 import StackedLineChartIcon from '@mui/icons-material/StackedLineChart';
 import HomeIcon from '@mui/icons-material/Home';
+import HelpIcon from '@mui/icons-material/Help';
 import { Link } from 'react-router-dom';
 
 export default function TemporaryDrawer({state, setState, toggleDrawer}) {
@@ -24,7 +25,7 @@ export default function TemporaryDrawer({state, setState, toggleDrawer}) {
       onKeyDown={toggleDrawer(anchor, false)}
     >
       <List>
-        {['Home', 'Leaderboard', 'Statistics', 'Upload Data'].map((text, index) => (
+        {['Home', 'Leaderboard', 'Statistics', 'Upload Data', 'Project Information'].map((text, index) => (
           <ListItem key={text} disablePadding>
             {/* button links to trimmed (no whitespace) lowercase endpoint */}
             <ListItemButton key={text.toLowerCase().trim()} component={Link} to={text.toLowerCase().replace(/\s/g, "")}>
@@ -33,6 +34,7 @@ export default function TemporaryDrawer({state, setState, toggleDrawer}) {
                 {index === 1 ? <LeaderboardIcon /> : <></>}
                 {index === 2 ? <StackedLineChartIcon /> : <></>}
                 {index === 3 ? <FileUploadIcon /> : <></>}
+                {index === 4 ? <HelpIcon /> : <></>}
               </ListItemIcon>
               <ListItemText primary={text} />
             </ListItemButton>

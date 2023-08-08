@@ -3,9 +3,10 @@ import AppBar from '@mui/material/AppBar';
 import Box from '@mui/material/Box';
 import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
-import Button from '@mui/material/Button';
 import IconButton from '@mui/material/IconButton';
 import MenuIcon from '@mui/icons-material/Menu';
+import logo from '../.././assets/deepracer.png';
+import '../../App.css'
 
 import TempDraw from '../drawer/temporarydrawer';
 
@@ -45,6 +46,7 @@ export default function ButtonAppBar() {
                 <MenuIcon />
             </IconButton>
         <Typography textAlign = "right" variant="h6" component="div" sx={{ flexGrow: 1 }}>
+            <img src={logo} class="navBarLogo" alt="logo"/>
             Deepracer Dash
         </Typography>
         {/* <Button color="inherit">Login</Button> */}

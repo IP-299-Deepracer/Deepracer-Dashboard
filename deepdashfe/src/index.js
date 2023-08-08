@@ -9,6 +9,7 @@ import Home from './pages/home.js';
 import Leaderboard from './pages/leaderboard';
 import Statistics from './pages/statistics';
 import Upload from './pages/upload';
+import Help from './pages/help'
 
 const theme = createTheme({
   palette: {
@@ -35,6 +36,7 @@ const Main = () => {
       <Route exact path='/leaderboard' Component={Leaderboard}></Route>
       <Route exact path='/statistics' Component={Statistics}></Route>
       <Route exact path='/uploaddata' Component={Upload}></Route>
+      <Route exact path='/projectinformation' Component={Help}></Route>
     </Routes>
   );
 }
