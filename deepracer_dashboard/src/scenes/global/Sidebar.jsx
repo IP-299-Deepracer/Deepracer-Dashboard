@@ -12,6 +12,11 @@ import {
   QuizOutlined,
   ModelTrainingOutlined,
 } from "@mui/icons-material";
+import PersonOutlinedIcon from "@mui/icons-material/PersonOutlined";
+import BarChartOutlinedIcon from "@mui/icons-material/BarChartOutlined";
+import PieChartOutlineOutlinedIcon from "@mui/icons-material/PieChartOutlined";
+import TimelineOutlinedIcon from "@mui/icons-material/TimelineOutlined";
+import PeopleOutlinedIcon from "@mui/icons-material/PeopleOutlined";
 
 const Item = ({ title, to, icon, selected, setSelected }) => {
   const theme = useTheme();
@@ -155,6 +160,41 @@ const Sidebar = () => {
               title="Model Evaluation"
               to="/modal-eval"
               icon={<SpeedOutlined />}
+              selected={selected}
+              setSelected={setSelected}
+            />
+            <Item
+              title="Profile Form"
+              to="/form"
+              icon={<PersonOutlinedIcon />}
+              selected={selected}
+              setSelected={setSelected}
+            />
+            <Item
+              title="Bar Chart"
+              to="/bar"
+              icon={<BarChartOutlinedIcon />}
+              selected={selected}
+              setSelected={setSelected}
+            />
+            <Item
+              title="Pie Chart"
+              to="/pie"
+              icon={<PieChartOutlineOutlinedIcon />}
+              selected={selected}
+              setSelected={setSelected}
+            />
+            <Item
+              title="Line Chart"
+              to="/line"
+              icon={<TimelineOutlinedIcon />}
+              selected={selected}
+              setSelected={setSelected}
+            />
+            <Item
+              title="Manage Team"
+              to="/team"
+              icon={<PeopleOutlinedIcon />}
               selected={selected}
               setSelected={setSelected}
             />
