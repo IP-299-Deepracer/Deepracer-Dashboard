@@ -20,7 +20,7 @@ const Dashboard = () => {
     <Box m="20px">
       {/* HEADER */}
       <Box display="flex" justifyContent="space-between" alignItems="center">
-        <Header title="DASHBOARD" subtitle="Welcome to your dashboard" />
+        <Header title=" DEEPRACER DASHBOARD" subtitle="Welcome to the deepracer dashboard" />
 
         <Box>
           <Button
@@ -48,7 +48,7 @@ const Dashboard = () => {
         {/* ROW 1 */}
         <Box
           gridColumn="span 3"
-          backgroundColor={colors.primary[400]}
+          backgroundColor={colors.orangeAccent[600]}
           display="flex"
           alignItems="center"
           justifyContent="center"
@@ -58,9 +58,10 @@ const Dashboard = () => {
             subtitle="Emails Sent"
             progress="0.75"
             increase="+14%"
+            style={{color: colors.orangeAccent[500] }}
             icon={
               <EmailIcon
-                sx={{ color: colors.greenAccent[600], fontSize: "26px" }}
+                sx={{ color: colors.purpleAccent[600], fontSize: "26px" }}
               />
             }
           />
@@ -79,7 +80,7 @@ const Dashboard = () => {
             increase="+21%"
             icon={
               <PointOfSaleIcon
-                sx={{ color: colors.greenAccent[600], fontSize: "26px" }}
+                sx={{ color: colors.purpleAccent[600], fontSize: "26px" }}
               />
             }
           />

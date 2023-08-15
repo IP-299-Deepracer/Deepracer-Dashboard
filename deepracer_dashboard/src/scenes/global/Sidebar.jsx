@@ -46,7 +46,7 @@ const Sidebar = () => {
     <Box
       sx={{
         "& .pro-sidebar-inner": {
-          background: `${colours.primary[400]} !important`,
+          background: `${colours.purpleAccent[300]} !important`,
         },
         "& .pro-icon-wrapper": {
           backgroundColor: "transparent !important",
@@ -55,10 +55,10 @@ const Sidebar = () => {
           padding: "5px 35px 5px 20px !important",
         },
         "& .pro-inner-item:hover": {
-          color: "#868dfb !important",
+          color: `${colours.orangeAccent[500]} !important`,
         },
         "& .pro-menu-item.active": {
-          color: "#6870fa !important",
+          color: `${colours.orangeAccent[500]} !important`,
         },
       }}
     >
@@ -70,7 +70,7 @@ const Sidebar = () => {
             icon={isCollapsed ? <MenuOutlinedIcon /> : undefined}
             style={{
               margin: "10px 0 20px 0",
-              color: colours.grey[100],
+              color: "#FFFFFF",
             }}
           >
             {!isCollapsed && (
@@ -98,7 +98,7 @@ const Sidebar = () => {
                   width="100px"
                   height="100px"
                   src={
-                    "../../assets/DeepRacer_Student Logo 1000px.a29d947aa384189f58610424c9b3387d6f0385a6.png"
+                    "../../assets/logoDR.png"
                   }
                   style={{ cursor: "pointer", borderRadius: "50%" }}
                 />

@@ -49,7 +49,7 @@ const Topbar = () => {
           width="30px"
           height="30px"
           src={
-            "../../assets/DeepRacer_Student Logo 1000px.a29d947aa384189f58610424c9b3387d6f0385a6.png"
+            "../../assets/logoDR.png"
           }
           style={{ cursor: "pointer", borderRadius: "50%" }}
         />        
