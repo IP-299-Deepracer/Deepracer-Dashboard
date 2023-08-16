@@ -46,7 +46,7 @@ const Sidebar = () => {
     <Box
       sx={{
         "& .pro-sidebar-inner": {
-          background: `${colours.purpleAccent[300]} !important`,
+          background: `${colours.purpleAccent[400]} !important`,
         },
         "& .pro-icon-wrapper": {
           backgroundColor: "transparent !important",
@@ -77,12 +77,9 @@ const Sidebar = () => {
               <Box
                 display="flex"
                 justifyContent="space-between"
-                alignItems="center"
+                alignItems="left"
                 ml="15px"
               >
-                <Typography variant="h3" color={colours.grey[100]}>
-                  AWS DeepRacer
-                </Typography>
                 <IconButton onClick={() => setIsCollapsed(!isCollapsed)}>
                   <MenuOutlinedIcon />
                 </IconButton>
@@ -110,10 +107,10 @@ const Sidebar = () => {
                   fontWeight="bold"
                   sx={{ m: "10px 0 0 0" }}
                 >
-                  FastCar
+                  AWS DeepRacer
                 </Typography>
                 <Typography variant="h5" color={colours.greenAccent[500]}>
-                  AWS DeepRacer Team
+                  Event Portal
                 </Typography>
               </Box>
             </Box>
