@@ -64,14 +64,14 @@ export const tokens = (mode) => ({
           900: "#151632",
         },
         purpleAccent: {
-          200:"#311b92",    
-          300:"#4527a0",
-          400:"#512da8",
-          500:"#5e35b1",
-          600:"#673ab7",
-          700:"#7e57c2",
-          800:"#9575cd",
-          900:"#b39ddb",
+          200:"#b39ddb",      
+          300:"#9575cd",
+          400:"#7e57c2",
+          500:"#673ab7",
+          600:"#5e35b1",
+          700:"#512da8",
+          800:"#4527a0",
+          900:"#311b92",
         },
         orangeAccent: {
           200:"#ef6c00",      
@@ -140,15 +140,16 @@ export const tokens = (mode) => ({
           900: "#e1e2fe",
         },
         purpleAccent: {
-          200:"#b39ddb",      
-          300:"#9575cd",
-          400:"#7e57c2",
-          500:"#673ab7",
-          600:"#5e35b1",
-          700:"#512da8",
-          800:"#4527a0",
-          900:"#311b92",
+          200:"#311b92",    
+          300:"#4527a0",
+          400:"#512da8",
+          500:"#5e35b1",
+          600:"#673ab7",
+          700:"#7e57c2",
+          800:"#9575cd",
+          900:"#b39ddb",
         },
+
         orangeAccent: {
           200:"#ffcc80",      
           300:"#ffb74d",
@@ -174,7 +175,7 @@ export const themeSettings = (mode) => {
               main: colours.orangeAccent[500],
             },
             secondary: {
-              main: colours.purpleAccent[500],
+              main: colours.purpleAccent[300],
             },
             neutral: {
               dark: colours.grey[700],
@@ -182,12 +183,12 @@ export const themeSettings = (mode) => {
               light: colours.grey[100],
             },
             background: {
-              default: colours.purpleAccent[700],
+              default: colours.purpleAccent[900],
             },
           }
         : {
             primary: {
-              main: colours.purpleAccent[100],
+              main: colours.purpleAccent[300],
             },
             secondary: {
               main: colours.purpleAccent[500],
