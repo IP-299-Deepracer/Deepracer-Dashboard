@@ -1,4 +1,4 @@
-import { Box, Typography, useTheme } from "@mui/material";
+import { Box, Typography, colors, useTheme } from "@mui/material";
 import { DataGrid } from "@mui/x-data-grid";
 import { tokens } from "../../theme";
 import { mockDataTeam } from "../../data/mockData";
@@ -11,34 +11,28 @@ const Team = () => {
   const theme = useTheme();
   const colours = tokens(theme.palette.mode);
   const columns = [
-    { field: "id", headerName: "ID" },
+    { field: "Position", headerName: "Position", flex:1,},
     {
       field: "name",
-      headerName: "Name",
-      flex: 1,
+      headerName: "Model Name",
+      flex: 2,
       cellClassName: "name-column--cell",
     },
     {
       field: "age",
-      headerName: "Age",
+      headerName: "Time",
       type: "number",
       headerAlign: "left",
       align: "left",
+      flex: 2,
     },
     {
       field: "phone",
-      headerName: "Phone Number",
-      flex: 1,
+      headerName: "Gap To First",
+      flex: 2,
     },
     {
-      field: "email",
-      headerName: "Email",
-      flex: 1,
-    },
-    {
-      field: "accessLevel",
-      headerName: "Access Level",
-      flex: 1,
+      flex: 2,
       renderCell: ({ row: { access } }) => {
         return (
           <Box
@@ -46,7 +40,6 @@ const Team = () => {
             m="0 auto"
             p="5px"
             display="flex"
-            justifyContent="center"
             backgroundColor={
               access === "admin"
                 ? colours.greenAccent[600]
@@ -70,37 +63,44 @@ const Team = () => {
 
   return (
     <Box m="20px">
-      <Header title="TEAM" subtitle="Managing the Team Members" />
+      <Header title="LEADERBOARD" subtitle="Complete leaderboard" />
       <Box
         m="40px 0 0 0"
         height="75vh"
         sx={{
           "& .MuiDataGrid-root": {
-            border: "none",
+            border: "solid",
+            backgroundColor: colours.purpleAccent[700],
+            fontSize: "20px",
+
           },
           "& .MuiDataGrid-cell": {
             borderBottom: "none",
+            backgroundColor: "#FFA500",
+            fontSize: "18px"
           },
           "& .name-column--cell": {
-            color: colours.greenAccent[300],
+            color: colours.purpleAccent[800],
+            fontSize: "18px",
+            border: "none"
           },
           "& .MuiDataGrid-columnHeaders": {
-            backgroundColor: colours.blueAccent[700],
+            backgroundColor: colours.purpleAccent[900],
             borderBottom: "none",
           },
           "& .MuiDataGrid-virtualScroller": {
-            backgroundColor: colours.primary[400],
+            backgroundColor: colours.purpleAccent[400],
           },
           "& .MuiDataGrid-footerContainer": {
             borderTop: "none",
-            backgroundColor: colours.blueAccent[700],
+            backgroundColor: colours.purpleAccent[900],
           },
           "& .MuiCheckbox-root": {
-            color: `${colours.greenAccent[200]} !important`,
+            color: `${colours.orangeAccent[200]} !important`,
           },
         }}
       >
-        <DataGrid checkboxSelection rows={mockDataTeam} columns={columns} />
+        <DataGrid rows={mockDataTeam} columns={columns} />
       </Box>
     </Box>
   );
