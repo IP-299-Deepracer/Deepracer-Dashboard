@@ -175,7 +175,7 @@ export const themeSettings = (mode) => {
               main: colours.orangeAccent[500],
             },
             secondary: {
-              main: colours.purpleAccent[300],
+              main: colours.purpleAccent[500],
             },
             neutral: {
               dark: colours.grey[700],
