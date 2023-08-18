@@ -8,6 +8,7 @@ import NotificationsOutlinedIcon from "@mui/icons-material/NotificationsOutlined
 import SettingsOutlinedIcon from "@mui/icons-material/SettingsOutlined";
 import PersonOutlinedIcon from "@mui/icons-material/PersonOutlined";
 import SearchIcon from "@mui/icons-material/Search";
+import { PaddingTwoTone } from "@mui/icons-material";
 
 const Topbar = () => {
   const theme = useTheme();
@@ -15,7 +16,13 @@ const Topbar = () => {
   const colourMode = useContext(colourModeContext);
 
   return (
-    <Box display="flex" justifyContent="space-between" p={2}>
+    <Box display="flex" justifyContent="space-between" 
+      sx={{
+        paddingLeft:"16px",
+        paddingRight:"16px",
+        paddingTop: "16px",
+      }}
+    >
       {/* SEARCH BAR */}
       <Box
         display="flex"
