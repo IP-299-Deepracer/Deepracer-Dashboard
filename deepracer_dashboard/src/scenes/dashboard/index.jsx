@@ -17,6 +17,8 @@ import TableContainer from '@mui/material/TableContainer';
 import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
+import RMIT from "../../assets/aws.png";
+import AWS from "../../assets/rmit.png"
 
 
 const StyledTableCell = styled(TableCell)(({ theme }) => ({
@@ -95,6 +97,7 @@ const Dashboard = () => {
         gridTemplateColumns="repeat(12, 1fr)"
         gridAutoRows="140px"
         gap="20px"
+        flex= "1"
       >
         {/* ROW 1 */}
         <Box
@@ -276,29 +279,29 @@ const Dashboard = () => {
               </IconButton>
             </Box>
           </Box>
-          <Box height="250px" p="15px" flexGrow={1}>
-          <TableContainer component={Paper}>
-      <Table sx={{ minWidth: "250px" }} aria-label="customized table">
-        <TableHead sx={{fontSize: 24}}>
-          <TableRow sx={{backgroundColor: colors.purpleAccent[700]}}>
-            <StyledTableCell fontSize="20">Position</StyledTableCell>
-            <StyledTableCell align="left">Name</StyledTableCell>
-            <StyledTableCell align="left">Time</StyledTableCell>
-          </TableRow>
-        </TableHead>
-        <TableBody>
-          {rows.map((row) => (
-            <StyledTableRow key={row.name}>
-              <StyledTableCell scope="row">
-                {row.name}
-              </StyledTableCell>
-              <StyledTableCell align="left">{row.calories}</StyledTableCell>
-              <StyledTableCell align="left">{row.fat}</StyledTableCell>
-            </StyledTableRow>
-          ))}
-        </TableBody>
-      </Table>
-    </TableContainer>
+          <Box height="80vh" p="15px" flexGrow={1}>
+            <TableContainer component={Paper}>
+              <Table sx={{ minWidth: "250px" }} aria-label="customized table">
+                <TableHead sx={{fontSize: 24}}>
+                  <TableRow sx={{backgroundColor: colors.purpleAccent[700]}}>
+                    <StyledTableCell fontSize="20">Position</StyledTableCell>
+                    <StyledTableCell align="left">Name</StyledTableCell>
+                    <StyledTableCell align="left">Time</StyledTableCell>
+                  </TableRow>
+                </TableHead>
+                <TableBody>
+                  {rows.map((row) => (
+                    <StyledTableRow key={row.name}>
+                      <StyledTableCell scope="row">
+                        {row.name}
+                      </StyledTableCell>
+                      <StyledTableCell align="left">{row.calories}</StyledTableCell>
+                      <StyledTableCell align="left">{row.fat}</StyledTableCell>
+                    </StyledTableRow>
+                  ))}
+                </TableBody>
+              </Table>
+            </TableContainer>
           </Box>
         </Box>
 
@@ -320,57 +323,21 @@ const Dashboard = () => {
               <img src={Track} height="400px" width="550px" m="-15px 0 0 0"></img>
           </Box>       
         </Box>
-        
-
-        {/* ROW 3 */}
-        {/* <Box
-          gridColumn="span 4"
-          gridRow="span 2"
-          backgroundColor={colors.primary[400]}
-          p="30px"
-        >
-          <Typography variant="h5" fontWeight="600">
-            Campaign
-          </Typography>
-          <Box
-            display="flex"
-            flexDirection="column"
-            alignItems="center"
-            mt="25px"
-          >
-            <ProgressCircle size="125" />
-            <Typography
-              variant="h5"
-              color={colors.greenAccent[500]}
-              sx={{ mt: "15px" }}
-            >
-              $48,352 revenue generated
-            </Typography>
-            <Typography>Includes extra misc expenditures and costs</Typography>
-          </Box>
-        </Box> */}
-        {/* <Box
-          gridColumn="span 4"
-          gridRow="span 2"
-          backgroundColor={colors.primary[400]}
-        >
-          <Typography
-            variant="h5"
-            fontWeight="600"
-            sx={{ padding: "30px 30px 0 30px" }}
-          >
-            Sales Quantity
-          </Typography>
-          <Box height="250px" mt="-20px">
-            <BarChart isDashboard={true} />
-          </Box>
-        </Box>
         <Box
-          gridColumn="span 4"
-          gridRow="span 2"
-          backgroundColor={colors.primary[400]}
-          padding="30px"
-        ></Box> */}
+          sx={{
+            display: 'flex',
+            gridColumn: 'span 12',
+            gap: '20px',
+            justifyContent: 'center', // Horizontally center
+            alignItems: 'center',  
+            marginTop: '20px',
+            padding: '0',
+            height: '120px'
+          }}
+        >
+          <img src={RMIT} alt="" height={35 + 'px'} width={110 + 'px'} />
+          <img src={AWS} alt="" height={35+ 'px'} width={110+ 'px'}  sx={{marginLeft: 16}}></img>
+        </Box>
       </Box>
     </Box>
   );
