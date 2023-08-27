@@ -73,13 +73,13 @@ const Dashboard = () => {
     <Box m="20px">
       {/* HEADER */}
       <Box display="flex" justifyContent="space-between" alignItems="center">
-        <Header title=" DEEPRACER DASHBOARD" subtitle="Welcome to the deepracer dashboard" />
+        <Header title=" DEEPRACER DASHBOARD" />
 
         <Box>
           <Button
             sx={{
-              backgroundColor: "#FFA500",
-              color: colors.purpleAccent[900],
+              backgroundColor: "#f79400",
+              color: "#FFFFFF",
               fontSize: "14px",
               fontWeight: "bold",
               padding: "10px 20px",
@@ -102,7 +102,7 @@ const Dashboard = () => {
         {/* ROW 1 */}
         <Box
           gridColumn="span 3"
-          backgroundColor={"#FFA500"}
+          backgroundColor={"#f79400"}
           display="flex"
           borderRadius="5px"
         >
@@ -144,7 +144,7 @@ const Dashboard = () => {
         </Box>
         <Box
           gridColumn="span 3"
-          backgroundColor={"#FFA500"}
+          backgroundColor={"#f79400"}
           display="flex"
           borderRadius="5px"
         >
@@ -176,7 +176,7 @@ const Dashboard = () => {
         </Box>
         <Box
           gridColumn="span 3"
-          backgroundColor={"#FFA500"}
+          backgroundColor={"#f79400"}
           display="flex"
           borderRadius="5px"
         >
@@ -208,7 +208,7 @@ const Dashboard = () => {
         </Box>
         <Box
           gridColumn="span 3"
-          backgroundColor={"#FFA500"}
+          backgroundColor={"#f79400"}
           display="flex"
           borderRadius="5px"
         >
@@ -243,7 +243,7 @@ const Dashboard = () => {
         <Box
           gridColumn="span 6"
           gridRow="span 3"
-          backgroundColor={"#FFA500"}
+          backgroundColor={"#f79400"}
           borderRadius="5px"
           display="flex"
           flexDirection="column"

@@ -183,7 +183,7 @@ export const themeSettings = (mode) => {
               light: colours.grey[100],
             },
             background: {
-              default: colours.purpleAccent[900],
+              default: "#161e2c",
             },
           }
         : {
