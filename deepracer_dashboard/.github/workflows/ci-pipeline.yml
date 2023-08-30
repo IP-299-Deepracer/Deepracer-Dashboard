@@ -1,0 +1,34 @@
+name: DeepRacer Dashboard CI Pipeline # Name of the Project Pipeline
+
+
+on:
+    push:
+        branches:
+        - main # Pipeline will run on main
+        - feature/* # Pipeline will run when push to any branch which begins with "feature"
+    pull_request:
+        branches:
+        - main # The pipeline will execute when the PR is requested.
+
+jobs:
+    lint-Test:
+        runs-on: ubuntu-latest
+        steps:
+            - name: Checkout Repository
+              uses: actions/checkout@v3
+
+            - name: Install Node
+              uses: actions/setup-node@v2
+              with:
+                node-version: 14
+            
+            - name: Install Dependencies
+              run: npm install
+
+            - name: Build
+              run: npm run build
+
+
+
+
+        
