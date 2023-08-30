@@ -11,7 +11,7 @@ const Team = () => {
   const theme = useTheme();
   const colours = tokens(theme.palette.mode);
   const columns = [
-    { field: "Position", headerName: "Position", flex:1,},
+    { field: "Position", headerName: "Position", flex:1},
     {
       field: "name",
       headerName: "Model Name",
@@ -19,11 +19,11 @@ const Team = () => {
       cellClassName: "name-column--cell",
     },
     {
-      field: "age",
+      field: "age", /*{change the field according to json data in the datamock file}*/
       headerName: "Time",
       type: "number",
-      headerAlign: "left",
-      align: "left",
+      headerAlign: "justify",
+      align: "justify",  
       flex: 2,
     },
     {
@@ -65,8 +65,8 @@ const Team = () => {
     <Box m="20px">
       <Header title="LEADERBOARD" subtitle="Complete leaderboard" />
       <Box
-        m="40px 0 0 0"
-        height="75vh"
+        m="30px 0 0 0"
+        height="calc(80vh - 115px)"
         sx={{
           "& .MuiDataGrid-root": {
             border: "solid",
