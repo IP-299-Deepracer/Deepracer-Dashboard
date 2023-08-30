@@ -4,11 +4,11 @@ name: DeepRacer Dashboard CI Pipeline # Name of the Project Pipeline
 on:
     push:
         branches:
-        - main # Pipeline will run on main
-        - feature/* # Pipeline will run when push to any branch which begins with "feature"
+            - main 
+            - feature/*
     pull_request:
         branches:
-        - main # The pipeline will execute when the PR is requested.
+            - main # The pipeline will execute when the PR is requested.
 
 jobs:
     lint-Test:
