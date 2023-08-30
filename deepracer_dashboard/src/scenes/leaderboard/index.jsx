@@ -1,4 +1,5 @@
-import { Box, Typography, colors, useTheme } from "@mui/material";
+import { Box, Dialog, Typography, colors, useTheme } from "@mui/material";
+import React, { useState } from 'react';
 import { DataGrid } from "@mui/x-data-grid";
 import { tokens } from "../../theme";
 import { mockDataTeam } from "../../data/mockData";
@@ -6,8 +7,13 @@ import AdminPanelSettingsOutlinedIcon from "@mui/icons-material/AdminPanelSettin
 import LockOpenOutlinedIcon from "@mui/icons-material/LockOpenOutlined";
 import SecurityOutlinedIcon from "@mui/icons-material/SecurityOutlined";
 import Header from "../../components/Header";
+import Button from '@mui/material/Button'; // Import Button component from MUI library
+import DialogUI from '../leaderboard/dialog'
+
 
 const Team = () => {
+  const [dialogOpen, setDialogOpen] = useState(false);
+  const [selectedRowData, setSelectedRowData] = useState(null);
   const theme = useTheme();
   const colours = tokens(theme.palette.mode);
   const columns = [
@@ -33,29 +39,42 @@ const Team = () => {
     },
     {
       flex: 2,
-      renderCell: ({ row: { access } }) => {
+      renderCell: (params) => {
         return (
-          <Box
-            width="60%"
-            m="0 auto"
-            p="5px"
-            display="flex"
-            backgroundColor={
-              access === "admin"
-                ? colours.greenAccent[600]
-                : access === "manager"
-                ? colours.greenAccent[700]
-                : colours.greenAccent[700]
-            }
-            borderRadius="4px"
+          <>
+          <Button
+            variant="contained"
+            color="primary"
+            size="small"
+            style={{
+              width: "60%",
+              margin: "0 auto",
+              padding: "5px",
+              borderRadius: "4px",
+              display: "flex",
+            }}
+            
+            onClick={() => {
+              setSelectedRowData(params.row); // Capture the selected row data
+              setDialogOpen(true); // Open the dialog
+            }} // Open the dialog on button click
           >
-            {access === "admin" && <AdminPanelSettingsOutlinedIcon />}
-            {access === "manager" && <SecurityOutlinedIcon />}
-            {access === "user" && <LockOpenOutlinedIcon />}
-            <Typography color={colours.grey[100]} sx={{ ml: "5px" }}>
-              {access}
+            <Typography
+              color={colours.grey[100]}
+              sx={{ marginLeft: "5px" }}
+            >
+              View Stats
             </Typography>
-          </Box>
+          </Button>
+          <DialogUI
+            open={dialogOpen}
+            onClose={() => {
+              setSelectedRowData(null); // Clear the selected row data
+              setDialogOpen(false); // Close the dialog
+            }} // Close the dialog
+            rowData={selectedRowData}
+          />
+        </>
         );
       },
     },
