@@ -28,7 +28,7 @@ jobs:
     - name: Test Run
       run: |
         cd deepracer_dashboard
-        npm test-app
+        npm test
 
 
 
