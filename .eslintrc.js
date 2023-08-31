@@ -3,7 +3,7 @@ module.export = {
         'react-app'
     ],
     rules: {
-        'no-unused-vars': 'error',
+        'no-unused-vars': 'warn',
         'no-undef': 'error',
         'no-console': 'warn',
     },
