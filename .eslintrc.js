@@ -3,9 +3,10 @@ module.export = {
         'react-app'
     ],
     rules: {
-        'no-unused-vars': 'warn',
+        'no-unused-vars': 'error',
         'no-undef': 'error',
         'no-console': 'warn',
-        'no-warning-comments': 'error'
+        'no-warning-comments': 'error',
+        'eqeqeq': 'error'
     },
 }
