@@ -25,10 +25,10 @@ jobs:
       run: |
         cd deepracer_dashboard
         npm install
-    - name: Run Application
+    - name: Test Run
       run: |
         cd deepracer_dashboard
-        npm start
+        npm test-app
 
 
 
