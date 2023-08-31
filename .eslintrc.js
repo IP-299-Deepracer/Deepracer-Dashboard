@@ -6,5 +6,6 @@ module.export = {
         'no-unused-vars': 'warn',
         'no-undef': 'error',
         'no-console': 'warn',
+        'no-warning-comments': 'error'
     },
 }
