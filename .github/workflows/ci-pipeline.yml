@@ -13,11 +13,18 @@ jobs:
   lintTesting:
     runs-on: ubuntu-latest
     steps:
+    # Checkout the repository
     - uses: actions/checkout@v3
+    # Setup Node
     - name: Use Node
       uses: actions/setup-node@v3
       with:
         node-version: 14
+    # Install the Dependencies
+    - name: Install Dependencies
+      run: |
+        cd deepracer_dashboard
+        npm install
 
 
 
