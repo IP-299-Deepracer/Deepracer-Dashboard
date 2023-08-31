@@ -25,7 +25,8 @@ jobs:
       run: |
         cd deepracer_dashboard
         npm install
-    - name: Test Run
+    # Run Tests * Currently no tests are present in the code base therefore we expect this step to exit with code 0
+    - name: Test
       run: |
         cd deepracer_dashboard
         npm test
