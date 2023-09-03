@@ -21,7 +21,7 @@ const db = admin.firestore();
 const getDataFromFirebase = async (collectionName) => {
     try {
         const snapshot = await db.collection(collectionName).get();
-        // create dict
+        // create list
         const data = [];
 
         // push each doc from collection to list
@@ -45,7 +45,7 @@ const getDataFromFirebaseID = async (collectionName, documentName) => {
         const collection = db.collection(collectionName);
         const query = collection.where("name", "==", documentName)
         const snapshot = await query.get()
-        // create dict
+        // create list
         const data = [];
 
         // push each doc from collection to list
