@@ -17,10 +17,34 @@ admin.initializeApp({
 });
 const db = admin.firestore();
 
-// get data from teams collection in database
-const getDataFromFirebase = async (modelName) => {
+// get data from collection in database
+const getDataFromFirebase = async (collectionName) => {
     try {
-        const snapshot = await db.collection(modelName).get();
+        const snapshot = await db.collection(collectionName).get();
+        // create dict
+        const data = [];
+
+        // push each doc from collection to list
+        snapshot.forEach((doc) => {
+            data.push({ id: doc.id, ...doc.data() });
+        });
+
+        return data;
+
+    } 
+    // catch error
+    catch (error) {
+        console.error("Error getting data from Firebase: ", error);
+        throw error;
+    }
+};
+
+// get data from collection in database
+const getDataFromFirebaseID = async (collectionName, documentName) => {
+    try {
+        const collection = db.collection(collectionName);
+        const query = collection.where("name", "==", documentName)
+        const snapshot = await query.get()
         // create dict
         const data = [];
 
@@ -57,7 +81,22 @@ app.get("/api", (req, res) => {
 
 app.get("/teams", (req, res) =>{
     // run function to get data from database
-    getDataFromFirebase("teams")
+    var collection = "teams"
+    getDataFromFirebase(collection)
+    // return result (TODO: testing)
+    .then((result) => {
+        res.json(result)
+    })
+    .catch((error) => {
+        console.error("Error: ", error);
+    });
+});
+
+app.get("/team/:name", (req, res) =>{
+    // run function to get data from database
+    const name = req.params.name
+    var collection = "teams"
+    getDataFromFirebaseID(collection, name)
     // return result (TODO: testing)
     .then((result) => {
         res.json(result)
@@ -69,7 +108,22 @@ app.get("/teams", (req, res) =>{
 
 app.get("/models", (req, res) =>{
     // run function to get data from database
-    getDataFromFirebase("models")
+    var collection = "models"
+    getDataFromFirebase(collection)
+    // return result (TODO: testing)
+    .then((result) => {
+        res.json(result)
+    })
+    .catch((error) => {
+        console.error("Error: ", error);
+    });
+});
+
+app.get("/model/:name", (req, res) =>{
+    // run function to get data from database
+    const name = req.params.name
+    var collection = "models"
+    getDataFromFirebaseID(collection, name)
     // return result (TODO: testing)
     .then((result) => {
         res.json(result)
