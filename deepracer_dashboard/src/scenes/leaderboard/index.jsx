@@ -1,11 +1,8 @@
-import { Box, Dialog, Typography, colors, useTheme } from "@mui/material";
+import { Box, Typography, useTheme } from "@mui/material";
 import React, { useState } from 'react';
 import { DataGrid } from "@mui/x-data-grid";
 import { tokens } from "../../theme";
 import { mockDataTeam } from "../../data/mockData";
-import AdminPanelSettingsOutlinedIcon from "@mui/icons-material/AdminPanelSettingsOutlined";
-import LockOpenOutlinedIcon from "@mui/icons-material/LockOpenOutlined";
-import SecurityOutlinedIcon from "@mui/icons-material/SecurityOutlined";
 import Header from "../../components/Header";
 import Button from '@mui/material/Button'; // Import Button component from MUI library
 import DialogUI from '../leaderboard/dialog'
@@ -17,25 +14,30 @@ const Team = () => {
   const theme = useTheme();
   const colours = tokens(theme.palette.mode);
   const columns = [
-    { field: "Position", headerName: "Position", flex:1},
+    { field: "Position", headerName: "Position", flex:1, headerAlign: "center",
+      align: "center"},
     {
       field: "name",
       headerName: "Model Name",
       flex: 2,
       cellClassName: "name-column--cell",
+      headerAlign: "center",
+      align: "center"
     },
     {
-      field: "age", /*{change the field according to json data in the datamock file}*/
+      field: "Time", /*{change the field according to json data in the datamock file}*/
       headerName: "Time",
       type: "number",
-      headerAlign: "justify",
-      align: "justify",  
+      headerAlign: "center",
+      align: "center",  
       flex: 2,
     },
     {
-      field: "phone",
+      field: "GapToFirst",
       headerName: "Gap To First",
       flex: 2,
+      headerAlign: "center",
+      align: "center"
     },
     {
       flex: 2,
@@ -52,6 +54,8 @@ const Team = () => {
               padding: "5px",
               borderRadius: "4px",
               display: "flex",
+              headerAlign: "center",
+              align: "center"
             }}
             
             onClick={() => {
