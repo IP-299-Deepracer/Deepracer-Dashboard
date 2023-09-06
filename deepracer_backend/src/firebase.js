@@ -33,6 +33,20 @@ exports.getDataFromFirebase = async (collectionName) => {
     }
 };
 
+
+// get data from collection in database
+exports.putDataInFirebase = async (collectionName, body) => {
+    try {
+        db.collection(collectionName).add(body);
+        return true;
+    } 
+    // catch error and response 500
+    catch (error) {
+        console.error("Error adding data to Firebase: ", error);
+        return error;
+    }
+};
+
 // get data from collection in database
 exports.getDataFromFirebaseID = async (collectionName, documentName) => {
     try {
