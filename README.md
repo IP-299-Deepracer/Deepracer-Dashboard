@@ -1,8 +1,10 @@
 # IP-299-Deepracer
-The repository for our Programming Project 
+The repository for our Programming Project
 
 ## DEEPRACER DASH 
 Deepracer is a cloud-based Dashboard application that provides a comprehensive, high-resolution interface for Deepracer training and events. This unified interface offers a combination of high-resolution views and training diagnostics, all designed to exploit the capabilities of the Global Operations Visualization (GOV) Lab's 40-megapixel tiled display wall at RMIT City Campus.
+
+### TECH STACK OVERVIEW
 
 ### FRONT-END
 - The front-end framework used for deepracer dash application is React and MaterialUI.
@@ -23,8 +25,9 @@ Deepracer is a cloud-based Dashboard application that provides a comprehensive, 
 
 ### LOGS
 
-
 ### INTEGRATION & DEPLOYMENT
+=======
+
 The group consists of:
 - Rishi
 - Jay
