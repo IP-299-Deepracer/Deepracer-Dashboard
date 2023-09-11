@@ -26,15 +26,17 @@ jobs:
         cd deepracer_dashboard
         npm install
     # Run Tests * Currently no tests are present in the code base therefore we expect this step to exit with code 0
-    # - name: Test
-    #   run: |
-    #     cd deepracer_dashboard
-    #     npm test
-    # Run ESlint Test
-    - name: EsLint Test
+    - name: Test
       run: |
         cd deepracer_dashboard
-        npm run test-lint
+        npm test
+    - name: Build 
+      run: |
+        cd deepracer_dashboard
+        npm run build --if-present
+    - name: Pack build
+      run: npm pack -o my-deepDash.tgz
+    
 
 
 
