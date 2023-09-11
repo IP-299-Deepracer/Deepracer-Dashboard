@@ -51,6 +51,7 @@ jobs:
     - name: Pack
       run : |
         cd deepracer_dashboard
+        npm pack
 
     # - name: Upload Artifact
     #   uses: actions/upload-artifact@v3
