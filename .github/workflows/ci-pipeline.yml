@@ -35,6 +35,19 @@ jobs:
     needs: Build
     runs-on: ubuntu-latest
     steps:
+    - name: Checkout Code
+      uses: actions/checkout@v3
+
+    - name: Use Node.js 18.x
+      uses: actions/setup-node@v3
+      with:
+        node-version: "18"
+
+    - name: Install Dependencies
+      run: |
+        cd deepracer_dashboard
+        npm install
+
     - name: Pack
       run : |
         cd deepracer_dashbard
@@ -44,7 +57,7 @@ jobs:
       uses: actions/upload-artifact@v3
       with:
         name: deepracer-dash-${{github.sha}}
-        path: deepracer_dashboard
+        path: deepracer_dashboard/deepracer_dashboard-*.tgz
       
 
     
