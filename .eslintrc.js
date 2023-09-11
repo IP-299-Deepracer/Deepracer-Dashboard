@@ -1,6 +1,7 @@
 module.exports = {
     extends : [
-        'react-app'
+        'react-app',
+        'plugin:react-app/recommended'
     ],
     // These rules ensure errors are shown if any of the keys are found
     rules: {
