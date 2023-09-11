@@ -30,12 +30,25 @@ jobs:
       run: |
         cd deepracer_dashboard
         npm test
-    - name: Build 
-      run: |
+    
+  Package:
+    if: github.ref == 'refs/heads/main'
+    needs: Build
+    runs-on: ubuntu-latest
+    steps:
+    - name: Pack
+      
+      run : |
         cd deepracer_dashboard
-        npm run build --if-present
-    - name: Pack build
-      run: npm pack -o my-deepDash.tgz
+        npm pack
+
+    - name: Upload Artifact
+      uses: actions/upload-artifact@v3
+      with:
+        name: deepracer-dash-${{github.sha}}
+        path: dist/deepracer-dash-1.tgz
+      
+
     
 
 
