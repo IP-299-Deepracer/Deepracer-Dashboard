@@ -53,11 +53,11 @@ jobs:
         cd deepracer_dashboard
         npm pack
 
-    # - name: Upload Artifact
-    #   uses: actions/upload-artifact@v3
-    #   with:
-    #     name: deepracer-dash-${{github.sha}}
-    #     path: deepracer_dashboard/deepracer_dashboard-*.tgz
+    - name: Upload Artifact
+      uses: actions/upload-artifact@v3
+      with:
+        name: deepracer-dash-${{github.sha}}
+        path: deepracer_dashboard/deepracer_dashboard-*.tgz
       
 
     
