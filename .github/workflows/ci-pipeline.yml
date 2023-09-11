@@ -36,10 +36,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - name: Pack
-      
       run : |
-        cd deepracer_dashboard
-        npm pack
+        ls
 
     - name: Upload Artifact
       uses: actions/upload-artifact@v3
