@@ -37,13 +37,14 @@ jobs:
     steps:
     - name: Pack
       run : |
-        ls
+        cd deepracer_dashbard
+        npm pack
 
     - name: Upload Artifact
       uses: actions/upload-artifact@v3
       with:
         name: deepracer-dash-${{github.sha}}
-        path: dist/deepracer-dash-1.tgz
+        path: deepracer_dashboard
       
 
     
