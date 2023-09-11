@@ -26,6 +26,9 @@ Deepracer is a cloud-based Dashboard application that provides a comprehensive, 
 ### LOGS
 
 ### INTEGRATION & DEPLOYMENT
+- The CI pipeline performs the basics e.g. performing lint test
+- As there are no test files in the code base, the "test" step automatically passes
+- The CI pipeline includes a package stage, which will pack the codebase and then upload the artifact which can then be used for deployment.
 =======
 
 The group consists of:
