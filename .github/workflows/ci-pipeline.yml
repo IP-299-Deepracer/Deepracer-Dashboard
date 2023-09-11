@@ -34,7 +34,7 @@ jobs:
     - name: EsLint Test
       run: |
         cd deepracer_dashboard
-        npx eslint .
+        npm run test-lint
 
 
 

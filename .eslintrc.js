@@ -1,14 +1,11 @@
-module.exports = {
-    extends : [
-        'react-app',
-        'plugin:react-app/recommended'
-    ],
-    // These rules ensure errors are shown if any of the keys are found
+const {
+    overrides: reactAppOverrides,
+  } = require('eslint-config-react-app');
+  
+  module.exports = {
+    ...reactAppOverrides,
     rules: {
-        'no-unused-vars': 'error',
-        'no-undef': 'error',
-        'no-console': 'warn',
-        'no-warning-comments': 'error',
-        'eqeqeq': 'error'
+      // Add additional rules here
+      'no-console': 'off',
     },
-}
+  };
