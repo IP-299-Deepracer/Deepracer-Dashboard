@@ -1,12 +1,10 @@
 import { createContext, useState, useMemo } from "react";
 import { createTheme } from "@mui/material/styles";
-import { motionDefaultProps } from "@nivo/core";
-import { create } from "@mui/material/styles/createTransitions";
 
 
 // colour design tokens
 export const tokens = (mode) => ({
-  ...(mode == "dark"
+  ...(mode === "dark"
     ? {
         grey: {
           100: "#e0e0e0",

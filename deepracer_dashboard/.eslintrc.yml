@@ -1,0 +1,17 @@
+env:
+  node: true
+  commonjs: true
+  es6: true
+  jest: true
+extends:
+  - eslint:recommended
+  - react
+  - react-app
+globals:
+  Atomics: readonly
+  SharedArrayBuffer: readonly
+parserOptions:
+  ecmaVersion: 2018
+rules:
+  no-trailing-spaces: "error"
+  react-hooks/rules-of-hooks: 'error'
