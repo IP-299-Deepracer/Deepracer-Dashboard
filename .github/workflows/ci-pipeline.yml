@@ -50,8 +50,7 @@ jobs:
 
     - name: Pack
       run : |
-        cd deepracer_dashbard
-        npm pack
+        ls
 
     - name: Upload Artifact
       uses: actions/upload-artifact@v3
