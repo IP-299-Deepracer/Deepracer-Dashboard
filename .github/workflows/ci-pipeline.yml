@@ -50,7 +50,7 @@ jobs:
 
     - name: Pack
       run : |
-        ls
+        cd deepracer_dashboard
 
     # - name: Upload Artifact
     #   uses: actions/upload-artifact@v3
