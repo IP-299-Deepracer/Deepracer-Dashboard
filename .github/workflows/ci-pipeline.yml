@@ -3,10 +3,12 @@ name: DeepRacer Dashboard CI Pipeline # Name of the Project Pipeline
 on:
   push:
     branches:
+      # PIPELINE WILL ONLY RUN ON MAIN OR ANY BRANCH WHOSE NAME STARTS WITH "feature"
       - main
       - feature/*
   pull_request:
     branches:
+      # Pipeline will be executed when pull request is made
       - main
 
 jobs:
@@ -32,27 +34,30 @@ jobs:
         npm test
     
   Package:
+    # Will only run this stage if pipeline is run in main branch
+    if: github.ref == 'refs/head/main'
     needs: Build
     runs-on: ubuntu-latest
     steps:
+    # Checkout the current repository
     - name: Checkout Code
       uses: actions/checkout@v3
-
+    # Install node
     - name: Use Node.js 18.x
       uses: actions/setup-node@v3
       with:
         node-version: "18"
-
+    # Install all Dependencies
     - name: Install Dependencies
       run: |
         cd deepracer_dashboard
         npm install
-
+    # Performs npm pack on the deepracer dashboard diretory
     - name: Pack
       run : |
         cd deepracer_dashboard
         npm pack
-
+    # stores the artifact which can later be downloaded during deployment
     - name: Upload Artifact
       uses: actions/upload-artifact@v3
       with:
