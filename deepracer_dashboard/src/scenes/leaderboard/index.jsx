@@ -14,30 +14,8 @@ const Team = () => {
   const [selectedRowData, setSelectedRowData] = useState(null);
   const theme = useTheme();
   const colours = tokens(theme.palette.mode);
-  const [apiData, setApiData] = useState(null);
-  useEffect(() => {
-    // Make a GET request to the API endpoint
-    fetch('http://192.168.0.210:3001/models', {
-      method: 'GET',
-    })
-      .then((response) => {
-        if (!response.ok) {
-          throw new Error('Network response was not ok');
-        }
-        return response.json();
-      })
-      .then((data) => {
-        if (data == null) {
-          throw new Error('Null data');
-        }
-        setApiData(data);
-        console.log('API Data:', "data");})
-      .catch((error) => {
-        console.error('Error fetching data from the API:', error);});
-  }, []);
-
   const columns = [
-    { field: "id", headerName: "Position", flex:1, headerAlign: "center",
+    { field: "id", headerName: "ID", flex:1, headerAlign: "center",
       align: "center"},
     {
       field: "name",
@@ -92,10 +70,28 @@ const Team = () => {
     },
   ];
 
-  // const processedData = apiData.map((row, index) => ({
-  //   ...row,
-  //   id: index, // You can use any unique identifier here
-  // }));
+  const [apiData, setApiData] = useState(null);
+    useEffect(() => {
+      // Make a GET request to the API endpoint
+      fetch('http://192.168.0.210:3001/models', {
+        method: 'GET',
+      })
+        .then((response) => {
+          if (!response.ok) {
+            throw new Error('Network response was not ok');
+          }
+          return response.json();
+        })
+        .then((data) => {
+          if (data == null) {
+            throw new Error('Null data');
+          }
+          setApiData(data);
+          console.log('API Data:', "data");})
+        .catch((error) => {
+          console.error('Error fetching data from the API:', error);});
+    }, []);
+
 
   return (
     <Box m="20px">
@@ -136,7 +132,7 @@ const Team = () => {
           },
         }}
       >
-        <DataGrid rows={apiData} columns={columns} />
+        <DataGrid rows={apiData.data} columns={columns} />
       </Box>
     </Box>
   );

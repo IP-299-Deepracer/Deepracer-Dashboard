@@ -13,7 +13,7 @@ router.get("/", (req, res) =>{
     .then((result) => {
         const combinedObject = { data: result };
         const jsonString = JSON.stringify(combinedObject);
-        res.json(jsonString)})
+        res.send(jsonString)})
     .catch((error) => {
         console.error("Error: ", error);});
 });
