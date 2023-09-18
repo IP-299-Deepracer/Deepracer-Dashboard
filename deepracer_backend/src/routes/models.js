@@ -11,11 +11,11 @@ router.get("/", (req, res) =>{
     firebase.getDataFromFirebase(collection)
     // return result (TODO: testing)
     .then((result) => {
-        res.json(result)
-    })
+        const combinedObject = { data: result };
+        const jsonString = JSON.stringify(combinedObject);
+        res.json(jsonString)})
     .catch((error) => {
-        console.error("Error: ", error);
-    });
+        console.error("Error: ", error);});
 });
 
 
