@@ -15,11 +15,12 @@ router.get("/", (req, res) =>{
     firebase.getDataFromFirebase(collection)
     // return result (TODO: testing)
     .then((result) => {
-        res.json(result)
-    })
+        const combinedObject = { data: result };
+        const jsonString = JSON.stringify(combinedObject);
+        // do not return json. this is converted to json in frontend
+        res.send(jsonString)})
     .catch((error) => {
-        console.error("Error: ", error);
-    });
+        console.error("Error: ", error);});
 });
 
 
@@ -47,7 +48,8 @@ router.get("/:name", (req, res) =>{
     firebase.getDataFromFirebaseID(collection, name)
     // return result (TODO: testing)
     .then((result) => {
-        res.json(result)
+        // do not return json. this is converted to json in frontend
+        res.send(result)
     })
     .catch((error) => {
         console.error("Error: ", error);

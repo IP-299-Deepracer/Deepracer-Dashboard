@@ -1,41 +1,46 @@
 import { Box, Typography, useTheme } from "@mui/material";
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { DataGrid } from "@mui/x-data-grid";
 import { tokens } from "../../theme";
-import { mockDataTeam } from "../../data/mockData";
+// import { mockDataTeam } from "../../data/mockData";
 import Header from "../../components/Header";
 import Button from '@mui/material/Button'; // Import Button component from MUI library
 import DialogUI from '../leaderboard/dialog'
 
 
 const Team = () => {
+
   const [dialogOpen, setDialogOpen] = useState(false);
   const [selectedRowData, setSelectedRowData] = useState(null);
   const theme = useTheme();
   const colours = tokens(theme.palette.mode);
   const columns = [
-    { field: "Position", headerName: "Position", flex:1, headerAlign: "center",
-      align: "center"},
-    {
-      field: "name",
-      headerName: "Model Name",
-      flex: 2,
-      cellClassName: "name-column--cell",
+    { 
+      field: "position", 
+      headerName: "Position", 
+      flex:1, 
+      headerAlign: "center",
+      align: "center"
+    },
+    { 
+      field: "teamName", 
+      headerName: "Team Name", 
+      flex:2, 
       headerAlign: "center",
       align: "center"
     },
     {
-      field: "Time", /*{change the field according to json data in the datamock file}*/
-      headerName: "Time",
-      type: "number",
-      headerAlign: "center",
-      align: "center",  
+      field: "name",
+      headerName: "Model Name",
       flex: 2,
+      headerAlign: "center",
+      align: "center"
     },
     {
-      field: "GapToFirst",
-      headerName: "Gap To First",
+      field: "time",
+      headerName: "Lap Time",
       flex: 2,
+      cellClassName: "name-column--cell",
       headerAlign: "center",
       align: "center"
     },
@@ -84,6 +89,35 @@ const Team = () => {
     },
   ];
 
+  // create apiData const that is initialised to null, and can be updated with setter
+  const [apiData, setApiData] = useState(null);
+  useEffect(() => {
+    // Make a GET request to the models endpoint
+    fetch('http://192.168.0.210:3001/models', {
+      method: 'GET',
+    })
+    // check if response is ok
+      .then((response) => {
+        if (!response.ok) {
+          throw new Error('Network response was not ok');
+        }
+        return response.json();
+      })
+      // if data is null then throw error
+      .then((data) => {
+        if (data == null) {
+          throw new Error('Null data');
+        }
+        // then set data to variable apiData
+        setApiData(data);
+        console.log('API Data:', data);})
+      .catch((error) => {
+        console.error('Error fetching data from the API:', error);});
+  }, []);
+
+  // assign rows the data if apiData is not null (repsonse completed)
+  const rows = apiData ? apiData.data : [];
+
   return (
     <Box m="20px">
       <Header title="LEADERBOARD" subtitle="Complete leaderboard" />
@@ -123,7 +157,7 @@ const Team = () => {
           },
         }}
       >
-        <DataGrid rows={mockDataTeam} columns={columns} />
+        <DataGrid rows={rows} columns={columns} />
       </Box>
     </Box>
   );
