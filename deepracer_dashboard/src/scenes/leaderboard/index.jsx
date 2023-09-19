@@ -93,7 +93,7 @@ const Team = () => {
   const [apiData, setApiData] = useState(null);
   useEffect(() => {
     // Make a GET request to the models endpoint
-    fetch('http://192.168.0.210:3001/models', {
+    fetch('http://localhost:3001/models', {
       method: 'GET',
     })
     // check if response is ok
