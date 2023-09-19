@@ -1,6 +1,6 @@
 import { Box, Typography, useTheme } from "@mui/material";
 import React, { useState, useEffect } from 'react';
-import { DataGrid } from "@mui/x-data-grid";
+import { DataGrid, GridToolbar } from "@mui/x-data-grid";
 import { tokens } from "../../theme";
 // import { mockDataTeam } from "../../data/mockData";
 import Header from "../../components/Header";
@@ -27,7 +27,8 @@ const Team = () => {
       headerName: "Team Name", 
       flex:2, 
       headerAlign: "center",
-      align: "center"
+      align: "center",
+      valueOptions: ['team1','team3']
     },
     {
       field: "name",
@@ -157,7 +158,19 @@ const Team = () => {
           },
         }}
       >
-        <DataGrid rows={rows} columns={columns} />
+        <DataGrid
+        disableColumnFilter
+        disableColumnSelector
+        // disableDensitySelector
+        columns={columns}
+        rows={rows}
+        slots={{ toolbar: GridToolbar }}
+        slotProps={{
+          toolbar: {
+            showQuickFilter: true,
+          },
+        }}
+      />
       </Box>
     </Box>
   );
