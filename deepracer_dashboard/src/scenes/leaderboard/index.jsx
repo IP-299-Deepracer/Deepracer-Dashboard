@@ -5,7 +5,7 @@ import { tokens } from "../../theme";
 // import { mockDataTeam } from "../../data/mockData";
 import Header from "../../components/Header";
 import Button from '@mui/material/Button'; // Import Button component from MUI library
-import DialogUI from '../leaderboard/dialog'
+import DialogUI from '../leaderboard/dialog';
 
 
 const Team = () => {
@@ -20,7 +20,8 @@ const Team = () => {
       headerName: "Position", 
       flex:1, 
       headerAlign: "center",
-      align: "center"
+      align: "center",
+      disableColumnMenu: true
     },
     { 
       field: "teamName", 
@@ -28,14 +29,16 @@ const Team = () => {
       flex:2, 
       headerAlign: "center",
       align: "center",
-      valueOptions: ['team1','team3']
+      disableColumnMenu: true
     },
     {
       field: "name",
       headerName: "Model Name",
       flex: 2,
       headerAlign: "center",
-      align: "center"
+      align: "center",
+      sortable: false,
+      disableColumnMenu: true
     },
     {
       field: "time",
@@ -43,7 +46,8 @@ const Team = () => {
       flex: 2,
       cellClassName: "name-column--cell",
       headerAlign: "center",
-      align: "center"
+      align: "center",
+      disableColumnMenu: true
     },
     {
       flex: 2,
@@ -159,12 +163,21 @@ const Team = () => {
         }}
       >
         <DataGrid
+        // initial state sorts datagrid by laptime
+        initialState={{
+          sorting: {sortModel: [{field: 'time', sort: 'asc',},],},
+          pagination: {paginationModel:{pageSize: 100}},
+        }}
+        // disable filter and selector fields
         disableColumnFilter
         disableColumnSelector
-        // disableDensitySelector
+        // set columns
         columns={columns}
+        // set rows
         rows={rows}
+        // add grid toolbar
         slots={{ toolbar: GridToolbar }}
+        // add quick filter
         slotProps={{
           toolbar: {
             showQuickFilter: true,
