@@ -1,68 +1,30 @@
 import { Box, Button, IconButton, Typography, colors, useTheme } from "@mui/material";
 import { tokens } from "../../theme";
-import { mockTransactions } from "../../data/mockData";
+// import { mockTransactions } from "../../data/mockData";
 import DownloadOutlinedIcon from "@mui/icons-material/DownloadOutlined";
 import EmojiEventsIcon from '@mui/icons-material/EmojiEvents';
-import TrafficIcon from "@mui/icons-material/Traffic";
+// import TrafficIcon from "@mui/icons-material/Traffic";
 import TimerRoundedIcon from '@mui/icons-material/TimerRounded';
 import BadgeRoundedIcon from '@mui/icons-material/BadgeRounded';
 import Header from "../../components/Header";
-import StatBox from "../../components/StatBox";
+// import StatBox from "../../components/StatBox";
 import Track from "../../assets/track.png"
-import { styled } from '@mui/material/styles';
-import Table from '@mui/material/Table';
-import TableBody from '@mui/material/TableBody';
-import TableCell, { tableCellClasses } from '@mui/material/TableCell';
-import TableContainer from '@mui/material/TableContainer';
-import TableHead from '@mui/material/TableHead';
-import TableRow from '@mui/material/TableRow';
-import Paper from '@mui/material/Paper';
+// import { styled } from '@mui/material/styles';
+// import Table from '@mui/material/Table';
+// import TableBody from '@mui/material/TableBody';
+// import TableCell, { tableCellClasses } from '@mui/material/TableCell';
+// import TableContainer from '@mui/material/TableContainer';
+// import TableHead from '@mui/material/TableHead';
+// import TableRow from '@mui/material/TableRow';
+// import Paper from '@mui/material/Paper';
 import RMIT from "../../assets/aws.png";
 import AWS from "../../assets/rmit.png"
 import { useEffect, useState } from "react";
 import { DataGrid, GridToolbar } from "@mui/x-data-grid";
 
-
-const StyledTableCell = styled(TableCell)(({ theme }) => ({
-  [`&.${tableCellClasses.head}`]: {
-    backgroundColor: "#FFFFF",
-    color: colors.deepOrange[300],
-    fontSize: 20,
-  },
-  [`&.${tableCellClasses.body}`]: {
-    fontSize: 20,
-  },
-}));
-
-const StyledTableRow = styled(TableRow)(({ theme, index }) => ({
-  // For gold, silver, and bronze rows
-  '&:nth-child(1)': {
-    backgroundColor: '#D4AF37', // Gold
-  },
-  '&:nth-child(2)': {
-    backgroundColor: 'silver', // Silver
-  },
-  '&:nth-child(3)': {
-    backgroundColor: '#cd7f32', // Bronze
-  },
-  // For other rows
-  '&:not(:nth-child(1)):not(:nth-child(2)):not(:nth-child(3))': {
-    backgroundColor: "#7e57c2",
-  },
-  // hide last border
-  '&:last-child td, &:last-child th': {
-    border: 0,
-  },
-}));
-
-function createData(name, calories, fat) {
-  return { name, calories, fat,};
-}
-
 const Dashboard = () => {
   const theme = useTheme();
   const colors = tokens(theme.palette.mode);
-  const colours = tokens(theme.palette.mode);
   const columns = [
     { 
       field: "position", 
