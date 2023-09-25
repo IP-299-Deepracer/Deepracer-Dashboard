@@ -19,6 +19,8 @@ import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
 import RMIT from "../../assets/aws.png";
 import AWS from "../../assets/rmit.png"
+import { useEffect, useState } from "react";
+import { DataGrid, GridToolbar } from "@mui/x-data-grid";
 
 
 const StyledTableCell = styled(TableCell)(({ theme }) => ({
@@ -57,17 +59,75 @@ function createData(name, calories, fat) {
   return { name, calories, fat,};
 }
 
-const rows = [
-  createData(1, "RMIT SPEEDSTER", "0:09:09"),
-  createData(2, "MUI RACER", "0:10:10"),
-  createData(3, "MODEL REDBULL", "0:11:10"),
-  createData(4, "MODEL FERRARI", "0:11:17"),
-  createData(5, "RACER", "0:12:10"),
-];
-
 const Dashboard = () => {
   const theme = useTheme();
   const colors = tokens(theme.palette.mode);
+  const colours = tokens(theme.palette.mode);
+  const columns = [
+    { 
+      field: "position", 
+      headerName: "Position", 
+      flex:1, 
+      headerAlign: "center",
+      align: "center",
+      disableColumnMenu: true
+    },
+    { 
+      field: "teamName", 
+      headerName: "Team Name", 
+      flex:2, 
+      headerAlign: "center",
+      align: "center",
+      disableColumnMenu: true
+    },
+    {
+      field: "name",
+      headerName: "Model Name",
+      flex: 2,
+      headerAlign: "center",
+      align: "center",
+      sortable: false,
+      disableColumnMenu: true
+    },
+    {
+      field: "time",
+      headerName: "Lap Time",
+      flex: 2,
+      cellClassName: "name-column--cell",
+      headerAlign: "center",
+      align: "center",
+      disableColumnMenu: true
+    }
+  ];
+
+  // create apiData const that is initialised to null, and can be updated with setter
+  const [apiData, setApiData] = useState(null);
+  useEffect(() => {
+    // Make a GET request to the models endpoint
+    fetch('http://localhost:3001/models', {
+      method: 'GET',
+    })
+      // check if response is ok
+      .then((response) => {
+        if (!response.ok) {
+          throw new Error('Network response was not ok');
+        }
+        return response.json();
+      })
+      // if data is null then throw error
+      .then((data) => {
+        if (data == null) {
+          throw new Error('Null data');
+        }
+        // then set data to variable apiData
+        setApiData(data);
+        console.log('API Data:', data);})
+      .catch((error) => {
+        console.error('Error fetching data from the API:', error);});
+    }, []);
+
+  // assign rows the data if apiData is not null (repsonse completed)
+  const rows = apiData ? apiData.data : [];
 
   return (
     <Box m="20px">
@@ -280,30 +340,30 @@ const Dashboard = () => {
             </Box>
           </Box>
           <Box height="80vh" p="15px" flexGrow={1}>
-            <TableContainer component={Paper}>
-              <Table sx={{ minWidth: "250px" }} aria-label="customized table">
-                <TableHead sx={{fontSize: 24}}>
-                  <TableRow sx={{backgroundColor: colors.purpleAccent[700]}}>
-                    <StyledTableCell fontSize="20">Position</StyledTableCell>
-                    <StyledTableCell align="left">Name</StyledTableCell>
-                    <StyledTableCell align="left">Time</StyledTableCell>
-                  </TableRow>
-                </TableHead>
-                <TableBody>
-                  {rows.map((row) => (
-                    <StyledTableRow key={row.name}>
-                      <StyledTableCell scope="row">
-                        {row.name}
-                      </StyledTableCell>
-                      <StyledTableCell align="left">{row.calories}</StyledTableCell>
-                      <StyledTableCell align="left">{row.fat}</StyledTableCell>
-                    </StyledTableRow>
-                  ))}
-                </TableBody>
-              </Table>
-            </TableContainer>
-          </Box>
+            <DataGrid
+              // initial state sorts datagrid by laptime
+              initialState={{
+                sorting: {sortModel: [{field: 'time', sort: 'asc',},],},
+                pagination: {paginationModel:{pageSize: 100}},
+              }}
+              // disable filter and selector fields
+              disableColumnFilter
+              disableColumnSelector
+              // set columns
+              columns={columns}
+              // set rows
+              rows={rows}
+              // add grid toolbar
+              slots={{ toolbar: GridToolbar }}
+              // add quick filter
+              slotProps={{
+                toolbar: {
+                  showQuickFilter: true,
+                },
+              }}
+            />
         </Box>
+      </Box>
 
         <Box
           gridColumn="span 6"
