@@ -34,7 +34,7 @@ exports.getDataFromFirebase = async (collectionName) => {
 };
 
 
-// get data from collection in database
+// put data from frontend in a collection in database
 exports.putDataInFirebase = async (collectionName, body) => {
     try {
         db.collection(collectionName).add(body);

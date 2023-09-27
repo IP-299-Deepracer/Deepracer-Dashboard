@@ -40,6 +40,7 @@ const Dashboard = () => {
       flex:2, 
       headerAlign: "center",
       align: "center",
+      sortable: false,
       disableColumnMenu: true
     },
     {
@@ -306,7 +307,7 @@ const Dashboard = () => {
               // initial state sorts datagrid by laptime
               initialState={{
                 sorting: {sortModel: [{field: 'time', sort: 'asc',},],},
-                pagination: {paginationModel:{pageSize: 100}},
+                pagination: {paginationModel:{pageSize: 5}},
               }}
               // disable filter and selector fields
               disableColumnFilter
@@ -315,13 +316,9 @@ const Dashboard = () => {
               columns={columns}
               // set rows
               rows={rows}
-              // add grid toolbar
-              slots={{ toolbar: GridToolbar }}
+              hideFooter
               // add quick filter
               slotProps={{
-                toolbar: {
-                  showQuickFilter: true,
-                },
               }}
             />
         </Box>
