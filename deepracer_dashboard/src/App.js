@@ -4,6 +4,7 @@ import Topbar from "./scenes/global/Topbar";
 import Sidebar from "./scenes/global/Sidebar";
 import Dashboard from "./scenes/dashboard";
 import Leaderboard from "./scenes/leaderboard";
+import Footer from "./scenes/global/footer"
 import Bar from "./scenes/bar";
 import Form from "./scenes/form";
 import Line from "./scenes/line";
@@ -54,6 +55,7 @@ function App() {
               <Route path="/regsiter" element={<Register />} />
             </Routes>
           </main>
+          <Footer />
         </div>
       </ThemeProvider>
     </colourModeContext.Provider>
