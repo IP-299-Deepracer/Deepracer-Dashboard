@@ -323,23 +323,8 @@ const Dashboard = () => {
               <img src={Track} height="400px" width="550px" m="-15px 0 0 0"></img>
           </Box>       
         </Box>
-        <Box
-          sx={{
-            display: 'flex',
-            gridColumn: 'span 12',
-            gap: '20px',
-            justifyContent: 'center', // Horizontally center
-            alignItems: 'center',  
-            marginTop: '20px',
-            padding: '0',
-            height: '120px'
-          }}
-        >
-          <img src={RMIT} alt="" height={35 + 'px'} width={110 + 'px'} />
-          <img src={AWS} alt="" height={35+ 'px'} width={110+ 'px'}  sx={{marginLeft: 16}}></img>
-        </Box>
       </Box>
-    </Box>
+    </Box> 
   );
 };
 
