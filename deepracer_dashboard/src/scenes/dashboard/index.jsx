@@ -1,13 +1,10 @@
 import { Box, Button, IconButton, Typography, colors, useTheme } from "@mui/material";
 import { tokens } from "../../theme";
-import { mockTransactions } from "../../data/mockData";
 import DownloadOutlinedIcon from "@mui/icons-material/DownloadOutlined";
 import EmojiEventsIcon from '@mui/icons-material/EmojiEvents';
-import TrafficIcon from "@mui/icons-material/Traffic";
 import TimerRoundedIcon from '@mui/icons-material/TimerRounded';
 import BadgeRoundedIcon from '@mui/icons-material/BadgeRounded';
 import Header from "../../components/Header";
-import StatBox from "../../components/StatBox";
 import Track from "../../assets/track.png"
 import { styled } from '@mui/material/styles';
 import Table from '@mui/material/Table';
@@ -17,9 +14,6 @@ import TableContainer from '@mui/material/TableContainer';
 import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
-import RMIT from "../../assets/aws.png";
-import AWS from "../../assets/rmit.png"
-
 
 const StyledTableCell = styled(TableCell)(({ theme }) => ({
   [`&.${tableCellClasses.head}`]: {
@@ -320,7 +314,7 @@ const Dashboard = () => {
           >
           </Box>
           <Box>
-              <img src={Track} height="400px" width="550px" m="-15px 0 0 0"></img>
+              <img src={Track} height="400px" width="550px" m="-15px 0 0 0" alt="" />
           </Box>       
         </Box>
       </Box>
