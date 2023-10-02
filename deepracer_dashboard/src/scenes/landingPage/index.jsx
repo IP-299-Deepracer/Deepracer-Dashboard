@@ -22,9 +22,7 @@ const LandingPage = () => {
           </Typography>
           <Box sx={{ paddingTop: 10, display: "flex", justifyContent: "center", alignItems: "center"}}>
             <Button
-            onClick={
-              handleJoinEvent
-            }
+            href="/dashboard"
             variant="contained" sx={{ margin: 2, height: 50, width: 300, backgroundColor: "#f79400", ":hover": { backgroundColor:  colours.purpleAccent[400] }}}>
               Let's Race!
             </Button>
