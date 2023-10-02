@@ -8,27 +8,23 @@ const Footer = () => {
     const theme = useTheme();
     const colours = tokens(theme.palette.mode);
     return (
-        <Paper sx={{backgroundImage: 'none',
-    width: '100%',
-    position: 'fixed',
-    bottom: 0,
-    backgroundColor: colours.navyAccent[900],
-    ml: 0
-    }} component="footer">
         <Box
           sx={{
             justifyContent: "center",
             display: "flex",
             alignItems: "center",
+            width:'100%',
+            bottom: 0,
+            position: 'fixed',
             mb: 2,
           }}
+          component="footer"
         >
             
-          <img src={AWS} alt="" height={35 + 'px'} width={130 + 'px'}/>
+          <img src={AWS} alt="" height={35 + 'px'} width={110 + 'px'}/>
           <Box sx={{width: '20px'}}></Box>
           <img src={RMIT} alt="" height={35+ 'px'} width={150+ 'px'}></img>
         </Box>
-    </Paper>
     );
     };
 
