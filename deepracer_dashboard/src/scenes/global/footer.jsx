@@ -4,6 +4,7 @@ import { Box} from "@mui/material";
 
 const Footer = () => {
     return (
+      // Created a box for the footer images
         <Box
           sx={{
             justifyContent: "center",
@@ -16,9 +17,9 @@ const Footer = () => {
           }}
           component="footer"
         >
-            
+        {/* Added images to the footer */} 
           <img src={AWS} alt="" height={35 + 'px'} width={110 + 'px'}/>
-          <Box sx={{width: '20px'}}></Box>
+          <Box sx={{width: '20px'}}></Box> {/* Created an empty box to create space between two images */}
           <img src={RMIT} alt="" height={35+ 'px'} width={150+ 'px'}/>
         </Box>
     );
