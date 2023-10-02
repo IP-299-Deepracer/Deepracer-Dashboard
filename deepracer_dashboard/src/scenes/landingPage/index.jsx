@@ -4,10 +4,6 @@ import { createTheme, ThemeProvider } from "@mui/material/styles";
 import { tokens } from "../../theme";
 import { Route, Routes } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
-import Paper from '@mui/material/Paper';
-import RMIT from "../../assets/aws.png";
-import AWS from "../../assets/rmit.png"
-
 
 const theme = createTheme();
 const colours = tokens(theme.palette.mode);
