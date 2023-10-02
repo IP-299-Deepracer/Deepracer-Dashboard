@@ -1,12 +1,8 @@
-import Paper from '@mui/material/Paper';
 import AWS from "../../assets/aws.png";
 import RMIT from "../../assets/race.png"
-import { Box, Button, IconButton, Typography, colors, useTheme, Container } from "@mui/material";
-import { tokens } from "../../theme";
+import { Box} from "@mui/material";
 
 const Footer = () => {
-    const theme = useTheme();
-    const colours = tokens(theme.palette.mode);
     return (
         <Box
           sx={{
@@ -23,7 +19,7 @@ const Footer = () => {
             
           <img src={AWS} alt="" height={35 + 'px'} width={110 + 'px'}/>
           <Box sx={{width: '20px'}}></Box>
-          <img src={RMIT} alt="" height={35+ 'px'} width={150+ 'px'}></img>
+          <img src={RMIT} alt="" height={35+ 'px'} width={150+ 'px'}/>
         </Box>
     );
     };
