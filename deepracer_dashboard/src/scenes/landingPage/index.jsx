@@ -2,17 +2,11 @@ import React from "react";
 import { Button, Typography, Container, Box } from "@mui/material";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 import { tokens } from "../../theme";
-import { Route, Routes } from "react-router-dom";
-import { useNavigate } from "react-router-dom";
 
 const theme = createTheme();
 const colours = tokens(theme.palette.mode);
 
 const LandingPage = () => {
-  const navigate = useNavigate();
-  const handleJoinEvent = () => {
-    navigate("/register");
-  };
   return (
     <ThemeProvider theme={theme}>
       <Container component="main" maxWidth="m">
