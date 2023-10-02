@@ -24,11 +24,6 @@ function App() {
     const currentRoute = getCurrentRoute();
     if (currentRoute === '/') {
       setIsSidebar(false);
-    } else if (currentRoute === '/register'){
-      setIsSidebar(false);
-    } 
-    else if (currentRoute === '/login') {
-      setIsSidebar(false);
     }
     else {
       setIsSidebar(true);
