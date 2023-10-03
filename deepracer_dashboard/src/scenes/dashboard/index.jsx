@@ -32,7 +32,8 @@ const Dashboard = () => {
       flex:1, 
       headerAlign: "center",
       align: "center",
-      disableColumnMenu: true
+      disableColumnMenu: true,
+      sortable: false
     },
     { 
       field: "teamName", 
