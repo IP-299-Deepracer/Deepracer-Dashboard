@@ -9,6 +9,7 @@ import Bar from "./scenes/bar";
 import Form from "./scenes/form";
 import Line from "./scenes/line";
 import Pie from "./scenes/pie";
+import TrainingData from "./scenes/trainingForm"
 import LandingPage from "./scenes/landingPage";
 import { CssBaseline, ThemeProvider } from "@mui/material";
 import { colourModeContext, useMode } from "./theme";
@@ -47,7 +48,7 @@ function App() {
             <Routes>
               <Route path="/dashboard" element={<Dashboard />} />
               <Route path="/leaderboard" element={<Leaderboard />} />
-              <Route path="/form" element={<Form />} />
+              <Route path="/training-data" element={<TrainingData />} />
               <Route path="/bar" element={<Bar />} />
               <Route path="/pie" element={<Pie />} />
               <Route path="/line" element={<Line />} />
