@@ -29,6 +29,7 @@ const Team = () => {
       flex:2, 
       headerAlign: "center",
       align: "center",
+      sortable: false,
       disableColumnMenu: true
     },
     {
