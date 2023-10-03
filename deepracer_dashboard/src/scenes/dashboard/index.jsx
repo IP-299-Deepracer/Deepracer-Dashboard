@@ -315,12 +315,11 @@ const Dashboard = () => {
               columns={columns}
               // set rows
               rows={rows}
-              // add grid toolbar
-              slots={{ toolbar: GridToolbar }}
-              // add quick filter
+              // hide pageination
+              hideFooter
+              slots={{}}
               slotProps={{
                 toolbar: {
-                  showQuickFilter: true,
                 },
               }}
             />
