@@ -12,22 +12,40 @@ const TrainingForm = () => {
 
     return(
         <Box m="20px" >
+            {/* Creating the training data upload form */} 
             <Header title="Training Data" subtitle="Upload trained model logs" />
-            <Box marginTop="10%">
+            <Box marginTop="5%">
                 <form>
+                    {/* The grid component creates a vertical stack of the form elements and centers the forms */}
                     <Grid container spacing={2} display="flex" flexDirection="column" alignItems="center" justifyContent="center">
-                    <Typography variant="h4">Upload Logs</Typography>
+                    <Typography variant="h3">Upload Model Data</Typography>
                         <Grid item xs={8}>
-                            <input type="text" id="modelName"  placeholder="Model Name"/>
+                            <input type="text" id="modelName"  placeholder="Model Name" required/> {/* The input is where the participants enter their model name */}
                         </Grid>
                         <Grid item xs={8}>
-                            <input type="file" id="file1" name="file1" accept=".csv" label="Upload" className="input-field"
-                            />
+                            <input type="text" id="modelName"  placeholder="Time (Secs)" required/> {/* The input is where the participants enter their model time */}
+                        </Grid>
+                        {/* The next components are for file uploads of csv files downloaded from AWS DeepRacer */}
+                        <Grid item xs={8}>
+                            <div class="file-input">
+                                <input type="file" id="file" class="file" required/>
+                                <label for="file">Upload Evaluation CSV</label>
+                            </div>
                         </Grid>
                         <Grid item xs={8}>
-                            <input type="file" id="file2" name="file2" accept=".csv" className="input-field"/>
+                             <div class="file-input">
+                                <input type="file" id="file" class="file" required/>
+                                <label for="file">Upload Training CSV</label>
+                            </div>
                         </Grid>
                         <Grid item xs={8}>
+                            <div class="file-input">
+                                <input type="file" id="file" class="file" required/>
+                                <label for="file">Upload Evaluation Logs</label>
+                            </div>
+                        </Grid>
+                        <Grid item xs={8}>
+                        {/* Submit Button */}
                         <Button type="submit" id="uploadButton" color="secondary" variant="contained">
                             Upload Logs
                         </Button>
