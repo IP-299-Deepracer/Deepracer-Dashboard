@@ -4,6 +4,7 @@ import DownloadOutlinedIcon from "@mui/icons-material/DownloadOutlined";
 import EmojiEventsIcon from '@mui/icons-material/EmojiEvents';
 import TimerRoundedIcon from '@mui/icons-material/TimerRounded';
 import BadgeRoundedIcon from '@mui/icons-material/BadgeRounded';
+import DangerousIcon from '@mui/icons-material/Dangerous';
 import Header from "../../components/Header";
 import Track from "../../assets/track.png"
 import { styled } from '@mui/material/styles';
@@ -64,7 +65,7 @@ const Dashboard = () => {
   const colors = tokens(theme.palette.mode);
 
   return (
-    <Box m="20px">
+    <Box m="10px">
       {/* HEADER */}
       <Box display="flex" justifyContent="space-between" alignItems="center">
         <Header title=" DEEPRACER DASHBOARD" />
@@ -87,15 +88,15 @@ const Dashboard = () => {
 
       {/* GRID & CHARTS */}
       <Box
-        display="grid"
-        gridTemplateColumns="repeat(12, 1fr)"
-        gridAutoRows="140px"
-        gap="20px"
-        flex= "1"
+        display= "grid"
+        gridTemplateColumns= "repeat(4, 1fr)"
+        gridAutoRows= "140px"
+        gap="15px"
+        flex="1"
       >
         {/* ROW 1 */}
         <Box
-          gridColumn="span 3"
+          gridColumn="span 1"
           backgroundColor={"#f79400"}
           display="flex"
           borderRadius="5px"
@@ -125,19 +126,10 @@ const Dashboard = () => {
             Model Name
           </Typography>
         </Box>
-          {/* <StatBox
-            title="Speedy RMIT"
-            subtitle="Model Name"
-            progress="0.75"
-            increase="+14%"
-            style={{color: colors.orangeAccent[500] }}
-            icon={
 
-            }
-          /> */}
         </Box>
         <Box
-          gridColumn="span 3"
+          gridColumn="span 1"
           backgroundColor={"#f79400"}
           display="flex"
           borderRadius="5px"
@@ -169,7 +161,7 @@ const Dashboard = () => {
         </Box>
         </Box>
         <Box
-          gridColumn="span 3"
+          gridColumn="span 1"
           backgroundColor={"#f79400"}
           display="flex"
           borderRadius="5px"
@@ -201,7 +193,7 @@ const Dashboard = () => {
         </Box>
         </Box>
         <Box
-          gridColumn="span 3"
+          gridColumn="span 1"
           backgroundColor={"#f79400"}
           display="flex"
           borderRadius="5px"
@@ -210,7 +202,7 @@ const Dashboard = () => {
           display="block"
           justifyContent="flex-start"
         >
-          <EmojiEventsIcon
+          <DangerousIcon
             sx={{ color: colors.purpleAccent[600], fontSize: "26px", marginLeft:"30px", marginTop:"30px"}}
           />
           <Typography 
@@ -222,20 +214,87 @@ const Dashboard = () => {
             marginTop={0+"px"}
             fontWeight="bold"
           >
-            35
+            2
           </Typography>
           <Typography
             marginLeft={30+"px"}
             fontSize={16}
             >
-            Rewards Earned
+            Off-Tracks
           </Typography>
         </Box>
         </Box>
 
         {/* ROW 2 */}
         <Box
-          gridColumn="span 6"
+          gridColumn="span 1"
+          backgroundColor={"#f79400"}
+          display="flex"
+          borderRadius="5px"
+        >
+        <Box
+          display="block"
+          justifyContent="flex-start"
+        >
+          <EmojiEventsIcon
+            sx={{ color: colors.purpleAccent[600], fontSize: "26px", marginLeft:"30px", marginTop:"30px"}}
+          />
+          <Typography 
+            variant="h3" 
+            color={colors.purpleAccent[800]}
+            align="left"
+            margin={30+"px"}
+            marginBottom={0+"px"}
+            marginTop={0+"px"}
+            fontWeight="bold"
+          >
+            1:00:23
+          </Typography>
+          <Typography
+            marginLeft={30+"px"}
+            fontSize={16}
+            >
+            Average Lap Time
+          </Typography>
+        </Box>
+        </Box>
+
+        <Box
+          gridColumn="span 1"
+          backgroundColor={"#f79400"}
+          display="flex"
+          borderRadius="5px"
+        >
+        <Box
+          display="block"
+          justifyContent="flex-start"
+        >
+          <EmojiEventsIcon
+            sx={{ color: colors.purpleAccent[600], fontSize: "26px", marginLeft:"30px", marginTop:"30px"}}
+          />
+          <Typography 
+            variant="h3" 
+            color={colors.purpleAccent[800]}
+            align="left"
+            margin={30+"px"}
+            marginBottom={0+"px"}
+            marginTop={0+"px"}
+            fontWeight="bold"
+          >
+            30
+          </Typography>
+          <Typography
+            marginLeft={30+"px"}
+            fontSize={16}
+            >
+            Total Laps
+          </Typography>
+        </Box>
+        </Box>
+
+        {/* Row 3 */}
+        <Box
+          gridColumn="span 2"
           gridRow="span 3"
           backgroundColor={"#f79400"}
           borderRadius="5px"
@@ -244,7 +303,7 @@ const Dashboard = () => {
         >
           <Box
             mt="25px"
-            p="0 30px"
+            p="0 10px"
             display="flex "
             justifyContent="space-between"
             alignItems="center"
@@ -273,7 +332,7 @@ const Dashboard = () => {
               </IconButton>
             </Box>
           </Box>
-          <Box height="80vh" p="15px" flexGrow={1}>
+          {/* <Box height="70vh" p="10px" flexGrow={1}>
             <TableContainer component={Paper}>
               <Table sx={{ minWidth: "250px" }} aria-label="customized table">
                 <TableHead sx={{fontSize: 24}}>
@@ -296,13 +355,16 @@ const Dashboard = () => {
                 </TableBody>
               </Table>
             </TableContainer>
-          </Box>
+          </Box> */}
         </Box>
 
         <Box
-          gridColumn="span 6"
-          gridRow="span 3"
-          backgroundColor="transparent"
+          gridColumn="span 2"
+          gridRow="span 2"
+          backgroundColor="#f79400"
+          borderRadius="5px"
+          display="flex"
+          flexDirection="column"
           
         >
           <Box
@@ -314,7 +376,7 @@ const Dashboard = () => {
           >
           </Box>
           <Box>
-              <img src={Track} height="400px" width="550px" m="-15px 0 0 0" alt="" />
+              {/* <img src={Track} height="400px" width="550px" m="-15px 0 0 0" alt="" /> */}
           </Box>       
         </Box>
       </Box>
