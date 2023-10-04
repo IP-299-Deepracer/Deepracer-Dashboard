@@ -44,7 +44,6 @@ const Sidebar = () => {
   return (
     <Box
       sx={{
-        height: "100%",
         "& .pro-sidebar-inner": {
           background: `${colours.purpleAccent[400]} !important`,
         },
