@@ -80,6 +80,9 @@ export const tokens = (mode) => ({
           700:"#ffb74d",
           800:"#ffcc80",
         },
+        navyAccent: {
+          900: "#161e2c"
+        },
       }
     : {
         grey: {
@@ -157,6 +160,9 @@ export const tokens = (mode) => ({
           700:"#f57c00",
           800:"#ef6c00",
         },
+        navyAccent: {
+          900: "#161e2c"
+        },
       }),
 });
 
@@ -179,6 +185,7 @@ export const themeSettings = (mode) => {
               dark: colours.grey[700],
               main: colours.grey[500],
               light: colours.grey[100],
+              bg: colours.navyAccent[900]
             },
             background: {
               default: "#161e2c",
