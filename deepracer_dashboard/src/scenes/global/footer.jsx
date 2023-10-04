@@ -14,6 +14,7 @@ const Footer = () => {
             bottom: 0,
             position: 'fixed',
             mb: 2,
+            marginTop: 2,
           }}
           component="footer"
         >
