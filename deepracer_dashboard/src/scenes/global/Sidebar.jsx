@@ -123,7 +123,7 @@ const Sidebar = () => {
               variant="h6"
               color={"#ffffff"}
               fontWeight={"bold"}
-              sx={{ m: "15px 0 5px 20px" }}
+              sx={{ m: "15px 20px 5px 20px" }}
             >
               Race Day
             </Typography>
@@ -139,7 +139,7 @@ const Sidebar = () => {
               variant="h6"
               color={"#ffffff"}
               fontWeight={"bold"}
-              sx={{ m: "15px 0 5px 20px" }}
+              sx={{ m: "15px 20px 5px 20px" }}
             >
               Training Mode
             </Typography>
@@ -171,7 +171,7 @@ const Sidebar = () => {
               variant="h6"
               color={"#ffffff"}
               fontWeight={"bold"}
-              sx={{ m: "15px 0 5px 20px" }}
+              sx={{ m: "15px 20px 5px 20px" }}
             >
               Create Team
             </Typography>
@@ -209,7 +209,7 @@ const Sidebar = () => {
               variant="h6"
               color={'#ffffff'}
               fontWeight={"bold"}
-              sx={{ m: "15px 0 5px 20px" }}
+              sx={{ m: "15px 20px 5px 20px" }}
             >
               Organiser Mode
             </Typography>
