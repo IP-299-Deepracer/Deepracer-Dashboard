@@ -215,7 +215,7 @@ const Sidebar = () => {
             </Typography>
             <Item
               title="Race Logs"
-              // to="/form"
+              to="/raceForm"
               icon={<UploadIcon />}
               selected={selected}
               setSelected={setSelected}
