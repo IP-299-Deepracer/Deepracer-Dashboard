@@ -68,28 +68,23 @@ const Dashboard = () => {
     <Box m="10px">
       {/* HEADER */}
       <Box display="flex" justifyContent="space-between" alignItems="center">
-        <Header title=" DEEPRACER DASHBOARD" />
+        <Header title=" DEEPRACER DASHBOARD" subtitle="Welcome to the DeepRacer Dashboard"/>
 
         <Box>
-          <Button
-            sx={{
-              backgroundColor: "#f79400",
-              color: "#FFFFFF",
-              fontSize: "14px",
-              fontWeight: "bold",
-              padding: "10px 20px",
-            }}
+          <Typography
+          fontSize={20}
+          fontWeight={"bold"}
+          marginRight={"20px"}
           >
-            <DownloadOutlinedIcon sx={{ mr: "10px" }} />
-            Download Race Data
-          </Button>
+            Event Code: ###### {/* The hastag should be replaced with generated code when organiser starts event */}
+          </Typography>
         </Box>
       </Box>
 
       {/* GRID & CHARTS */}
       <Box
         display= "grid"
-        gridTemplateColumns= "repeat(4, 1fr)"
+        gridTemplateColumns= "repeat(4, 1fr)" // Creates a 4x4 grid layout for the dashboard
         gridAutoRows= "140px"
         gap="15px"
         flex="1"
@@ -121,7 +116,8 @@ const Dashboard = () => {
           </Typography>
           <Typography
             marginLeft={30+"px"}
-            fontSize={16}
+            fontSize={18}
+            fontWeight={"bold"}
             >
             Model Name
           </Typography>
@@ -154,7 +150,8 @@ const Dashboard = () => {
           </Typography>
           <Typography
             marginLeft={30+"px"}
-            fontSize={16}
+            fontSize={18}
+            fontWeight={"bold"}
             >
             Fatest Time
           </Typography>
@@ -186,7 +183,8 @@ const Dashboard = () => {
           </Typography>
           <Typography
             marginLeft={30+"px"}
-            fontSize={16}
+            fontSize={18}
+            fontWeight={"bold"}
             >
             Rewards Earned
           </Typography>
@@ -218,7 +216,8 @@ const Dashboard = () => {
           </Typography>
           <Typography
             marginLeft={30+"px"}
-            fontSize={16}
+            fontSize={18}
+            fontWeight={"bold"}
             >
             Off-Tracks
           </Typography>
@@ -252,7 +251,8 @@ const Dashboard = () => {
           </Typography>
           <Typography
             marginLeft={30+"px"}
-            fontSize={16}
+            fontSize={18}
+            fontWeight={"bold"}
             >
             Average Lap Time
           </Typography>
@@ -285,7 +285,8 @@ const Dashboard = () => {
           </Typography>
           <Typography
             marginLeft={30+"px"}
-            fontSize={16}
+            fontSize={18}
+            fontWeight={"bold"}
             >
             Total Laps
           </Typography>
@@ -321,16 +322,16 @@ const Dashboard = () => {
                 fontWeight="bold"
                 color={colors.purpleAccent[500]}
               >
-                Leaderboard
+                Race Leaderboard
               </Typography>
             </Box>
-            <Box>
+            {/* <Box>
               <IconButton>
                 <DownloadOutlinedIcon
                   sx={{ fontSize: "26px", color: colors.purpleAccent[500] }}
                 />
               </IconButton>
-            </Box>
+            </Box> */}
           </Box>
           {/* <Box height="70vh" p="10px" flexGrow={1}>
             <TableContainer component={Paper}>
@@ -376,6 +377,7 @@ const Dashboard = () => {
           >
           </Box>
           <Box>
+            Camera Feed or Circuit Image
               {/* <img src={Track} height="400px" width="550px" m="-15px 0 0 0" alt="" /> */}
           </Box>       
         </Box>
