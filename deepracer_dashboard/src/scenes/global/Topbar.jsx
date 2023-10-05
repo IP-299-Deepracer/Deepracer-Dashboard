@@ -9,6 +9,7 @@ import SettingsOutlinedIcon from "@mui/icons-material/SettingsOutlined";
 import PersonOutlinedIcon from "@mui/icons-material/PersonOutlined";
 import SearchIcon from "@mui/icons-material/Search";
 import { PaddingTwoTone } from "@mui/icons-material";
+import RaceAws from "../../assets/RaceAWS.png";
 
 const Topbar = () => {
   const theme = useTheme();
@@ -57,10 +58,10 @@ const Topbar = () => {
         <IconButton>
         <img
           alt="profile-user"
-          width="30px"
+          width="50px"
           height="30px"
           src={
-            "../../assets/logoDR.png"
+            RaceAws
           }
           style={{ cursor: "pointer", borderRadius: "50%" }}
         />        
