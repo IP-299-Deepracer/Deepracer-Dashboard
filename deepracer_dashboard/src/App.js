@@ -11,6 +11,7 @@ import Line from "./scenes/line";
 import Pie from "./scenes/pie";
 import TrainingData from "./scenes/trainingForm"
 import LandingPage from "./scenes/landingPage";
+import RaceForm from "./scenes/RaceDayForm";
 import { CssBaseline, ThemeProvider } from "@mui/material";
 import { colourModeContext, useMode } from "./theme";
 
@@ -53,6 +54,7 @@ function App() {
               <Route path="/bar" element={<Bar />} />
               <Route path="/pie" element={<Pie />} />
               <Route path="/line" element={<Line />} />
+              <Route path="/raceForm" element={<RaceForm />} />
               <Route path="/" element={<LandingPage />} />
             </Routes>
           </main>
