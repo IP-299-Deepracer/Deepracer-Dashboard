@@ -68,7 +68,7 @@ const Dashboard = () => {
     <Box m="10px">
       {/* HEADER */}
       <Box display="flex" justifyContent="space-between" alignItems="center">
-        <Header title=" DEEPRACER DASHBOARD" subtitle="Welcome to the DeepRacer Dashboard"/>
+        <Header title=" WELCOME TO DEEPRACER DASHBOARD"/>
 
         <Box>
           <Typography
@@ -86,7 +86,7 @@ const Dashboard = () => {
         display= "grid"
         gridTemplateColumns= "repeat(4, 1fr)" // Creates a 4x4 grid layout for the dashboard
         gridAutoRows= "140px"
-        gap="15px"
+        gap="10px"
         flex="1"
       >
         {/* ROW 1 */}
