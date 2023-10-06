@@ -13,7 +13,7 @@ const RaceForm = () => {
     return (
         <Box m="20px" >
         {/* Creating the training data upload form */} 
-        <Header title="Race Day Leaderboard" subtitle="Add new race records" />
+        <Header title="Race Leaderboard" subtitle="Update race leaderboard" />
         <Box marginTop="5%">
             <form>
                 {/* The grid component creates a vertical stack of the form elements and centers the forms */}
