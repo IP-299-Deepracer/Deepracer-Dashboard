@@ -1,10 +1,7 @@
 import Header from "../../components/Header";
-import { Box,  Button, TextField, Typography } from "@mui/material";
+import { Box,  Button, Typography } from "@mui/material";
 import React from 'react';
 import Grid from '@mui/material/Grid';
-import { Formik } from "formik";
-import * as yup from "yup";
-import useMediaQuery from "@mui/material/useMediaQuery";
 import "../trainingForm/training.css"
 
 
