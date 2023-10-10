@@ -16,6 +16,8 @@ import { CssBaseline, ThemeProvider } from "@mui/material";
 import { colourModeContext, useMode } from "./theme";
 import Login from "./scenes/Authentication/Login";
 import Register from "./scenes/Authentication/Register";
+import Org_Register from "./scenes/Authentication/Org_Register";
+import Otp from "./scenes/Authentication/OTP";
 
 function App() {
   const [theme, colorMode] = useMode();
@@ -43,15 +45,17 @@ function App() {
           {/* if not root page, login and registration page, the sidebar will be shown */}
           {getCurrentRoute() !== "/" &&
             getCurrentRoute() !== "/login" &&
-            getCurrentRoute() !== "/register" && (
-              <Sidebar isSidebar={isSidebar} />
-            )}
+            getCurrentRoute() !== "/register" &&
+            getCurrentRoute() !== "/org_register" &&
+            getCurrentRoute() !== "/otp" && <Sidebar isSidebar={isSidebar} />}
           <main className="content">
             {/* checks to see if the current page is root or not */}
             {/* if not root page, login or registration page, then show the topbar */}
             {getCurrentRoute() !== "/" &&
               getCurrentRoute() !== "/login" &&
-              getCurrentRoute() !== "/register" && (
+              getCurrentRoute() !== "/register" &&
+              getCurrentRoute() !== "/org_register" &&
+              getCurrentRoute() !== "/otp" && (
                 <Topbar setIsSidebar={setIsSidebar} />
               )}
             {/* Setting the routes for all the required pages in the dashboard application */}
@@ -67,6 +71,8 @@ function App() {
               <Route path="/" element={<LandingPage />} />
               <Route path="/login" element={<Login />} />
               <Route path="/register" element={<Register />} />
+              <Route path="/org_register" element={<Org_Register />} />
+              <Route path="/otp" element={<Otp />} />
             </Routes>
           </main>
           {/* The footer will be shown on all pages */}
