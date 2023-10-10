@@ -213,6 +213,12 @@ const Register = () => {
                 Register
               </Button>
             </Grid>
+            <Grid item xs={8}>
+              {/* Sign Up Button */}
+              <Button color="primary" variant="outlined">
+                Already have an account? Sign in
+              </Button>
+            </Grid>
           </Grid>
         </form>
       </Box>

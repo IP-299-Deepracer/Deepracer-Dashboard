@@ -57,13 +57,27 @@ const Login = () => {
                 id="uploadButton"
                 color="secondary"
                 variant="contained"
+                style={{ width: "150px", marginTop: "10px" }}
               >
                 Login
               </Button>
             </Grid>
             <Grid item xs={8}>
+              <Button
+                color="primary"
+                variant="outlined"
+                style={{ width: "250px", marginTop: "30px" }}
+              >
+                Forgot Password
+              </Button>
+            </Grid>
+            <Grid item xs={8}>
               {/* Sign Up Button */}
-              <Button color="primary" variant="outlined">
+              <Button
+                color="primary"
+                variant="outlined"
+                style={{ width: "250px" }}
+              >
                 Need an account? Sign up
               </Button>
             </Grid>
