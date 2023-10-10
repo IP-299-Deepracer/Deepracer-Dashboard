@@ -14,6 +14,7 @@ import LandingPage from "./scenes/landingPage";
 import RaceForm from "./scenes/RaceDayForm";
 import { CssBaseline, ThemeProvider } from "@mui/material";
 import { colourModeContext, useMode } from "./theme";
+import Login from "./scenes/Login";
 
 function App() {
   const [theme, colorMode] = useMode();
@@ -39,12 +40,12 @@ function App() {
         <CssBaseline />
         <div className="app">
           {/* checks to see if the current page is root or not */}
-          {/* if not root page, the sidebar will be shown */}
-          {getCurrentRoute() !== '/' && <Sidebar isSidebar={isSidebar} />}
+          {/* if not root page, login and registration page, the sidebar will be shown */}
+          {getCurrentRoute() !== '/' && getCurrentRoute() !== '/login' && <Sidebar isSidebar={isSidebar} />}
           <main className="content">
             {/* checks to see if the current page is root or not */}
-            {/* if not root page, then show the topbar */}
-            {getCurrentRoute() !== '/' && <Topbar setIsSidebar={setIsSidebar} />}
+            {/* if not root page, login or registration page, then show the topbar */}
+            {getCurrentRoute() !== '/' && getCurrentRoute() !== '/login' && <Topbar setIsSidebar={setIsSidebar} />}
             {/* Setting the routes for all the required pages in the dashboard application */}
             <Routes>
               <Route path="/dashboard" element={<Dashboard />} />
@@ -56,6 +57,7 @@ function App() {
               <Route path="/line" element={<Line />} />
               <Route path="/raceForm" element={<RaceForm />} />
               <Route path="/" element={<LandingPage />} />
+              <Route path="/login" element={<Login />} />
             </Routes>
           </main>
           {/* The footer will be shown on all pages */}
