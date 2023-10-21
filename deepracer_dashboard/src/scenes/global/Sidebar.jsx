@@ -156,7 +156,7 @@ const Sidebar = () => {
             />
             <Item
               title="Model Evaluation"
-              to="/modal-eval"
+              to="/model-eval"
               icon={<SpeedOutlined />}
               selected={selected}
               setSelected={setSelected}
