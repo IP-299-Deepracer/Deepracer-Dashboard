@@ -4,13 +4,14 @@ import {
   Button,
   Typography,
   Grid,
-  TextField,
   FormHelperText,
   Snackbar,
   Alert,
 } from "@mui/material";
 import Done from "@mui/icons-material/Done";
 import Close from "@mui/icons-material/Close";
+import { auth } from "../../../firebase";
+import { createUserWithEmailAndPassword } from "firebase/auth";
 
 const Register = () => {
   const [email, setEmail] = useState("");
@@ -82,7 +83,25 @@ const Register = () => {
       return;
     }
 
-    // Continue with form submission...
+    createUserWithEmailAndPassword(auth, email, password)
+      .then((userCredential) => {
+        // Signed up
+        var user = userCredential.user;
+        setAlert({
+          message: "User signed up successfully",
+          severity: "success",
+        });
+        setOpen(true);
+      })
+      .catch((error) => {
+        // Handle Errors here.
+        var errorMessage = error.message;
+        setAlert({
+          message: "Error signing up: " + errorMessage,
+          severity: "error",
+        });
+        setOpen(true);
+      });
   };
 
   return (
