@@ -97,7 +97,23 @@ const Register = () => {
       })
       .catch((error) => {
         // Handle Errors here.
-        var errorMessage = error.message;
+        let errorMessage;
+        switch (error.code) {
+          case "auth/email-already-in-use":
+            errorMessage = "This email is already in use";
+            break;
+          case "auth/invalid-email":
+            errorMessage = "The email address is not valid";
+            break;
+          case "auth/operation-not-allowed":
+            errorMessage = "Email/password accounts are not enabled";
+            break;
+          case "auth/weak-password":
+            errorMessage = "The password is not strong enough";
+            break;
+          default:
+            errorMessage = error.message;
+        }
         setAlert({
           message: "Error signing up: " + errorMessage,
           severity: "error",
@@ -246,7 +262,7 @@ const Register = () => {
             </Grid>
             {/* Sign in button */}
             <Grid item xs={8}>
-              <Button color="primary" variant="outlined">
+              <Button color="primary" variant="outlined" href="/login">
                 Already have an account? Sign in
               </Button>
             </Grid>

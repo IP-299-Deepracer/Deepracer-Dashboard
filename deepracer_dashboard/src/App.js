@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { onAuthStateChanged } from "firebase/auth";
 import { auth } from "./firebase";
 import { UserContext } from "./UserContext";
-import { Routes, Route } from "react-router-dom";
+import { Routes, Route, useLocation } from "react-router-dom";
 import Topbar from "./scenes/global/Topbar";
 import Sidebar from "./scenes/global/Sidebar";
 import Dashboard from "./scenes/dashboard";
@@ -26,10 +26,16 @@ function App() {
   const [isSidebar, setIsSidebar] = useState(true); // Sidebar state
   const [user, setUser] = useState(null); // User state
 
-  // Get current route
-  const getCurrentRoute = () => {
-    return window.location.pathname;
-  };
+  const location = useLocation();
+
+  useEffect(() => {
+    const currentRoute = location.pathname;
+    const isAuthRoute = ["/", "/login", "/register", "/otp"].includes(
+      currentRoute
+    );
+
+    setIsSidebar(!isAuthRoute);
+  }, [location]);
 
   // Handle authentication state change
   useEffect(() => {
@@ -37,48 +43,60 @@ function App() {
     return () => unsubscribe();
   }, []);
 
-  // Handle sidebar
-  useEffect(() => {
-    const currentRoute = getCurrentRoute();
-    if (currentRoute === "/") {
-      setIsSidebar(false);
-    } else {
-      setIsSidebar(true);
-    }
-  }, [isSidebar]);
-
   return (
     <UserContext.Provider value={user}>
       <colourModeContext.Provider value={colorMode}>
         <ThemeProvider theme={theme}>
           <CssBaseline />
           <div className="app">
-            {getCurrentRoute() !== "/" &&
-              getCurrentRoute() !== "/login" &&
-              getCurrentRoute() !== "/register" &&
-              getCurrentRoute() !== "/otp" && <Sidebar isSidebar={isSidebar} />}
-            <main className="content">
-              {getCurrentRoute() !== "/" &&
-                getCurrentRoute() !== "/login" &&
-                getCurrentRoute() !== "/register" &&
-                getCurrentRoute() !== "/otp" && (
-                  <Topbar setIsSidebar={setIsSidebar} />
-                )}
-              <Routes>
-                <Route path="/dashboard" element={<Dashboard />} />
-                <Route path="/leaderboard" element={<Leaderboard />} />
-                <Route path="/training-data" element={<TrainingData />} />
-                <Route path="/form" element={<Form />} />
-                <Route path="/bar" element={<Bar />} />
-                <Route path="/pie" element={<Pie />} />
-                <Route path="/line" element={<Line />} />
-                <Route path="/raceForm" element={<RaceForm />} />
-                <Route path="/" element={<LandingPage />} />
-                <Route path="/login" element={<Login />} />
-                <Route path="/register" element={<Register />} />
-                <Route path="/otp" element={<Otp />} />
-              </Routes>
-            </main>
+            {(() => {
+              if (isSidebar) {
+                return (
+                  <>
+                    <Sidebar isSidebar={isSidebar} />
+                    <main className="content">
+                      <Topbar setIsSidebar={setIsSidebar} />
+                      <Routes>
+                        <Route path="/dashboard" element={<Dashboard />} />
+                        <Route path="/leaderboard" element={<Leaderboard />} />
+                        <Route
+                          path="/training-data"
+                          element={<TrainingData />}
+                        />
+                        <Route path="/form" element={<Form />} />
+                        <Route path="/bar" element={<Bar />} />
+                        <Route path="/pie" element={<Pie />} />
+                        <Route path="/line" element={<Line />} />
+                        <Route path="/raceForm" element={<RaceForm />} />
+                        <Route path="/" element={<LandingPage />} />
+                        <Route path="/login" element={<Login />} />
+                        <Route path="/register" element={<Register />} />
+                        <Route path="/otp" element={<Otp />} />
+                      </Routes>
+                    </main>
+                  </>
+                );
+              } else {
+                return (
+                  <main className="content">
+                    <Routes>
+                      <Route path="/dashboard" element={<Dashboard />} />
+                      <Route path="/leaderboard" element={<Leaderboard />} />
+                      <Route path="/training-data" element={<TrainingData />} />
+                      <Route path="/form" element={<Form />} />
+                      <Route path="/bar" element={<Bar />} />
+                      <Route path="/pie" element={<Pie />} />
+                      <Route path="/line" element={<Line />} />
+                      <Route path="/raceForm" element={<RaceForm />} />
+                      <Route path="/" element={<LandingPage />} />
+                      <Route path="/login" element={<Login />} />
+                      <Route path="/register" element={<Register />} />
+                      <Route path="/otp" element={<Otp />} />
+                    </Routes>
+                  </main>
+                );
+              }
+            })()}
             <Footer />
           </div>
         </ThemeProvider>

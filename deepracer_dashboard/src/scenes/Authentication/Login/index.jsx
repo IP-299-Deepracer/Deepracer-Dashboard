@@ -48,7 +48,21 @@ const Login = () => {
       })
       .catch((error) => {
         // Handle Errors here.
-        var errorMessage = error.message;
+        let errorMessage;
+        switch (error.code) {
+          case "auth/invalid-email":
+            errorMessage = "The email address is not valid";
+            break;
+          case "auth/user-disabled":
+            errorMessage = "This user has been disabled";
+            break;
+          case "auth/user-not-found":
+          case "auth/wrong-password":
+            errorMessage = "Invalid email or password";
+            break;
+          default:
+            errorMessage = error.message;
+        }
         setAlert({
           message: "Error signing in: " + errorMessage,
           severity: "error",
@@ -124,21 +138,14 @@ const Login = () => {
               </Button>
             </Grid>
             {/* Forgot password button */}
-            <Grid item xs={8}>
-              <Button
-                color="primary"
-                variant="outlined"
-                style={{ width: "250px", marginTop: "30px" }}
-              >
-                Forgot Password
-              </Button>
-            </Grid>
+            <Grid item xs={8}></Grid>
             {/* Sign up button */}
             <Grid item xs={8}>
               <Button
                 color="primary"
                 variant="outlined"
                 style={{ width: "250px" }}
+                href="/register"
               >
                 Need an account? Sign up
               </Button>
