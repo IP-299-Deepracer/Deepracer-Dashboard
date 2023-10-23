@@ -1,15 +1,26 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import { Box, Button, Typography, Grid, Snackbar, Alert } from "@mui/material";
 import { auth } from "../../../firebase";
 import { signInWithEmailAndPassword } from "firebase/auth";
+import { useNavigate } from "react-router-dom";
+import { UserContext } from "../../../UserContext";
 import "./styles.css";
 
+// Login component
 const Login = () => {
+  // State variables for email, password, Snackbar open state, and alert message
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [open, setOpen] = useState(false);
   const [alert, setAlert] = useState({ message: "", severity: "" });
 
+  // Hook for navigation
+  const navigate = useNavigate();
+
+  // User context
+  const user = useContext(UserContext);
+
+  // Function to handle Snackbar close
   const handleClose = (_, reason) => {
     if (reason === "clickaway") {
       return;
@@ -17,18 +28,23 @@ const Login = () => {
     setOpen(false);
   };
 
+  // Function to handle form submission
   const handleSubmit = (event) => {
     event.preventDefault();
 
+    // Firebase authentication
     signInWithEmailAndPassword(auth, email, password)
       .then((userCredential) => {
         // Signed in
-        var user = userCredential.user;
+        console.log(user);
         setAlert({
           message: "User signed in successfully",
           severity: "success",
         });
         setOpen(true);
+
+        // Navigate to dashboard
+        navigate("/dashboard");
       })
       .catch((error) => {
         // Handle Errors here.
@@ -41,8 +57,10 @@ const Login = () => {
       });
   };
 
+  // Render
   return (
     <Box m="20px">
+      {/* Snackbar for alerts */}
       <Snackbar
         open={open}
         autoHideDuration={6000}
@@ -53,14 +71,8 @@ const Login = () => {
           {alert.message}
         </Alert>
       </Snackbar>
-      <Button
-        style={{ position: "absolute", top: "20px", right: "20px" }}
-        color="primary"
-        variant="contained"
-        sx={{ color: "white" }}
-      >
-        Register Organiser
-      </Button>
+      {/* Registration button */}
+      {/* Login form */}
       <Box marginTop="15%">
         <form onSubmit={handleSubmit}>
           <Grid
@@ -77,6 +89,7 @@ const Login = () => {
             >
               Login
             </Typography>
+            {/* Email input */}
             <Grid item xs={8}>
               <input
                 type="text"
@@ -87,6 +100,7 @@ const Login = () => {
                 required
               />
             </Grid>
+            {/* Password input */}
             <Grid item xs={8}>
               <input
                 type="password"
@@ -97,6 +111,7 @@ const Login = () => {
                 required
               />
             </Grid>
+            {/* Login button */}
             <Grid item xs={8}>
               <Button
                 type="submit"
@@ -108,6 +123,7 @@ const Login = () => {
                 Login
               </Button>
             </Grid>
+            {/* Forgot password button */}
             <Grid item xs={8}>
               <Button
                 color="primary"
@@ -117,6 +133,7 @@ const Login = () => {
                 Forgot Password
               </Button>
             </Grid>
+            {/* Sign up button */}
             <Grid item xs={8}>
               <Button
                 color="primary"

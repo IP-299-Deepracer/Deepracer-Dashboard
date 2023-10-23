@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import {
   Box,
   Button,
@@ -12,8 +12,12 @@ import Done from "@mui/icons-material/Done";
 import Close from "@mui/icons-material/Close";
 import { auth } from "../../../firebase";
 import { createUserWithEmailAndPassword } from "firebase/auth";
+import { useNavigate } from "react-router-dom";
+import { UserContext } from "../../../UserContext";
 
+// Register component
 const Register = () => {
+  // State variables for form fields, password requirements, Snackbar open state, and alert message
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
@@ -23,6 +27,13 @@ const Register = () => {
   const [open, setOpen] = useState(false);
   const [alert, setAlert] = useState({ message: "", severity: "" });
 
+  // Hook for navigation
+  const navigate = useNavigate();
+
+  // User context
+  const user = useContext(UserContext);
+
+  // Function to handle Snackbar close
   const handleClose = (_, reason) => {
     if (reason === "clickaway") {
       return;
@@ -30,6 +41,7 @@ const Register = () => {
     setOpen(false);
   };
 
+  // Function to handle password change and check password requirements
   const handlePasswordChange = (e) => {
     const value = e.target.value;
     setPassword(value);
@@ -38,36 +50,21 @@ const Register = () => {
     setHasEightChars(value.length >= 8);
   };
 
+  // Function to handle form submission
   const handleSubmit = (event) => {
     event.preventDefault();
 
-    if (!email) {
+    // Check form fields
+    if (!email || !password || !confirmPassword) {
       setAlert({
-        message: "Email is required",
+        message: "All fields are required",
         severity: "error",
       });
       setOpen(true);
       return;
     }
 
-    if (!password) {
-      setAlert({
-        message: "Password is required",
-        severity: "error",
-      });
-      setOpen(true);
-      return;
-    }
-
-    if (!confirmPassword) {
-      setAlert({
-        message: "Confirm password is required",
-        severity: "error",
-      });
-      setOpen(true);
-      return;
-    }
-
+    // Check password requirements
     if (!hasNumberOrSymbol || !hasUppercase || !hasEightChars) {
       setAlert({
         message: "Password does not meet the requirements",
@@ -77,21 +74,26 @@ const Register = () => {
       return;
     }
 
+    // Check password confirmation
     if (password !== confirmPassword) {
       setAlert({ message: "Passwords do not match", severity: "error" });
       setOpen(true);
       return;
     }
 
+    // Firebase authentication
     createUserWithEmailAndPassword(auth, email, password)
       .then((userCredential) => {
         // Signed up
-        var user = userCredential.user;
+        console.log(user);
         setAlert({
           message: "User signed up successfully",
           severity: "success",
         });
         setOpen(true);
+
+        // Navigate to dashboard
+        navigate("/dashboard");
       })
       .catch((error) => {
         // Handle Errors here.
@@ -104,8 +106,10 @@ const Register = () => {
       });
   };
 
+  // Render
   return (
     <Box m="20px">
+      {/* Snackbar for alerts */}
       <Snackbar
         open={open}
         autoHideDuration={6000}
@@ -116,6 +120,7 @@ const Register = () => {
           {alert.message}
         </Alert>
       </Snackbar>
+      {/* Registration form */}
       <Box marginTop="15%">
         <form onSubmit={handleSubmit}>
           <Grid
@@ -132,6 +137,7 @@ const Register = () => {
             >
               Register
             </Typography>
+            {/* Email input */}
             <Grid item xs={8}>
               <input
                 type="text"
@@ -143,6 +149,7 @@ const Register = () => {
                 required
               />
             </Grid>
+            {/* Password input with requirements */}
             <Grid item xs={8}>
               <Grid container direction="column">
                 <input
@@ -165,6 +172,7 @@ const Register = () => {
                 >
                   <FormHelperText>
                     <Grid container spacing={1}>
+                      {/* Password requirement: at least 8 characters */}
                       <Grid item xs={12} display="flex" alignItems="center">
                         {hasEightChars ? (
                           <Done fontSize="small" color="success" />
@@ -178,6 +186,7 @@ const Register = () => {
                           At least 8 characters
                         </Typography>
                       </Grid>
+                      {/* Password requirement: contains a number or symbol */}
                       <Grid item xs={12} display="flex" alignItems="center">
                         {hasNumberOrSymbol ? (
                           <Done fontSize="small" color="success" />
@@ -193,6 +202,7 @@ const Register = () => {
                           Contains a number or symbol
                         </Typography>
                       </Grid>
+                      {/* Password requirement: uses at least one uppercase letter */}
                       <Grid item xs={12} display="flex" alignItems="center">
                         {hasUppercase ? (
                           <Done fontSize="small" color="success" />
@@ -211,6 +221,7 @@ const Register = () => {
                 </Box>
               </Grid>
             </Grid>
+            {/* Password confirmation input */}
             <Grid item xs={8}>
               <input
                 type="password"
@@ -222,6 +233,7 @@ const Register = () => {
                 required
               />
             </Grid>
+            {/* Register button */}
             <Grid item xs={8}>
               <Button
                 type="submit"
@@ -232,8 +244,8 @@ const Register = () => {
                 Register
               </Button>
             </Grid>
+            {/* Sign in button */}
             <Grid item xs={8}>
-              {/* Sign Up Button */}
               <Button color="primary" variant="outlined">
                 Already have an account? Sign in
               </Button>
