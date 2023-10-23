@@ -87,7 +87,7 @@ exports.listAllCollections = async () => {
     }
 };
 
-//get Average_Rewards from Reward_Metrics of selected Collection.
+//get Average_Rewards from Reward_Metrics of Model.
 exports.getRewardMetrics = async (collectionName) => {
     try {
         const doc = await db.collection(collectionName).doc('reward_metrics').get();
@@ -97,7 +97,23 @@ exports.getRewardMetrics = async (collectionName) => {
         const average_rewards = doc.data().average_rewards;
         return average_rewards;
     } catch (error) {
-        console.error('Backend Err: Error fetching average reward metrics of doccument:', error);
+        console.error('Backend Err', error);
+        throw error;
+    }
+};
+
+
+//get Speed and Steer from Model.
+exports.getSpeedAndSteer = async (collectionName) => {
+    try {
+        const doc = await db.collection(collectionName).doc('avg_speed_steering').get();
+        if (!doc.exists) {
+            throw new Error('Backend Err: Document does not exist/could not be found');
+        }
+        const avg_speed_steering = doc.data().data;
+        return avg_speed_steering;
+    } catch (error) {
+        console.error('Backend Err', error);
         throw error;
     }
 };

@@ -42,6 +42,7 @@ const ModelEval = () => {
   const [data, setData] = useState(initialData);
   const [models, setModels] = useState([]);
   const [selectedModel, setSelectedModel] = useState('1');
+  const [chartKey, setChartKey] = useState(0);
 
   //Random color function
   const getRandomColor = () => {
@@ -85,6 +86,75 @@ const ModelEval = () => {
       .catch(error => console.error("Error fetching reward metrics:", error));
   };
 
+  //Get Speed And Steer Angle from model
+  const fetchAndSetDataSpeedAndSteer = (collectionName) => {
+    axios.get(`http://localhost:3001/models/${collectionName}/avg-speed-steering`)
+      .then(response => {
+        const datasetColor = getRandomColor();
+        const avgSpeedSteeringData = response.data.avg_speed_steering;
+  
+        const speedDataset = {
+          label: collectionName + ' - Speed',
+          data: avgSpeedSteeringData.map(item => item.speed),
+          yAxisID: 'speed',
+          backgroundColor: getRandomColor() + '99',
+          borderColor: datasetColor,
+          borderWidth: 1
+        };
+  
+        const steerDataset = {
+          label: collectionName + ' - Steer',
+          data: avgSpeedSteeringData.map(item => item.steer),
+          yAxisID: 'steer',
+          backgroundColor: getRandomColor() + '99',
+          borderColor: datasetColor,
+          borderWidth: 1
+        };
+  
+        const newChartData = {
+          labels: avgSpeedSteeringData.map(item => item.closest_checkpoint),
+          datasets: [...data.datasets, speedDataset, steerDataset]
+        };
+  
+        setData(newChartData);
+      })
+      .catch(error => console.error("Error fetching speed and steer data:", error));
+  };
+
+  //render speed and steer
+  const renderSpeedAndSteerChart = () => {
+    return (
+      <Line 
+        data={data}
+        responsive={true}
+        maintainAspectRatio={true}
+        options={{
+          scales: {
+            y: {display: false},
+            speed: {
+              type: 'linear',
+              position: 'left',
+              title: {
+                display: true,
+                text: 'Speed'
+              }
+            },
+            steer: {
+              type: 'linear',
+              position: 'right',
+              title: {
+                display: true,
+                text: 'Steer'
+              }
+            }
+          },
+          layout: { padding: { right: 0, bottom: 0 } },
+          plugins: { legend: { align: 'end' } },
+        }}
+        key={chartKey}/>
+    );
+  };
+  
   //handels selection of models
   const handleModelSelect = (e, setSelectedModel) => {
     const collectionName = e.target.value;
@@ -92,28 +162,53 @@ const ModelEval = () => {
     if (selectedOption === 'line') {
       fetchAndSetDataAverageRewards(collectionName);
     }
+    else if (selectedOption === 'speedandsteer') {
+      fetchAndSetDataSpeedAndSteer(collectionName);
+    }
   };
+
 
   const removeDataset = () => {
     const newData = { ...data };
-    if (newData.datasets.length) { newData.datasets.pop(); }
-    setData(newData);};
+    if (newData.datasets.length > 1 && selectedOption === 'speedandsteer') {
+      newData.datasets.pop();
+      newData.datasets.pop();
+    } else if (newData.datasets.length) {
+      newData.datasets.pop();
+    }
+    setData(newData);
+    setChartKey(prevKey => prevKey + 1);  // Update the key to force a re-render
+  };
 
+  //Render Normal Line Chart
   const renderChart = () => {
     const commonProps = {
       data: data,
       responsive: true,
       maintainAspectRatio: true,
-      key: data.datasets.length,
-      options: {
-        layout: { padding: { right: 0, bottom: 0 } },
+      options: {scales: {
+        x: {
+          title: {
+            display: true,
+            text: 'Iteration'
+          }
+        },
+        y: {
+          beginAtZero: true,
+          title: {
+            display: true,
+            text: 'Reward'
+          }
+        }
+      },
         plugins: { legend: { align: 'end' } },
       },
     };
 
     switch (selectedOption) {
-      case 'line': return <Line {...commonProps} />;
-      case 'scatter': return <Scatter {...commonProps} />;
+      case 'line': return <Line {...commonProps} key={chartKey} />;
+      case 'scatter': return <Scatter {...commonProps} key={chartKey} />;
+      case 'speedandsteer': return renderSpeedAndSteerChart();
       default: return null;
     }
   };
@@ -128,6 +223,7 @@ const ModelEval = () => {
             <MenuItem value="1" disabled>Chart Type</MenuItem>
             <MenuItem value="line">Rewards Per Iteration</MenuItem>
             <MenuItem value="scatter">Scatter Chart</MenuItem>
+            <MenuItem value="speedandsteer">Average Speed And Steering Angle By Checkpoint</MenuItem>
           </StyledSelect>
 
           <StyledSelect value={selectedModel} onChange={(e) => handleModelSelect(e, setSelectedModel)}
