@@ -10,6 +10,7 @@ app.use(cors());
 
 const teamsRoute = require('./routes/teams.js')
 const modelsRoute = require('./routes/models.js')
+// const visRoute = require('./routes/vis.js')
 app.use("/teams", teamsRoute)
 app.use("/models", modelsRoute)
 

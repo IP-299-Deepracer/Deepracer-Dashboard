@@ -1,13 +1,22 @@
 // require firebase-admin module
 const admin = require("firebase-admin");
 
+// Import the functions you need from the SDKs you need
+import { initializeApp } from "firebase/app";
+import { getAnalytics } from "firebase/analytics";
+import { getStorage } from "firebase/storage";
+
+// require multer (used for firebase bucket upload)
+const multer = require('multer');
+
 // require service account key
 const serviceAccount = require("../deepracer-52ec7-firebase-adminsdk-z1mqa-0560f04062.json");
 
 // initialise database connection
-admin.initializeApp({
+const app = admin.initializeApp({
     credential: admin.credential.cert(serviceAccount),
-    databaseURL: "https://console.firebase.google.com/u/0/project/deepracer-52ec7/firestore"
+    databaseURL: "https://console.firebase.google.com/u/0/project/deepracer-52ec7/firestore",
+    storageBucket: 'deepracer-52ec7',
 });
 const db = admin.firestore();
 
