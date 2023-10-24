@@ -53,16 +53,16 @@ const TrainingForm = () => {
                         </Grid>
                         {/* The next components are for file uploads of csv files downloaded from AWS DeepRacer */}
                         <Grid item xs={8}>
+                            <label for="file">Sagemaker Log</label>
+                            <div class="file-input">
+                                <input type="file" id="sageMakerLog" accept=".log" required name="robomakerLog" onChange={(e) => setSagemakerLog(e.target.files[0])}/> 
+                            </div>
+                        </Grid>
+                        <Grid item xs={8}>
                             {/* file input accepts csv files */}
                             <label for="file">Robomaker Log</label>
                             <div class="file-input">
                                 <input type="file" id="robomakerLog" accept=".log" required name="robomakerLog" onChange={(e) => setRobomakerLog(e.target.files[0])}/>
-                            </div>
-                        </Grid>
-                        <Grid item xs={8}>
-                            <label for="file">Sagemaker Log</label>
-                            <div class="file-input">
-                                <input type="file" id="sageMakerLog" accept=".log" required name="robomakerLog" onChange={(e) => setSagemakerLog(e.target.files[0])}/> 
                             </div>
                         </Grid>
                         <Grid item xs={8}>
