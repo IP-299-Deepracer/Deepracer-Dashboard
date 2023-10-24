@@ -20,14 +20,14 @@ const ModelEval = () => {
     fontWeight: "bold",
     padding: "1px 25px",
     margin: "10px",
-    width: "200px"
+    width: "400px"
   });
 
   // Creating a styled version of the Button component
   const StyledButton = styled(Button)({
     backgroundColor: "#f79400",
     color: "#FFFFFF",
-    fontSize: "14px",
+    fontSize: "18px",
     fontWeight: "bold",
     padding: "8px 25px",
     margin: "10px",
@@ -36,13 +36,14 @@ const ModelEval = () => {
   // State initialization
   const initialData = {
     labels: ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12'],
-    datasets: [{ label: 'Legend' }]};
-
+    datasets: [{ label: 'Legend' }]
+  };
   const [selectedOption, setSelectedOption] = useState('1');
   const [data, setData] = useState(initialData);
   const [models, setModels] = useState([]);
   const [selectedModel, setSelectedModel] = useState('1');
   const [chartKey, setChartKey] = useState(0);
+
 
   //Random color function
   const getRandomColor = () => {
@@ -50,7 +51,9 @@ const ModelEval = () => {
     let color = '#';
     for (let i = 0; i < 6; i++) {
       color += letters[Math.floor(Math.random() * 16)];
-    }return color;};
+    } return color;
+  };
+
 
   // Fetching models data from the backend
   useEffect(() => {
@@ -61,8 +64,10 @@ const ModelEval = () => {
       .catch(error => console.error("Error fetching models:", error));
   }, []);
 
+
   // Reset datasets when switching graph type
   useEffect(() => { setData(initialData) }, [selectedOption]);
+
 
   // Get average_reward metric from model
   const fetchAndSetDataAverageRewards = (collectionName) => {
@@ -86,13 +91,14 @@ const ModelEval = () => {
       .catch(error => console.error("Error fetching reward metrics:", error));
   };
 
+
   //Get Speed And Steer Angle from model
   const fetchAndSetDataSpeedAndSteer = (collectionName) => {
     axios.get(`http://localhost:3001/models/${collectionName}/avg-speed-steering`)
       .then(response => {
         const datasetColor = getRandomColor();
         const avgSpeedSteeringData = response.data.avg_speed_steering;
-  
+
         const speedDataset = {
           label: collectionName + ' - Speed',
           data: avgSpeedSteeringData.map(item => item.speed),
@@ -101,7 +107,7 @@ const ModelEval = () => {
           borderColor: datasetColor,
           borderWidth: 1
         };
-  
+
         const steerDataset = {
           label: collectionName + ' - Steer',
           data: avgSpeedSteeringData.map(item => item.steer),
@@ -110,33 +116,34 @@ const ModelEval = () => {
           borderColor: datasetColor,
           borderWidth: 1
         };
-  
+
         const newChartData = {
           labels: avgSpeedSteeringData.map(item => item.closest_checkpoint),
           datasets: [...data.datasets, speedDataset, steerDataset]
         };
-  
+
         setData(newChartData);
       })
       .catch(error => console.error("Error fetching speed and steer data:", error));
   };
 
+
   //render speed and steer
   const renderSpeedAndSteerChart = () => {
     return (
-      <Line 
+      <Line
         data={data}
         responsive={true}
         maintainAspectRatio={true}
         options={{
           scales: {
-            y: {display: false},
+            y: { display: false },
             speed: {
               type: 'linear',
               position: 'left',
               title: {
                 display: true,
-                text: 'Speed'
+                text: 'Average Speed'
               }
             },
             steer: {
@@ -144,17 +151,24 @@ const ModelEval = () => {
               position: 'right',
               title: {
                 display: true,
-                text: 'Steer'
+                text: 'Average Steer'
+              }
+            },
+            x: {
+              title: {
+                display: true,
+                text: 'Checkpoint'
               }
             }
           },
           layout: { padding: { right: 0, bottom: 0 } },
           plugins: { legend: { align: 'end' } },
         }}
-        key={chartKey}/>
+        key={chartKey} />
     );
   };
-  
+
+
   //handels selection of models
   const handleModelSelect = (e, setSelectedModel) => {
     const collectionName = e.target.value;
@@ -177,30 +191,32 @@ const ModelEval = () => {
       newData.datasets.pop();
     }
     setData(newData);
-    setChartKey(prevKey => prevKey + 1);  // Update the key to force a re-render
+    setChartKey(prevKey => prevKey + 1);  // Update the key to force a re-render when model is chosen in dropdown  -fix a bug-
   };
 
+  
   //Render Normal Line Chart
   const renderChart = () => {
     const commonProps = {
       data: data,
       responsive: true,
       maintainAspectRatio: true,
-      options: {scales: {
-        x: {
-          title: {
-            display: true,
-            text: 'Iteration'
+      options: {
+        scales: {
+          x: {
+            title: {
+              display: true,
+              text: 'Iteration'
+            }
+          },
+          y: {
+            beginAtZero: true,
+            title: {
+              display: true,
+              text: 'Reward'
+            }
           }
         },
-        y: {
-          beginAtZero: true,
-          title: {
-            display: true,
-            text: 'Reward'
-          }
-        }
-      },
         plugins: { legend: { align: 'end' } },
       },
     };
@@ -242,10 +258,10 @@ const ModelEval = () => {
             border: "1px solid " + colors.purpleAccent[500],
             padding: "2vw",
             marginTop: "1vw",
-            width: "70vw",
-            height: "65vh",
-            maxWidth: "1500px",
-            maxHeight: "1500px",
+            width: "75vw",
+            height: "70vh",
+            maxWidth: "1700px",
+            maxHeight: "1700px",
             minWidth: "200px",
             minHeight: "100px",
             backgroundColor: "#f79400",

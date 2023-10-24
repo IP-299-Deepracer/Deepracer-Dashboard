@@ -47,6 +47,7 @@ exports.putDataInFirebase = async (collectionName, body) => {
     }
 };
 
+
 // get data from collection in database
 exports.getDataFromFirebaseID = async (collectionName, documentName) => {
     try {
@@ -71,6 +72,7 @@ exports.getDataFromFirebaseID = async (collectionName, documentName) => {
     }
 };
 
+
 //list all collections by name
 exports.listAllCollections = async () => {
     try {
@@ -82,10 +84,11 @@ exports.listAllCollections = async () => {
         
         return collectionNames;
     } catch (error) {
-        console.error('Error listing collections:', error);
+        console.error('Backend Err: Error listing all collections from database', error);
         throw error;  // re-throw the error after logging it
     }
 };
+
 
 //get Average_Rewards from Reward_Metrics of Model.
 exports.getRewardMetrics = async (collectionName) => {
