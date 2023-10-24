@@ -14,23 +14,20 @@ import { storage } from "../../firebase";
 const TrainingForm = () => {
     const [modelName, setModelName] = useState('');
     const [modelTime, setModelTime] = useState('');
-    const [evaluationCSV, setEvaluationCSV] = useState(null);
-    const [trainingCSV, setTrainingCSV] = useState(null);
-    const [evaluationLogs, setEvaluationLogs] = useState(null);
+    const [robomakerLog, setRobomakerLog] = useState(null);
+    const [sagemakerLog, setSagemakerLog] = useState(null);
+    // const [evaluationLogs, setEvaluationLogs] = useState(null);
 
+    // handle the submitting of the form (upload files)
     const handleSubmit = async (event) => {
         event.preventDefault();
         try {
             // create fileRef and uploadBytes to database
-            const fileRef1 = ref(storage, "TrainingFiles/" + modelName + "-evaluationCSV.csv")
-            uploadBytes(fileRef1, evaluationCSV).then((snapshot) => {
+            const fileRef1 = ref(storage, "TrainingFiles/" + modelName + "-robomakerLog.log")
+            uploadBytes(fileRef1, robomakerLog).then((snapshot) => {
                 })
-            const fileRef2 = ref(storage, "TrainingFiles/" + modelName + "-trainingCSV.csv")
-            uploadBytes(fileRef2, trainingCSV).then((snapshot) => {
-                })
-            const fileRef3 = ref(storage, "TrainingFiles/" + modelName + "-evaluationLogs.log")
-            uploadBytes(fileRef3, evaluationLogs).then((snapshot) => {
-                alert("Files Uploaded!")
+            const fileRef2 = ref(storage, "TrainingFiles/" + modelName + "-sagemakerLog.log")
+            uploadBytes(fileRef2, sagemakerLog).then((snapshot) => {
                 })
         } 
         catch (error) {
@@ -43,6 +40,7 @@ const TrainingForm = () => {
             {/* Creating the training data upload form */} 
             <Header title="Training Data" subtitle="Upload trained model logs" />
             <Box marginTop="5%">
+                {/* when the form is submitted, upload files */}
                 <form method="post" onSubmit={handleSubmit}>
                     {/* The grid component creates a vertical stack of the form elements and centers the forms */}
                     <Grid container spacing={2} display="flex" flexDirection="column" alignItems="center" justifyContent="center">
@@ -55,21 +53,16 @@ const TrainingForm = () => {
                         </Grid>
                         {/* The next components are for file uploads of csv files downloaded from AWS DeepRacer */}
                         <Grid item xs={8}>
+                            {/* file input accepts csv files */}
+                            <label for="file">Robomaker Log</label>
                             <div class="file-input">
-                                <input type="file" id="evaluationCSV" accept=".csv, text/csv" required name="evaluationCSV" onChange={(e) => setEvaluationCSV(e.target.files[0])}/>
-                                <label for="file">Upload Evaluation CSV</label>
+                                <input type="file" id="robomakerLog" accept=".log" required name="robomakerLog" onChange={(e) => setRobomakerLog(e.target.files[0])}/>
                             </div>
                         </Grid>
                         <Grid item xs={8}>
+                            <label for="file">Sagemaker Log</label>
                             <div class="file-input">
-                                <input type="file" id="trainingCSV" accept=".csv, text/csv" required name="trainingCSV" onChange={(e) => setTrainingCSV(e.target.files[0])}/>
-                                <label for="file">Upload Training CSV</label>
-                            </div>
-                        </Grid>
-                        <Grid item xs={8}>
-                            <div class="file-input">
-                                <input type="file" id="evaluationLogs" accept=".log" required name="evaluationLog" onChange={(e) => setEvaluationLogs(e.target.files[0])}/>
-                                <label for="file">Upload Evaluation Logs</label>
+                                <input type="file" id="sageMakerLog" accept=".log" required name="robomakerLog" onChange={(e) => setSagemakerLog(e.target.files[0])}/> 
                             </div>
                         </Grid>
                         <Grid item xs={8}>
