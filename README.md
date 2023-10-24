@@ -27,6 +27,14 @@ Deepracer Dash provides a comprehensive, high-resolution interface designed to l
 - The Leaderboard page provides a complete view of all models and their statistics.
 - Each row in the leaderboard is associated with a "View Stats" button. Clicking this button opens a dialog box containing a graphical view of all statistics related to the model.
 
+#### AUTHENTICATION
+
+- The application uses Firebase for user authentication.
+- It includes a login and registration system with form validation and error handling.
+- The registration form checks for password strength, ensuring it has at least 8 characters, contains a number or symbol, and uses at least one uppercase letter.
+- The login form provides a generic error message for invalid email or password to prevent user enumeration.
+- The application state is updated based on the authentication state, and the user is redirected to the dashboard upon successful login or registration.
+
 #### BACK-END
 
 - [Details about the back-end setup and technologies]
