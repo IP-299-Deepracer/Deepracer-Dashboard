@@ -57,19 +57,19 @@ const TrainingForm = () => {
                         <Grid item xs={8}>
                             <div class="file-input">
                                 <input type="file" id="evaluationCSV" accept=".csv, text/csv" required name="evaluationCSV" onChange={(e) => setEvaluationCSV(e.target.files[0])}/>
-                                {/* <label for="file">Upload Evaluation CSV</label> */}
+                                <label for="file">Upload Evaluation CSV</label>
                             </div>
                         </Grid>
                         <Grid item xs={8}>
                             <div class="file-input">
                                 <input type="file" id="trainingCSV" accept=".csv, text/csv" required name="trainingCSV" onChange={(e) => setTrainingCSV(e.target.files[0])}/>
-                                {/* <label for="file">Upload Training CSV</label> */}
+                                <label for="file">Upload Training CSV</label>
                             </div>
                         </Grid>
                         <Grid item xs={8}>
                             <div class="file-input">
                                 <input type="file" id="evaluationLogs" accept=".log" required name="evaluationLog" onChange={(e) => setEvaluationLogs(e.target.files[0])}/>
-                                {/* <label for="file">Upload Evaluation Logs</label> */}
+                                <label for="file">Upload Evaluation Logs</label>
                             </div>
                         </Grid>
                         <Grid item xs={8}>
