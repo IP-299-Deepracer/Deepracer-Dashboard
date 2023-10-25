@@ -93,7 +93,7 @@ const Team = () => {
         sx={{
           "& .MuiDataGrid-root": {
             border: "solid",
-            borderBlockColor: "#fff",
+            borderColor: "#ff9900",
             fontSize: "20px",
             borderRadius: "5px"
 
@@ -110,7 +110,7 @@ const Team = () => {
           "& .MuiDataGrid-columnHeaders": {
             backgroundColor: "#232f3e",
             borderBottom: "none",
-            color: "#ff9900",
+            color: "#fff",
           },
           "& .MuiDataGrid-virtualScroller": {
             backgroundColor: "#232f3e",
@@ -118,7 +118,7 @@ const Team = () => {
           "& .MuiDataGrid-footerContainer": {
             borderTop: "none",
             backgroundColor: "#232f3e",
-            color: "#ff9900",
+            color: "#fff",
           },
           "& .MuiCheckbox-root": {
             backgroundImage: 'linear-gradient(to right, #7e348d,#282441) !important',

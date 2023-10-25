@@ -15,7 +15,7 @@
 }
 /* effect and color of the submit button */
 #uploadButton {
-    background-color: #f79400;
+    background-color: #7e348d;
     color: white; /* Set text color to white for better contrast */
     transition: background-color 0.3s; /* Add a smooth transition for the hover effect */
   }
