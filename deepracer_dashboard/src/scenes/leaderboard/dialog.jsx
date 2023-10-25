@@ -27,9 +27,8 @@ function CustomDialog({ open, onClose, rowData }) {
       open={open}
       onClick={onClose}
       TransitionComponent={Transition}
-      backgroundColor= {colours.purpleAccent[700]}
     >
-    <AppBar sx={{ position: 'relative', backgroundColor: colours.purpleAccent[700] }}>
+    <AppBar sx={{ position: 'relative', backgroundImage: 'linear-gradient(to right, #7e348d,#282441)'}}>
         <Toolbar>
         {rowData && (
           <>
