@@ -29,6 +29,7 @@ const TrainingForm = () => {
             const fileRef2 = ref(storage, "TrainingFiles/" + modelName + "-sagemakerLog.log")
             uploadBytes(fileRef2, sagemakerLog).then((snapshot) => {
                 })
+            alert("Uploaded Files Successfully!")
         } 
         catch (error) {
             console.error('Error uploading files:', error);
