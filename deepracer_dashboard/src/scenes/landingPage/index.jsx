@@ -11,14 +11,14 @@ const LandingPage = () => {
     <ThemeProvider theme={theme}>
       <Container component="main" maxWidth="m">
         <Box sx={{ paddingTop: 30, display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center"}}>
-          <Typography component="h1" variant="h3" sx={{fontWeight: 'bold', fontStyle: 'justify', color: colours.orangeAccent[500]}}>
+          <Typography component="h1" variant="h3" sx={{fontWeight: 'bold', fontStyle: 'justify', color: "#ff9900"}}>
             WELCOME TO THE DEEPRACER DASH!
           </Typography>
           <Box sx={{ paddingTop: 10, display: "flex", justifyContent: "center", alignItems: "center"}}>
             <Button
             // when the button is clicked, it will be redirected to dashboard page
             href="/login"
-            variant="contained" sx={{ margin: 2, height: 50, width: 300, backgroundColor: "#f79400", ":hover": { backgroundColor:  colours.purpleAccent[400] }}}>
+            variant="contained" sx={{ margin: 2, height: 50, width: 300, backgroundColor: "#f79400", ":hover": { backgroundImage: 'linear-gradient(to right, #7e348d,#282441)' }}}>
               Let's Race!
             </Button>
           </Box>
