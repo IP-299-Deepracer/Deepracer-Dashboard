@@ -16,7 +16,7 @@ router.post("/addUser", (req, res) =>{
     try {
         // run function to put data in database
         firebase.putDataInFirebase(collection, body)
-        res.status(201).json({ message: 'Data added successfully'});
+        res.status(201).json({ message: 'User added successfully'});
         // console.log(body);
     } 
     // catch error and response 500

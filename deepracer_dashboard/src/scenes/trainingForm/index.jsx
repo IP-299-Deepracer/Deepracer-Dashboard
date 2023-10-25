@@ -10,6 +10,7 @@ import axios from 'axios';
 import React, { useState } from 'react';
 import { ref, uploadBytes } from "firebase/storage";
 import { storage } from "../../firebase";
+import { db } from "../../firebase";
 
 const TrainingForm = () => {
     const [modelName, setModelName] = useState('');
@@ -29,7 +30,28 @@ const TrainingForm = () => {
             const fileRef2 = ref(storage, "TrainingFiles/" + modelName + "-sagemakerLog.log")
             uploadBytes(fileRef2, sagemakerLog).then((snapshot) => {
                 })
-            alert("Uploaded Files Successfully!")
+
+            // round float to 3 places and add to db as string to preserve decimal places
+            var timeFloat3 = parseFloat(modelTime).toFixed(3);
+            // create structure to add model with info to db
+            const dbModel = {
+                modelName: modelName,
+                modelTime: timeFloat3,
+                teamName: "",
+                robomakerLog: fileRef1.fullPath,
+                sagemakerLog: fileRef2.fullPath,           
+            }
+            
+            // add user to db
+            axios
+            // POST TO MODELS/ADDMODELS ENDPOINT
+                .post('http://localhost:3001/models/addModel', dbModel)
+                .then(() => console.log('Model Added to Firebase DB'))
+                .catch(err => {
+            console.error(err);
+            });
+
+            alert("Uploaded Files Successfully and Updated DB!")
         } 
         catch (error) {
             console.error('Error uploading files:', error);
@@ -50,7 +72,7 @@ const TrainingForm = () => {
                             <input type="text" id="modelName" class="textInput" placeholder="Model Name" required onChange={(e) => setModelName(e.target.value)}/> {/* The input is where the participants enter their model name */}
                         </Grid>
                         <Grid item xs={8}>
-                            <input type="text" id="modelTime" class="textInput" placeholder="Time (Secs)" required onChange={(e) => setModelTime(e.target.value)}/> {/* The input is where the participants enter their model time */}
+                            <input type="number" step="0.001" id="modelTime" class="textInput" placeholder="Time (Secs)" required onChange={(e) => setModelTime(e.target.value)}/> {/* The input is where the participants enter their model time */}
                         </Grid>
                         {/* The next components are for file uploads of csv files downloaded from AWS DeepRacer */}
                         <Grid item xs={8}>
