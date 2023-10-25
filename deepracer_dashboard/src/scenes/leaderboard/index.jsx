@@ -1,43 +1,55 @@
 import { Box, Typography, useTheme } from "@mui/material";
-import React, { useState } from 'react';
-import { DataGrid } from "@mui/x-data-grid";
+import React, { useState, useEffect } from 'react';
+import { DataGrid, GridToolbar } from "@mui/x-data-grid";
 import { tokens } from "../../theme";
-import { mockDataTeam } from "../../data/mockData";
+// import { mockDataTeam } from "../../data/mockData";
 import Header from "../../components/Header";
 import Button from '@mui/material/Button'; // Import Button component from MUI library
-import DialogUI from '../leaderboard/dialog'
+import DialogUI from '../leaderboard/dialog';
 
 
 const Team = () => {
+
   const [dialogOpen, setDialogOpen] = useState(false);
   const [selectedRowData, setSelectedRowData] = useState(null);
   const theme = useTheme();
   const colours = tokens(theme.palette.mode);
   const columns = [
-    { field: "Position", headerName: "Position", flex:1, headerAlign: "center",
-      align: "center"},
+    { 
+      field: "position", 
+      headerName: "Position", 
+      flex:1, 
+      headerAlign: "center",
+      align: "center",
+      disableColumnMenu: true,
+      sortable: false
+    },
+    { 
+      field: "teamName", 
+      headerName: "Team Name", 
+      flex:2, 
+      headerAlign: "center",
+      align: "center",
+      sortable: false,
+      disableColumnMenu: true
+    },
     {
       field: "name",
       headerName: "Model Name",
       flex: 2,
+      headerAlign: "center",
+      align: "center",
+      sortable: false,
+      disableColumnMenu: true
+    },
+    {
+      field: "time",
+      headerName: "Lap Time",
+      flex: 2,
       cellClassName: "name-column--cell",
       headerAlign: "center",
-      align: "center"
-    },
-    {
-      field: "Time", /*{change the field according to json data in the datamock file}*/
-      headerName: "Time",
-      type: "number",
-      headerAlign: "center",
-      align: "center",  
-      flex: 2,
-    },
-    {
-      field: "GapToFirst",
-      headerName: "Gap To First",
-      flex: 2,
-      headerAlign: "center",
-      align: "center"
+      align: "center",
+      disableColumnMenu: true
     },
     {
       flex: 2,
@@ -84,6 +96,35 @@ const Team = () => {
     },
   ];
 
+  // create apiData const that is initialised to null, and can be updated with setter
+  const [apiData, setApiData] = useState(null);
+  useEffect(() => {
+    // Make a GET request to the models endpoint
+    fetch('http://localhost:3001/models', {
+      method: 'GET',
+    })
+    // check if response is ok
+      .then((response) => {
+        if (!response.ok) {
+          throw new Error('Network response was not ok');
+        }
+        return response.json();
+      })
+      // if data is null then throw error
+      .then((data) => {
+        if (data == null) {
+          throw new Error('Null data');
+        }
+        // then set data to variable apiData
+        setApiData(data);
+        console.log('API Data:', data);})
+      .catch((error) => {
+        console.error('Error fetching data from the API:', error);});
+  }, []);
+
+  // assign rows the data if apiData is not null (repsonse completed)
+  const rows = apiData ? apiData.data : [];
+
   return (
     <Box m="20px">
       <Header title="LEADERBOARD"/>
@@ -125,7 +166,28 @@ const Team = () => {
           },
         }}
       >
-        <DataGrid rows={mockDataTeam} columns={columns} />
+        <DataGrid
+        // initial state sorts datagrid by laptime
+        initialState={{
+          sorting: {sortModel: [{field: 'time', sort: 'asc',},],},
+          pagination: {paginationModel:{pageSize: 100}},
+        }}
+        // disable filter and selector fields
+        disableColumnFilter
+        disableColumnSelector
+        // set columns
+        columns={columns}
+        // set rows
+        rows={rows}
+        // add grid toolbar
+        slots={{ toolbar: GridToolbar }}
+        // add quick filter
+        slotProps={{
+          toolbar: {
+            showQuickFilter: true,
+          },
+        }}
+      />
       </Box>
     </Box>
   );
