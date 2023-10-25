@@ -10,11 +10,31 @@ import PersonOutlinedIcon from "@mui/icons-material/PersonOutlined";
 import SearchIcon from "@mui/icons-material/Search";
 import { PaddingTwoTone } from "@mui/icons-material";
 import RaceAws from "../../assets/RaceAWS.png";
+import Popover from "@mui/material/Popover";
+import React, { useState } from 'react';
+import AccountInfoPopup from "../AccountsUI";
 
 const Topbar = () => {
   const theme = useTheme();
   const colours = tokens(theme.palette.mode);
   const colourMode = useContext(colourModeContext);
+  const [anchorEl, setAnchorEl] = useState(null);
+
+  const handleClick = (event) => {
+    setAnchorEl(event.currentTarget);
+  };
+
+  const handleClose = () => {
+    setAnchorEl(null);
+  };
+
+  const open = Boolean(anchorEl);
+
+  const account = {
+    name: 'John Doe',
+    email: 'john@example.com', 
+    plan: 'Pro'
+  };
 
   return (
     <Box display="flex" justifyContent="space-between" 
@@ -52,9 +72,20 @@ const Topbar = () => {
         <IconButton>
           <NotificationsOutlinedIcon />
         </IconButton>
-        <IconButton>
+        <IconButton onClick={handleClick}>
           <SettingsOutlinedIcon />
         </IconButton>
+        <Popover
+        open={open}
+        anchorEl={anchorEl}
+        onClose={handleClose}
+        anchorOrigin={{
+          vertical: 'bottom',
+          horizontal: 'center',
+        }}
+      >
+        <AccountInfoPopup />
+      </Popover>
         <IconButton>
         <img
           alt="profile-user"
