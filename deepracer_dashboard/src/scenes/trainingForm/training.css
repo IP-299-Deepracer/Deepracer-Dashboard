@@ -1,5 +1,5 @@
 /* The modelName resonates with the text input for model name and model time*/
-#modelName{
+.textInput{
     width: 400px;
     height: 50px;
     background: linear-gradient(to right, #7e348d,#282441);
@@ -30,7 +30,7 @@
     height: 0.1px;
     position: absolute;
   }
-  .file-input label {
+  .file-input {
     display: block;
     position: relative;
     width: 400px;
