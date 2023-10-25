@@ -9,7 +9,7 @@ import Dashboard from "./scenes/dashboard";
 import Leaderboard from "./scenes/leaderboard";
 import Footer from "./scenes/global/footer";
 import Bar from "./scenes/bar";
-import Form from "./scenes/form";
+import JoinTeam from "./scenes/Team/index";
 import Line from "./scenes/line";
 import Pie from "./scenes/pie";
 import TrainingData from "./scenes/trainingForm";
@@ -63,7 +63,7 @@ function App() {
                           path="/training-data"
                           element={<TrainingData />}
                         />
-                        <Route path="/form" element={<Form />} />
+                        <Route path="/joinTeam" element={<JoinTeam />} />
                         <Route path="/bar" element={<Bar />} />
                         <Route path="/pie" element={<Pie />} />
                         <Route path="/line" element={<Line />} />
@@ -83,7 +83,7 @@ function App() {
                       <Route path="/dashboard" element={<Dashboard />} />
                       <Route path="/leaderboard" element={<Leaderboard />} />
                       <Route path="/training-data" element={<TrainingData />} />
-                      <Route path="/form" element={<Form />} />
+                      <Route path="/joinTeam" element={<JoinTeam />} />
                       <Route path="/bar" element={<Bar />} />
                       <Route path="/pie" element={<Pie />} />
                       <Route path="/line" element={<Line />} />
