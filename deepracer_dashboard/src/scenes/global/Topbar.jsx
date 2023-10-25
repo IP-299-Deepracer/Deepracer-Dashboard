@@ -13,28 +13,24 @@ import RaceAws from "../../assets/RaceAWS.png";
 import Popover from "@mui/material/Popover";
 import React, { useState } from 'react';
 import AccountInfoPopup from "../AccountsUI";
+import PhysicalCar from "../PhysicalCarIP";
 
 const Topbar = () => {
   const theme = useTheme();
   const colours = tokens(theme.palette.mode);
   const colourMode = useContext(colourModeContext);
-  const [anchorEl, setAnchorEl] = useState(null);
-
-  const handleClick = (event) => {
-    setAnchorEl(event.currentTarget);
+  const [settingsAnchorEl, setSettingsAnchorEl] = useState(null);
+  const [ipAnchorEl, setIpAnchorEl] = useState(null);
+  
+  const handleSettingsClick = (event) => {
+    setSettingsAnchorEl(event.currentTarget);
+  };
+  
+  const handleIpClick = (event) => {
+    setIpAnchorEl(event.currentTarget);  
   };
 
-  const handleClose = () => {
-    setAnchorEl(null);
-  };
 
-  const open = Boolean(anchorEl);
-
-  const account = {
-    name: 'John Doe',
-    email: 'john@example.com', 
-    plan: 'Pro'
-  };
 
   return (
     <Box display="flex" justifyContent="space-between" 
@@ -72,21 +68,21 @@ const Topbar = () => {
         <IconButton>
           <NotificationsOutlinedIcon />
         </IconButton>
-        <IconButton onClick={handleClick}>
+        <IconButton onClick={handleSettingsClick}>
           <SettingsOutlinedIcon />
         </IconButton>
         <Popover
-        open={open}
-        anchorEl={anchorEl}
-        onClose={handleClose}
-        anchorOrigin={{
-          vertical: 'bottom',
-          horizontal: 'center',
-        }}
-      >
-        <AccountInfoPopup />
-      </Popover>
-        <IconButton>
+          open={Boolean(settingsAnchorEl)}
+          anchorEl={settingsAnchorEl}
+          onClose={() => setSettingsAnchorEl(null)} 
+          anchorOrigin={{
+            vertical: 'bottom',
+            horizontal: 'center',
+          }}
+        >
+          <AccountInfoPopup />
+        </Popover>
+        <IconButton onClick={handleIpClick}>
         <img
           alt="profile-user"
           width="50px"
@@ -98,6 +94,17 @@ const Topbar = () => {
         />        
                 
           </IconButton>
+      <Popover
+        open={Boolean(ipAnchorEl)}
+        anchorEl={ipAnchorEl}
+        onClose={() => setIpAnchorEl(null)}
+        anchorOrigin={{
+          vertical: 'bottom',
+          horizontal: 'center',
+        }}
+      >
+        <PhysicalCar /> 
+      </Popover>
       </Box>
     </Box>
   );
