@@ -377,7 +377,7 @@ const Dashboard = () => {
           >
           </Box>
           <Box>
-            Camera Feed or Circuit Image
+            
               {/* <img src={Track} height="400px" width="550px" m="-15px 0 0 0" alt="" /> */}
           </Box>       
         </Box>
