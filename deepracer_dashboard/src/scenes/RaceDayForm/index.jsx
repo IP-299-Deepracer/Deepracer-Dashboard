@@ -2,7 +2,7 @@ import Header from "../../components/Header";
 import { Box,  Button, Typography } from "@mui/material";
 import React from 'react';
 import Grid from '@mui/material/Grid';
-import "../trainingForm/training.css"
+import "../RaceDayForm/race.css"
 
 
 
@@ -17,13 +17,13 @@ const RaceForm = () => {
                 <Grid container spacing={2} display="flex" flexDirection="column" alignItems="center" justifyContent="center">
                 <Typography variant="h3">New Race Record</Typography>
                     <Grid item xs={8}>
-                        <input type="text" id="modelName"  placeholder="Team Name" required/> {/* The input is where the participants enter their model name */}
+                        <input type="text" class="textInput" placeholder="Team Name" required/> {/* The input is where the participants enter their model name */}
                     </Grid>
                     <Grid item xs={8}>
-                        <input type="text" id="modelName"  placeholder="Model Name" required/> {/* The input is where the participants enter their model name */}
+                        <input type="text"  class="textInput" placeholder="Model Name" required/> {/* The input is where the participants enter their model name */}
                     </Grid>
                     <Grid item xs={8}>
-                        <input type="text" id="modelName"  placeholder="Time (Secs)" required/> {/* The input is where the participants enter their model time */}
+                        <input type="text"  class="textInput" placeholder="Time (Secs)" required/> {/* The input is where the participants enter their model time */}
                     </Grid>
                     <Grid item xs={8}>
                     {/* Submit Button */}
