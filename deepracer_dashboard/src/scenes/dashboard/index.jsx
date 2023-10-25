@@ -300,7 +300,7 @@ const Dashboard = () => {
           borderRadius="5px"
           display="flex"
           flexDirection="column"
-          sx={{backgroundImage: 'linear-gradient(to right, #7e348d, #282441)'}}
+          sx={{backgroundImage: 'linear-gradient(to right, #672b74,#4d296d,#282441)'}}
         >
           <Box
             mt="25px"
@@ -362,7 +362,7 @@ const Dashboard = () => {
         <Box
           gridColumn="span 2"
           gridRow="span 2"
-          sx={{backgroundImage: 'linear-gradient(to right, #7e348d,#282441)'}}
+          sx={{backgroundImage: 'linear-gradient(to right, #672b74,#4d296d,#282441)'}}
           borderRadius="5px"
           display="flex"
           flexDirection="column"
