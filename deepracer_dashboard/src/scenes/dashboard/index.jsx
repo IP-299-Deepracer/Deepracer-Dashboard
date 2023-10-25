@@ -68,7 +68,7 @@ const Dashboard = () => {
     <Box m="10px">
       {/* HEADER */}
       <Box display="flex" justifyContent="space-between" alignItems="center">
-        <Header title=" WELCOME TO DEEPRACER DASHBOARD"/>
+        <Header title="WELCOME TO DEEPRACER DASHBOARD"/>
 
         <Box>
           <Typography
@@ -92,7 +92,7 @@ const Dashboard = () => {
         {/* ROW 1 */}
         <Box
           gridColumn="span 1"
-          backgroundColor={"#f79400"}
+          sx={{backgroundImage: 'linear-gradient(to right, #7e348d,#282441)'}}
           display="flex"
           borderRadius="5px"
         >
@@ -101,11 +101,11 @@ const Dashboard = () => {
           justifyContent="flex-start"
         >
           <BadgeRoundedIcon
-            sx={{ color: colors.purpleAccent[600], fontSize: "26px", marginLeft:"30px", marginTop:"30px"}}
+            sx={{ color: "#fff", fontSize: "26px", marginLeft:"30px", marginTop:"30px"}}
           />
           <Typography 
             variant="h3" 
-            color={colors.purpleAccent[800]}
+            color={"#ffffff"}
             align="left"
             margin={30+"px"}
             marginBottom={0+"px"}
@@ -126,7 +126,7 @@ const Dashboard = () => {
         </Box>
         <Box
           gridColumn="span 1"
-          backgroundColor={"#f79400"}
+          sx={{backgroundImage: 'linear-gradient(to right, #7e348d,#282441)'}}
           display="flex"
           borderRadius="5px"
         >
@@ -135,11 +135,11 @@ const Dashboard = () => {
           justifyContent="flex-start"
         >
           <TimerRoundedIcon
-            sx={{ color: colors.purpleAccent[600], fontSize: "26px", marginLeft:"30px", marginTop:"30px"}}
+            sx={{color: "#fff", fontSize: "26px", marginLeft:"30px", marginTop:"30px"}}
           />
           <Typography 
             variant="h3" 
-            color={colors.purpleAccent[800]}
+            color={"#fff"}
             align="left"
             margin={30+"px"}
             marginBottom={0+"px"}
@@ -159,7 +159,7 @@ const Dashboard = () => {
         </Box>
         <Box
           gridColumn="span 1"
-          backgroundColor={"#f79400"}
+          sx={{backgroundImage: 'linear-gradient(to right, #7e348d,#282441)'}}
           display="flex"
           borderRadius="5px"
         >
@@ -168,11 +168,11 @@ const Dashboard = () => {
           justifyContent="flex-start"
         >
           <EmojiEventsIcon
-            sx={{ color: colors.purpleAccent[600], fontSize: "26px", marginLeft:"30px", marginTop:"30px"}}
+            sx={{ color: "#fff", fontSize: "26px", marginLeft:"30px", marginTop:"30px"}}
           />
           <Typography 
             variant="h3" 
-            color={colors.purpleAccent[800]}
+            color={"#fff"}
             align="left"
             margin={30+"px"}
             marginBottom={0+"px"}
@@ -192,7 +192,7 @@ const Dashboard = () => {
         </Box>
         <Box
           gridColumn="span 1"
-          backgroundColor={"#f79400"}
+          sx={{backgroundImage: 'linear-gradient(to right, #7e348d,#282441)'}}
           display="flex"
           borderRadius="5px"
         >
@@ -201,11 +201,11 @@ const Dashboard = () => {
           justifyContent="flex-start"
         >
           <DangerousIcon
-            sx={{ color: colors.purpleAccent[600], fontSize: "26px", marginLeft:"30px", marginTop:"30px"}}
+            sx={{ color: "#fff", fontSize: "26px", marginLeft:"30px", marginTop:"30px"}}
           />
           <Typography 
             variant="h3" 
-            color={colors.purpleAccent[800]}
+            color={"#fff"}
             align="left"
             margin={30+"px"}
             marginBottom={0+"px"}
@@ -227,7 +227,7 @@ const Dashboard = () => {
         {/* ROW 2 */}
         <Box
           gridColumn="span 1"
-          backgroundColor={"#f79400"}
+          sx={{backgroundImage: 'linear-gradient(to right, #7e348d,#282441)'}}
           display="flex"
           borderRadius="5px"
         >
@@ -236,11 +236,11 @@ const Dashboard = () => {
           justifyContent="flex-start"
         >
           <EmojiEventsIcon
-            sx={{ color: colors.purpleAccent[600], fontSize: "26px", marginLeft:"30px", marginTop:"30px"}}
+            sx={{ color: "#fff", fontSize: "26px", marginLeft:"30px", marginTop:"30px"}}
           />
           <Typography 
             variant="h3" 
-            color={colors.purpleAccent[800]}
+            color={"#fff"}
             align="left"
             margin={30+"px"}
             marginBottom={0+"px"}
@@ -261,7 +261,7 @@ const Dashboard = () => {
 
         <Box
           gridColumn="span 1"
-          backgroundColor={"#f79400"}
+          sx={{backgroundImage: 'linear-gradient(to right, #7e348d,#282441)'}}
           display="flex"
           borderRadius="5px"
         >
@@ -270,11 +270,11 @@ const Dashboard = () => {
           justifyContent="flex-start"
         >
           <EmojiEventsIcon
-            sx={{ color: colors.purpleAccent[600], fontSize: "26px", marginLeft:"30px", marginTop:"30px"}}
+            sx={{ color: "#fff", fontSize: "26px", marginLeft:"30px", marginTop:"30px"}}
           />
           <Typography 
             variant="h3" 
-            color={colors.purpleAccent[800]}
+            color={"#fff"}
             align="left"
             margin={30+"px"}
             marginBottom={0+"px"}
@@ -297,10 +297,10 @@ const Dashboard = () => {
         <Box
           gridColumn="span 2"
           gridRow="span 3"
-          backgroundColor={"#f79400"}
           borderRadius="5px"
           display="flex"
           flexDirection="column"
+          sx={{backgroundImage: 'linear-gradient(to right, #672b74,#4d296d,#282441)'}}
         >
           <Box
             mt="25px"
@@ -313,14 +313,14 @@ const Dashboard = () => {
               <Typography
                 variant="h5"
                 fontWeight="600"
-                color={colors.purpleAccent[500]}
+                color={"#fff"}
               >
                Top 5
               </Typography>
               <Typography
                 variant="h3"
                 fontWeight="bold"
-                color={colors.purpleAccent[500]}
+                color={"#fff"}
               >
                 Race Leaderboard
               </Typography>
@@ -362,7 +362,7 @@ const Dashboard = () => {
         <Box
           gridColumn="span 2"
           gridRow="span 2"
-          backgroundColor="#f79400"
+          sx={{backgroundImage: 'linear-gradient(to right, #672b74,#4d296d,#282441)'}}
           borderRadius="5px"
           display="flex"
           flexDirection="column"
@@ -377,7 +377,7 @@ const Dashboard = () => {
           >
           </Box>
           <Box>
-            Camera Feed or Circuit Image
+            
               {/* <img src={Track} height="400px" width="550px" m="-15px 0 0 0" alt="" /> */}
           </Box>       
         </Box>

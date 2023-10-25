@@ -47,7 +47,7 @@ const Sidebar = () => {
     <Box
       sx={{
         "& .pro-sidebar-inner": {
-          background: `${colours.purpleAccent[400]} !important`,
+          background: `#003181 !important`,
         },
         "& .pro-icon-wrapper": {
           backgroundColor: "transparent !important",
@@ -56,10 +56,10 @@ const Sidebar = () => {
           padding: "5px 35px 5px 20px !important",
         },
         "& .pro-inner-item:hover": {
-          color: `${colours.orangeAccent[500]} !important`,
+          color: `#ff9900 !important`,
         },
         "& .pro-menu-item.active": {
-          color: `${colours.orangeAccent[500]} !important`,
+          color: `#ff9900 !important`,
         },
       }}
     >
@@ -110,8 +110,8 @@ const Sidebar = () => {
                 >
                   AWS DeepRacer
                 </Typography>
-                <Typography variant="h5" color={colours.navyAccent[900]}>
-                  Event Portal
+                <Typography variant="h5" color="#ffffff">
+                    Event Portal
                 </Typography>
               </Box>
             </Box>

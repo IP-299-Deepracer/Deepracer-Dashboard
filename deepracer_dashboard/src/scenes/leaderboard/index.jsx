@@ -46,7 +46,7 @@ const Team = () => {
           <>
           <Button
             variant="contained"
-            color="primary"
+            sx={{backgroundImage: 'linear-gradient(to right, #7e348d,#282441)'}}
             size="small"
             style={{
               width: "60%",
@@ -64,7 +64,7 @@ const Team = () => {
             }} // Open the dialog on button click
           >
             <Typography
-              color={colours.grey[100]}
+              color={"#fff"}
               sx={{ marginLeft: "5px" }}
             >
               View Stats
@@ -86,40 +86,42 @@ const Team = () => {
 
   return (
     <Box m="20px">
-      <Header title="LEADERBOARD" subtitle="Complete leaderboard" />
+      <Header title="LEADERBOARD"/>
       <Box
         m="30px 0 0 0"
         height="calc(80vh - 115px)"
         sx={{
           "& .MuiDataGrid-root": {
             border: "solid",
-            backgroundColor: colours.purpleAccent[700],
+            borderColor: "#ff9900",
             fontSize: "20px",
+            borderRadius: "5px"
 
           },
           "& .MuiDataGrid-cell": {
             borderBottom: "none",
-            backgroundColor: "#FFA500",
+            backgroundColor: "#5b2c7c",
             fontSize: "18px"
           },
           "& .name-column--cell": {
-            color: colours.purpleAccent[800],
             fontSize: "18px",
-            border: "none"
+            border: "none",
           },
           "& .MuiDataGrid-columnHeaders": {
-            backgroundColor: colours.purpleAccent[900],
+            backgroundColor: "#232f3e",
             borderBottom: "none",
+            color: "#fff",
           },
           "& .MuiDataGrid-virtualScroller": {
-            backgroundColor: colours.purpleAccent[400],
+            backgroundColor: "#232f3e",
           },
           "& .MuiDataGrid-footerContainer": {
             borderTop: "none",
-            backgroundColor: colours.purpleAccent[900],
+            backgroundColor: "#232f3e",
+            color: "#fff",
           },
           "& .MuiCheckbox-root": {
-            color: `${colours.orangeAccent[200]} !important`,
+            backgroundImage: 'linear-gradient(to right, #7e348d,#282441) !important',
           },
         }}
       >

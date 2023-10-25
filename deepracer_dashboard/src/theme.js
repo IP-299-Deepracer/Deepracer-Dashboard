@@ -190,7 +190,7 @@ export const themeSettings = (mode) => {
               bg: colours.navyAccent[900]
             },
             background: {
-              default: "#161e2c",
+              default: "#232f3e"
             },
           }
         : {
@@ -206,7 +206,7 @@ export const themeSettings = (mode) => {
               light: colours.grey[100],
             },
             background: {
-              default: "#fcfcfc",
+              default: "#232f3e"
             },
             // overrides: {
             //   Dashboard: {

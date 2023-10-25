@@ -13,7 +13,7 @@ const TrainingForm = () => {
     return(
         <Box m="20px" >
             {/* Creating the training data upload form */} 
-            <Header title="Training Data" subtitle="Upload trained model logs" />
+            <Header title="Training Data"/>
             <Box marginTop="5%">
                 <form>
                     {/* The grid component creates a vertical stack of the form elements and centers the forms */}
