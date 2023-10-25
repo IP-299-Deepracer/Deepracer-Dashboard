@@ -8,25 +8,19 @@ import Grid from '@mui/material/Grid';
 
 function AccountInfoPopup() {
 
-
-  const account = {
-    name: 'John Doe',
-    email: 'john@example.com',
-    team: 'Pro',
-    code: '123456',
-  };
-
   return (
-    <Box sx={{ p: 2 }}>
-      <Box sx={{ display: 'flex', alignItems: 'center' }}>
-        <Avatar sx={{ mr: 2 }}>JD</Avatar>
-        <Typography variant="h4">{account.name}</Typography>
+    <Box sx={{ p: 2, background: 'linear-gradient(to right, #7e348d,#282441)' }}>
+      <Box sx={{ display: 'flex', alignItems: 'center'}}>
+        <Typography variant="h4">Ian Peake</Typography>
       </Box>
 
       <Box sx={{ mt: 2 }}>
-        <Typography>Email: {account.email}</Typography>
-        <Typography>Team: {account.team}</Typography>
-        <Typography>Code: {account.code}</Typography>
+        <Typography variant='h5' sx={{fontWeight: "bold"}}>Email</Typography>
+        <Typography sx={{color: "#ff9900"}}>testing@testing.com</Typography>
+        <Typography variant='h5' sx={{fontWeight: "bold"}}>Team</Typography>
+        <Typography sx={{color: "#ff9900"}}>Ferrari</Typography>
+        <Typography variant='h5' sx={{fontWeight: "bold"}}>Team Code</Typography>
+        <Typography sx={{color: "#ff9900"}}>472389</Typography>
       </Box>
     </Box>
   );
