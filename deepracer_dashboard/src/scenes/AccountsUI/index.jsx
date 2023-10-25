@@ -5,15 +5,15 @@ import { Box, Typography, Avatar } from '@mui/material';
 import Header from "../../components/Header";
 import Grid from '@mui/material/Grid';
 
-
-function AccountInfoPopup() {
+// This is the profile PopUp accessed from settings Icon
+const AccountInfoPopup = () => {
 
   return (
     <Box sx={{ p: 2, background: 'linear-gradient(to right, #7e348d,#282441)' }}>
       <Box sx={{ display: 'flex', alignItems: 'center'}}>
-        <Typography variant="h4">Ian Peake</Typography>
+        <Typography variant="h4">Ian Peake</Typography> {/* Name of the Person */}
       </Box>
-
+      {/* Details of User */}
       <Box sx={{ mt: 2 }}>
         <Typography variant='h5' sx={{fontWeight: "bold"}}>Email</Typography>
         <Typography sx={{color: "#ff9900"}}>testing@testing.com</Typography>
@@ -24,6 +24,6 @@ function AccountInfoPopup() {
       </Box>
     </Box>
   );
-}
+};
 
 export default AccountInfoPopup;
