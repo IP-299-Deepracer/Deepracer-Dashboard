@@ -3,6 +3,7 @@ import { Box, Select, MenuItem, useTheme, Button } from "@mui/material"; // Adde
 import Header from "../../components/Header";
 import React, { useState, useEffect } from 'react';
 import { Line, Scatter } from 'react-chartjs-2';
+import Chart from 'chart.js/auto';
 import { styled } from '@mui/material/styles';
 import { tokens } from "../../theme";
 import axios from 'axios';
