@@ -12,11 +12,12 @@ import {
   QuizOutlined,
   ModelTrainingOutlined,
 } from "@mui/icons-material";
+import UploadIcon from '@mui/icons-material/Upload';
+import SummarizeIcon from '@mui/icons-material/Summarize';
 import PersonOutlinedIcon from "@mui/icons-material/PersonOutlined";
 import BarChartOutlinedIcon from "@mui/icons-material/BarChartOutlined";
 import PieChartOutlineOutlinedIcon from "@mui/icons-material/PieChartOutlined";
 import TimelineOutlinedIcon from "@mui/icons-material/TimelineOutlined";
-import PeopleOutlinedIcon from "@mui/icons-material/PeopleOutlined";
 
 const Item = ({ title, to, icon, selected, setSelected }) => {
   const theme = useTheme();
@@ -45,9 +46,8 @@ const Sidebar = () => {
   return (
     <Box
       sx={{
-        height: "100%",
         "& .pro-sidebar-inner": {
-          background: `${colours.purpleAccent[400]} !important`,
+          background: `#003181 !important`,
         },
         "& .pro-icon-wrapper": {
           backgroundColor: "transparent !important",
@@ -56,10 +56,10 @@ const Sidebar = () => {
           padding: "5px 35px 5px 20px !important",
         },
         "& .pro-inner-item:hover": {
-          color: `${colours.orangeAccent[500]} !important`,
+          color: `#ff9900 !important`,
         },
         "& .pro-menu-item.active": {
-          color: `${colours.orangeAccent[500]} !important`,
+          color: `#ff9900 !important`,
         },
       }}
     >
@@ -104,27 +104,45 @@ const Sidebar = () => {
               <Box textAlign="center">
                 <Typography
                   variant="h2"
-                  color={colours.grey[100]}
+                  color={"#ffffff"}
                   fontWeight="bold"
                   sx={{ m: "10px 0 0 0" }}
                 >
                   AWS DeepRacer
                 </Typography>
-                <Typography variant="h5" color={colours.greenAccent[500]}>
-                  Event Portal
+                <Typography variant="h5" color="#ffffff">
+                    Event Portal
                 </Typography>
               </Box>
             </Box>
           )}
 
           <Box paddingLeft={isCollapsed ? undefined : "10%"}>
+            {/* Race Day Mode */}
+            <Typography
+              variant="h6"
+              color={"#ffffff"}
+              fontWeight={"bold"}
+              sx={{ m: "15px 20px 5px 20px" }}
+            >
+              Race Day
+            </Typography>
             <Item
               title="Dashboard"
-              to="/"
+              to="/dashboard"
               icon={<HomeOutlinedIcon />}
               selected={selected}
               setSelected={setSelected}
             />
+            {/* Training Mode */}
+            <Typography
+              variant="h6"
+              color={"#ffffff"}
+              fontWeight={"bold"}
+              sx={{ m: "15px 20px 5px 20px" }}
+            >
+              Training Mode
+            </Typography>
             <Item
               title="Leaderboard"
               to="/leaderboard"
@@ -132,25 +150,10 @@ const Sidebar = () => {
               selected={selected}
               setSelected={setSelected}
             />
-
-            <Typography
-              variant="h6"
-              color={colours.grey[300]}
-              sx={{ m: "15px 0 5px 20px" }}
-            >
-              Data
-            </Typography>
             <Item
               title="Training Data"
               to="/training-data"
               icon={<ModelTrainingOutlined />}
-              selected={selected}
-              setSelected={setSelected}
-            />
-            <Item
-              title="Testing Data"
-              to="/testing-data"
-              icon={<QuizOutlined />}
               selected={selected}
               setSelected={setSelected}
             />
@@ -161,14 +164,25 @@ const Sidebar = () => {
               selected={selected}
               setSelected={setSelected}
             />
+
+            
+            {/* Create Team */}
+            <Typography
+              variant="h6"
+              color={"#ffffff"}
+              fontWeight={"bold"}
+              sx={{ m: "15px 20px 5px 20px" }}
+            >
+              Create Team
+            </Typography>
             <Item
-              title="Profile Form"
-              to="/form"
+              title="Join Team"
+              to="/joinTeam"
               icon={<PersonOutlinedIcon />}
               selected={selected}
               setSelected={setSelected}
             />
-            <Item
+            {/* <Item
               title="Bar Chart"
               to="/bar"
               icon={<BarChartOutlinedIcon />}
@@ -186,6 +200,30 @@ const Sidebar = () => {
               title="Line Chart"
               to="/line"
               icon={<TimelineOutlinedIcon />}
+              selected={selected}
+              setSelected={setSelected}
+            /> */}
+
+            {/* Organisers Mode */}
+            <Typography
+              variant="h6"
+              color={'#ffffff'}
+              fontWeight={"bold"}
+              sx={{ m: "15px 20px 5px 20px" }}
+            >
+              Organiser Mode
+            </Typography>
+            <Item
+              title="Race Logs"
+              to="/raceForm"
+              icon={<UploadIcon />}
+              selected={selected}
+              setSelected={setSelected}
+            />
+            <Item
+              title="Event Summary"
+              // to="/form"
+              icon={<SummarizeIcon />}
               selected={selected}
               setSelected={setSelected}
             />

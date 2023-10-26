@@ -7,8 +7,9 @@ const serviceAccount = require("../deepracer-52ec7-firebase-adminsdk-z1mqa-0560f
 // initialise database connection
 admin.initializeApp({
     credential: admin.credential.cert(serviceAccount),
-    databaseURL: "https://console.firebase.google.com/u/0/project/deepracer-52ec7/firestore"
+    databaseURL: "https://console.firebase.google.com/u/0/project/deepracer-52ec7/firestore",
 });
+
 const db = admin.firestore();
 
 // get data from collection in database
@@ -46,7 +47,6 @@ exports.putDataInFirebase = async (collectionName, body) => {
         return error;
     }
 };
-
 
 // get data from collection in database
 exports.getDataFromFirebaseID = async (collectionName, documentName) => {

@@ -1,0 +1,25 @@
+/* The teamInput class references the two text inputs inside team page*/
+.teamInput{
+    width: 400px;
+    height: 50px;
+    background: linear-gradient(to right, #7e348d,#282441);
+    padding: 10px;
+    font-size: 16px;
+    border-radius: 4px;
+    border: 1px solid #232f3e; 
+    color: #ffffff;
+    cursor: pointer;
+}
+::placeholder{
+    color: #ffffff !important;
+}
+/* effect and color of the submit button */
+#uploadButton {
+    background-color: #7e348d;
+    color: white; /* Set text color to white for better contrast */
+    transition: background-color 0.3s; /* Add a smooth transition for the hover effect */
+  }
+/* hover effect*/
+  #uploadButton:hover {
+    background: linear-gradient(to right, #7e348d,#282441); /* Change to purple on hover */
+  }
