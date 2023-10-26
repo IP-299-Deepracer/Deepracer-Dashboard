@@ -56,6 +56,33 @@ router.get("/:name", (req, res) =>{
 });
 
 
+//Get Average_Rewards from Reward_Metrics doccument of selected Collection/model.
+router.get("/:name/reward-metrics", (req, res) => {
+    const collectionName = req.params.name;
+    firebase.getRewardMetrics(collectionName)
+        .then((average_rewards) => {
+            res.send({ average_rewards });
+        })
+        .catch((error) => {
+            console.error("Error: ", error);
+            res.status(500).send(error.message);
+        });
+});
+
+
+//Get speed and steer angle by checkpoint data of selected collection/model.
+router.get("/:name/avg-speed-steering", (req, res) => {
+    const collectionName = req.params.name;
+    firebase.getSpeedAndSteer(collectionName)
+        .then((avg_speed_steering) => {
+            res.send({ avg_speed_steering });
+        })
+        .catch((error) => {
+            console.error("Error: ", error);
+            res.status(500).send(error.message);
+        });
+
+  
 // insert user
 router.post("/addModel", (req, res) =>{
     var collection = "models"

@@ -11,6 +11,8 @@ import Footer from "./scenes/global/footer";
 import Bar from "./scenes/bar";
 import JoinTeam from "./scenes/Team/index";
 import Line from "./scenes/line";
+import Scatter from "./scenes/pie";
+import ModelEval from "./scenes/model-eval/ModelEval";
 import Pie from "./scenes/pie";
 import TrainingData from "./scenes/trainingForm";
 import LandingPage from "./scenes/landingPage";

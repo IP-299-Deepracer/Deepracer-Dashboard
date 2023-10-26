@@ -71,3 +71,52 @@ exports.getDataFromFirebaseID = async (collectionName, documentName) => {
         throw error;
     }
 };
+
+
+//list all collections by name
+exports.listAllCollections = async () => {
+    try {
+        // get a list of all collections
+        const collectionsList = await db.listCollections();
+        
+        // map the collections to an array of their names
+        const collectionNames = collectionsList.map(collection => collection.id);
+        
+        return collectionNames;
+    } catch (error) {
+        console.error('Backend Err: Error listing all collections from database', error);
+        throw error;  // re-throw the error after logging it
+    }
+};
+
+
+//get Average_Rewards from Reward_Metrics of Model.
+exports.getRewardMetrics = async (collectionName) => {
+    try {
+        const doc = await db.collection(collectionName).doc('reward_metrics').get();
+        if (!doc.exists) {
+            throw new Error('Backend Err: Document does not exist/could not be found');
+        }
+        const average_rewards = doc.data().average_rewards;
+        return average_rewards;
+    } catch (error) {
+        console.error('Backend Err', error);
+        throw error;
+    }
+};
+
+
+//get Speed and Steer from Model.
+exports.getSpeedAndSteer = async (collectionName) => {
+    try {
+        const doc = await db.collection(collectionName).doc('avg_speed_steering').get();
+        if (!doc.exists) {
+            throw new Error('Backend Err: Document does not exist/could not be found');
+        }
+        const avg_speed_steering = doc.data().data;
+        return avg_speed_steering;
+    } catch (error) {
+        console.error('Backend Err', error);
+        throw error;
+    }
+};
