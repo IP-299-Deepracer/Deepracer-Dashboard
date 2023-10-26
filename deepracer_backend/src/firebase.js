@@ -99,6 +99,58 @@ exports.getUserTeamFromUID = async (UID) => {
 };
 
 
+exports.checkTeamMembership = async (UID) => {
+    try {
+        // FIXME: Doesnt work. Always returns false
+        // console.log(UID)
+        const collection = db.collection("users");
+        const query = collection.where("teamName", '>', "").where("UID", "==", UID);
+        const snapshot = await query.get()
+        // create list
+        const data = [];
+
+        // push each doc from collection to list
+        snapshot.forEach((doc) => {
+            data.push({ id: doc.id, ...doc.data() });
+        });
+
+        if (data.length > 0) {
+            return true;
+        }
+        else {
+            return false;
+        }
+
+    } 
+    // catch error
+    catch (error) {
+        console.error("Error getting data from Firebase: ", error);
+        throw error;
+    }
+};
+
+// update name of team stored in user table
+exports.updateUserDocTeam = async (uid, newTeamName) => {
+    // update user 
+    try {
+        const userQuery = db.collection('users').where("UID", "==", uid);
+        const userSnapshot = await userQuery.get();
+
+        userSnapshot.forEach(doc => {
+            const docRef = db.collection("users").doc(doc.id);
+            // console.log(docRef);
+            docRef.update({teamName: newTeamName});
+        });
+        console.log("Update: ", "Success");
+        return true;
+    }
+    catch (err) {
+        console.error("Error updating user doc: ", err);
+    }
+    
+}
+
+
 // get models based on teamnames
 exports.getModelFromTeamName = async (teamName) => {
     try {
