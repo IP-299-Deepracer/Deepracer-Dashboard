@@ -6,6 +6,8 @@ import { Line, Scatter } from 'react-chartjs-2';
 import { styled } from '@mui/material/styles';
 import { tokens } from "../../theme";
 import axios from 'axios';
+// FOR THE LOVE OF GOD DON'T REMOVE CHART IMPORT IT IS VERY MUCH BEING USED
+import Chart from 'chart.js/auto';
 
 const ModelEval = () => {
   // Extracting theme and colors for styling
@@ -38,7 +40,7 @@ const ModelEval = () => {
     labels: ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12'],
     datasets: [{ label: 'Legend' }]
   }), []);
-  
+
   const [selectedOption, setSelectedOption] = useState('1');
   const [data, setData] = useState(initialData);
   const [models, setModels] = useState([]);
