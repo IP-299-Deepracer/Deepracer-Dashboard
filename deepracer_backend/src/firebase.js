@@ -48,7 +48,7 @@ exports.putDataInFirebase = async (collectionName, body) => {
     }
 };
 
-// get data from collection in database
+// get data from collection in database by "name" parameter. sometimes useful
 exports.getDataFromFirebaseID = async (collectionName, documentName) => {
     try {
         const collection = db.collection(collectionName);
@@ -73,7 +73,7 @@ exports.getDataFromFirebaseID = async (collectionName, documentName) => {
 };
 
 
-// get user from uid
+// get user doc from auth uid
 exports.getUserFromUID = async (UID) => {
     try {
         console.log(UID)
@@ -99,7 +99,7 @@ exports.getUserFromUID = async (UID) => {
 };
 
 
-// get team from teamName
+// get team doc from teamName
 exports.getTeamFromName = async (teamName) => {
     try {
         // console.log(UID)
@@ -125,7 +125,7 @@ exports.getTeamFromName = async (teamName) => {
 };
 
 
-
+// this checks whether the user is already a part of a team. always returns false currently
 exports.checkTeamMembership = async (UID) => {
     try {
         // FIXME: Doesnt work. Always returns false

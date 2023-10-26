@@ -387,7 +387,7 @@ const Dashboard = () => {
                 fontWeight="600"
                 color={"#fff"}
               >
-               Top 5
+                Top 5
               </Typography>
               <Typography
                 variant="h3"

@@ -15,34 +15,12 @@ const raceLeaderboardRoute = require('./routes/raceLeaderboard.js');
 const notebookRoute = require('./routes/notebook.js');
 
 // ADD ALL THE ROUTES TO THE APP
-// const visRoute = require('./routes/vis.js')
+// const visRoute = require('./routes/vis.js') // this is unused but is here for the sake of completeness
 app.use("/teams", teamsRoute);
 app.use("/models", modelsRoute);
 app.use("/users", usersRoute);
 app.use("/raceLeaderboard", raceLeaderboardRoute);
 app.use("/notebook", notebookRoute);
-
-
-// // log time of requests to backend
-// app.use(function(req, res, next){
-//     console.log("A new request received at " + Date.now());
-//     //This function call is very important. It tells that more processing is
-//     //required for the current request and is in the next middleware
-//     //function route handler.
-//     next();
-// });
-
-
-// // test endpoint
-// app.get("/api", (req, res) => {
-//     res.json({ message: "Hello from server!" });
-// });
-
-
-// app.get('*', (req, res) => {
-//     res.send('Sorry, this is an invalid URL.');
-// });
-
 
 app.listen(PORT, () => {
     console.log(`Server listening on ${PORT}`);

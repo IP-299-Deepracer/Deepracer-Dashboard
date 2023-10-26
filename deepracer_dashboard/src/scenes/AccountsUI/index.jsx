@@ -1,9 +1,5 @@
 import React, { useState, useContext, useEffect } from 'react';
-import IconButton from '@mui/material/IconButton';
-import SettingsOutlinedIcon from '@mui/icons-material/SettingsOutlined';
-import { Box, Typography, Avatar } from '@mui/material';
-import Header from "../../components/Header";
-import Grid from '@mui/material/Grid';
+import { Box, Typography } from '@mui/material';
 import { UserContext } from '../../UserContext';
 import axios from 'axios';
 

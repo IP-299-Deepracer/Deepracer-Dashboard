@@ -181,8 +181,8 @@ const Register = () => {
             {/* Email input */}
             <Grid item xs={8}>
               <input
-                type="text"
-                id="modelName"
+                type="email"
+                id="email"
                 placeholder="Email"
                 label="Email"
                 value={email}
@@ -195,7 +195,7 @@ const Register = () => {
               <Grid container direction="column">
                 <input
                   type="password"
-                  id="modelName"
+                  id="password"
                   placeholder="Password"
                   label="Password"
                   variant="outlined"
@@ -266,7 +266,7 @@ const Register = () => {
             <Grid item xs={8}>
               <input
                 type="password"
-                id="modelName"
+                id="password"
                 placeholder="Confirm Password"
                 label="Confirm Password"
                 value={confirmPassword}

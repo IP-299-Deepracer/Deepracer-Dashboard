@@ -2,15 +2,11 @@ import Header from "../../components/Header";
 import { Box,  Button, TextField, Typography } from "@mui/material";
 // import React from 'react';
 import Grid from '@mui/material/Grid';
-import { Formik } from "formik";
-import * as yup from "yup";
-import useMediaQuery from "@mui/material/useMediaQuery";
 import "../trainingForm/training.css"
 import axios from 'axios';
 import React, { useState, useContext, useEffect } from 'react';
 import { ref, uploadBytes } from "firebase/storage";
 import { storage } from "../../firebase";
-import { db } from "../../firebase";
 import { UserContext } from "../../UserContext";
 
 const TrainingForm = () => {

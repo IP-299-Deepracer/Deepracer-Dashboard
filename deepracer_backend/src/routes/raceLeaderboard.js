@@ -1,4 +1,3 @@
-const { json } = require('body-parser');
 const firebase = require('../firebase.js');
 
 const express = require('express')

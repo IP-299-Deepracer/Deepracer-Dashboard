@@ -36,7 +36,7 @@ const RaceForm = () => {
 
     // log teamName
     useEffect(() => {
-        console.log("THE ANSWER IS: ", teamName)
+        console.log("TEAMNAMERACEDAYFORM: ", teamName)
     }, [teamName])
 
     // handle the submitting of the form (upload files)

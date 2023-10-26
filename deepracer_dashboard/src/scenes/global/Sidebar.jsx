@@ -9,15 +9,11 @@ import LeaderboardOutlined from "@mui/icons-material/LeaderboardOutlined";
 import MenuOutlinedIcon from "@mui/icons-material/MenuOutlined";
 import {
   SpeedOutlined,
-  QuizOutlined,
   ModelTrainingOutlined,
 } from "@mui/icons-material";
 import UploadIcon from '@mui/icons-material/Upload';
 import SummarizeIcon from '@mui/icons-material/Summarize';
 import PersonOutlinedIcon from "@mui/icons-material/PersonOutlined";
-import BarChartOutlinedIcon from "@mui/icons-material/BarChartOutlined";
-import PieChartOutlineOutlinedIcon from "@mui/icons-material/PieChartOutlined";
-import TimelineOutlinedIcon from "@mui/icons-material/TimelineOutlined";
 
 const Item = ({ title, to, icon, selected, setSelected }) => {
   const theme = useTheme();

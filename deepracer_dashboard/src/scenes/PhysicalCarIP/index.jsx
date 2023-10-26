@@ -1,8 +1,6 @@
+// leaving unused import, as it would be used if this was implemented
 import React, { useState } from 'react';
-import IconButton from '@mui/material/IconButton';
-import SettingsOutlinedIcon from '@mui/icons-material/SettingsOutlined';
-import { Box, Typography, Avatar } from '@mui/material';
-import Header from "../../components/Header";
+import { Box, Typography } from '@mui/material';
 import Grid from '@mui/material/Grid';
 import "../PhysicalCarIP/IP.css"
 import Button from '@mui/material/Button';

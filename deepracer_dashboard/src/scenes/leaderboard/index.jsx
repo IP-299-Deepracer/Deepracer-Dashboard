@@ -2,7 +2,6 @@ import { Box, Typography, useTheme } from "@mui/material";
 import React, { useState, useContext, useEffect } from 'react';
 import { DataGrid, GridToolbar } from "@mui/x-data-grid";
 import { tokens } from "../../theme";
-// import { mockDataTeam } from "../../data/mockData";
 import Header from "../../components/Header";
 import Button from '@mui/material/Button'; // Import Button component from MUI library
 import DialogUI from '../leaderboard/dialog';

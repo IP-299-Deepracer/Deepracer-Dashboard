@@ -58,13 +58,13 @@ router.get("/checkMembership/:uid", (req, res) =>{
 
 // update user team membership on creation of team
 router.post("/updateUserDocTeam", (req, res) => {
+    // first, insert team into the teams table
     var collection = "teams"
     const team = req.body.team
     try {
         // run function to put data in database
         firebase.putDataInFirebase(collection, team)
-        // res.status(201).json({ message: 'Data added successfully'});
-        // console.log(body);
+        res.status(201).json({ message: 'Data added successfully'});
     } 
     // catch error and response 500
     catch (error) {
@@ -72,11 +72,10 @@ router.post("/updateUserDocTeam", (req, res) => {
         console.log(error)
     }
     
-    // run function to get data from database
+    // then, update teamName entry in user table
     const UID = req.body.uid
     const teamName = req.body.teamName
     firebase.updateUserDocTeam(UID, teamName)
-    // return result (TODO: testing)
     .then((result) => {
         // do not return json. this is converted to json in frontend
         res.send(result)
@@ -112,7 +111,6 @@ router.get("/code/:teamName", (req, res) =>{
     .then((result) => {
         // extract teamCode and return
         var code = result[0].teamCode;
-        // console.log(code.toString());
         res.json({"code": code})})
     .catch((error) => {
         console.error("Error: ", error);});
