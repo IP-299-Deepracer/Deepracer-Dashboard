@@ -40,10 +40,8 @@ router.get("/", (req, res) => {
 
 
 router.get("/dropdown", (req, res) =>{
-    // run function to get data from database
-    var collection = "models"
-    firebase.getDataFromFirebase(collection)
-    // return result (TODO: testing)
+    // run function to list all collections from database
+    firebase.listAllCollections()
     .then((result) => {
         const combinedObject = { data: result };
         const jsonString = JSON.stringify(combinedObject);
