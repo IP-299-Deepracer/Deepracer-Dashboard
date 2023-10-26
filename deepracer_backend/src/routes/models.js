@@ -70,6 +70,18 @@ router.get("/:name", (req, res) =>{
     });
 });
 
+//list all collections for model select
+router.get("/select", (req, res) =>{
+    // run function to list all collections from database
+    firebase.listAllCollections()
+    .then((result) => {
+        const combinedObject = { data: result };
+        const jsonString = JSON.stringify(combinedObject);
+        // do not return json. this is converted to json in frontend
+        res.send(jsonString)})
+    .catch((error) => {
+        console.error("Error: ", error);});
+});
 
 //Get Average_Rewards from Reward_Metrics doccument of selected Collection/model.
 router.get("/:name/reward-metrics", (req, res) => {
