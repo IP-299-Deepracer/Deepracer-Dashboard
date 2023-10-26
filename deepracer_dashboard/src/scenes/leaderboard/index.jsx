@@ -107,6 +107,7 @@ const Team = () => {
   useEffect(() => {
 
     const currentUID = userContext.uid;
+    
     console.log("USERID: " + currentUID);
     // fetch user based on current userID
     axios

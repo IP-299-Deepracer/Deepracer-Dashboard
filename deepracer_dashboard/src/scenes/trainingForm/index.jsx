@@ -7,17 +7,41 @@ import * as yup from "yup";
 import useMediaQuery from "@mui/material/useMediaQuery";
 import "../trainingForm/training.css"
 import axios from 'axios';
-import React, { useState } from 'react';
+import React, { useState, useContext, useEffect } from 'react';
 import { ref, uploadBytes } from "firebase/storage";
 import { storage } from "../../firebase";
 import { db } from "../../firebase";
+import { UserContext } from "../../UserContext";
 
 const TrainingForm = () => {
     const [modelName, setModelName] = useState('');
     const [modelTime, setModelTime] = useState('');
     const [robomakerLog, setRobomakerLog] = useState(null);
     const [sagemakerLog, setSagemakerLog] = useState(null);
+    const [teamName, setTeamName] = useState("");
+    const userContext = useContext(UserContext);
     // const [evaluationLogs, setEvaluationLogs] = useState(null);
+
+    useEffect(() => {
+        const currentUID = userContext.uid;
+            
+            axios
+                // get teamname of user
+                .get('http://localhost:3001/users/' + currentUID)
+                .then((response) => {
+                  // Find the user with the matching UID
+                    if (response) {
+                        setTeamName(response.data);
+                        console.log("THE ANSWER IS: ", teamName)
+                    } 
+                    else {
+                        console.log("USER DOESNT EXIST")
+                    }
+                })
+                .catch((error) => {
+                    console.error("Get user Error: ", error);
+                });
+    },[]);
 
     // handle the submitting of the form (upload files)
     const handleSubmit = async (event) => {
@@ -37,7 +61,7 @@ const TrainingForm = () => {
             const dbModel = {
                 modelName: modelName,
                 modelTime: timeFloat3,
-                teamName: "", // FIXME: DYNAMIC FROM LOGGED IN USER
+                teamName: teamName, // FIXME: DYNAMIC FROM LOGGED IN USER
                 robomakerLog: fileRef1.fullPath,
                 sagemakerLog: fileRef2.fullPath,           
             }
