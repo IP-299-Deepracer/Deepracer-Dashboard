@@ -8,6 +8,7 @@ import { tokens } from "../../theme";
 import axios from 'axios';
 // FOR THE LOVE OF GOD DON'T REMOVE CHART IMPORT IT IS VERY MUCH BEING USED
 import Chart from 'chart.js/auto';
+// ESLINT WILL HAVE YOU BELIEVE IT IS UNUSED BUT IM TELLING YOU IT IS VERY REQUIRED - dom
 
 const ModelEval = () => {
   // Extracting theme and colors for styling
