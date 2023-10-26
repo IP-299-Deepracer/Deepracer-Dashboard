@@ -40,7 +40,53 @@ router.post("/", (req, res) =>{
     }
 });
 
+// check whether a user is already a member of a team
+router.get("/checkMembership/:uid", (req, res) =>{
+    // run function to get data from database
+    const UID = req.params.uid
+    firebase.checkTeamMembership(UID)
+    // return result (TODO: testing)
+    .then((result) => {
+        // do not return json. this is converted to json in frontend
+        res.send(result)
+    })
+    .catch((error) => {
+        console.error("Error: ", error);
+    });
+});
 
+
+// update user team membership on creation of team
+router.post("/updateUserDocTeam", (req, res) => {
+    // first, insert team into the teams table
+    var collection = "teams"
+    const team = req.body.team
+    try {
+        // run function to put data in database
+        firebase.putDataInFirebase(collection, team)
+        res.status(201).json({ message: 'Data added successfully'});
+    } 
+    // catch error and response 500
+    catch (error) {
+        res.status(500).json({ error: 'Data could not be added' });
+        console.log(error)
+    }
+    
+    // then, update teamName entry in user table
+    const UID = req.body.uid
+    const teamName = req.body.teamName
+    firebase.updateUserDocTeam(UID, teamName)
+    .then((result) => {
+        // do not return json. this is converted to json in frontend
+        res.send(result)
+    })
+    .catch((error) => {
+        console.error("Error: ", error);
+    });
+});
+
+
+// return team based on teamName
 router.get("/:name", (req, res) =>{
     // run function to get data from database
     const name = req.params.name
@@ -56,5 +102,18 @@ router.get("/:name", (req, res) =>{
     });
 });
 
+
+// get specific team code based on teamName as a json (to avoid it thinking its a response code)
+router.get("/code/:teamName", (req, res) =>{
+    // run function to get data from database
+    var teamName = req.params.teamName
+    firebase.getTeamFromName(teamName)
+    .then((result) => {
+        // extract teamCode and return
+        var code = result[0].teamCode;
+        res.json({"code": code})})
+    .catch((error) => {
+        console.error("Error: ", error);});
+});
 
 module.exports=router;

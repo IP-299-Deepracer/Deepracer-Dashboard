@@ -1,19 +1,20 @@
-import { Box, Typography, useTheme } from "@mui/material";
-import React, { useState, useEffect } from 'react';
+import { Box, Typography } from "@mui/material";
+import React, { useState, useContext, useEffect } from 'react';
 import { DataGrid, GridToolbar } from "@mui/x-data-grid";
-import { tokens } from "../../theme";
-// import { mockDataTeam } from "../../data/mockData";
+// import { tokens } from "../../theme";
 import Header from "../../components/Header";
 import Button from '@mui/material/Button'; // Import Button component from MUI library
 import DialogUI from '../leaderboard/dialog';
+import { UserContext } from "../../UserContext";
+import axios from "axios";
 
 
 const Team = () => {
 
   const [dialogOpen, setDialogOpen] = useState(false);
   const [selectedRowData, setSelectedRowData] = useState(null);
-  const theme = useTheme();
-  const colours = tokens(theme.palette.mode);
+  // const theme = useTheme();
+  // const colours = tokens(theme.palette.mode);
   const columns = [
     { 
       field: "position", 
@@ -98,29 +99,50 @@ const Team = () => {
 
   // create apiData const that is initialised to null, and can be updated with setter
   const [apiData, setApiData] = useState(null);
+  const [currentTeamName, setTeamName] = useState("")
+  // const [currentUID, setUID] = useState(null)
+  const userContext = useContext(UserContext);
+
+  useEffect(() => {
+
+    const currentUID = userContext.uid;
+    
+    console.log("USERID: " + currentUID);
+    // fetch user based on current userID
+    axios
+          // POST TO USERS/ADDUSER ENDPOINT
+        .get('http://localhost:3001/users/' + currentUID)
+        .then((response) => {
+            // Find the user with the matching UID
+            if (response) {
+                setTeamName(response.data);
+            } 
+            else {
+              console.log("USER DOESNT EXIST")
+            }
+        })
+        .catch((error) => {
+            console.error("Get user Error: ", error);
+        });
+  }, [userContext.uid]);
+
   useEffect(() => {
     // Make a GET request to the models endpoint
-    fetch('http://localhost:3001/models', {
-      method: 'GET',
-    })
-    // check if response is ok
-      .then((response) => {
-        if (!response.ok) {
-          throw new Error('Network response was not ok');
-        }
-        return response.json();
-      })
+    console.log("TEAMNAMECONST: " + currentTeamName);
+    axios
+      .get('http://localhost:3001/models/' + currentTeamName)
+
       // if data is null then throw error
-      .then((data) => {
-        if (data == null) {
+      .then((response) => {
+        if (response == null) {
           throw new Error('Null data');
         }
         // then set data to variable apiData
-        setApiData(data);
-        console.log('API Data:', data);})
+        setApiData(response);
+        console.log('API Data:', response);})
       .catch((error) => {
         console.error('Error fetching data from the API:', error);});
-  }, []);
+  }, [currentTeamName]);
 
   // assign rows the data if apiData is not null (repsonse completed)
   const rows = apiData ? apiData.data : [];

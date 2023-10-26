@@ -88,7 +88,7 @@ const Dashboard = () => {
       disableColumnMenu: true
     },
     {
-      field: "name",
+      field: "modelName",
       headerName: "Model Name",
       flex: 2,
       headerAlign: "center",
@@ -97,8 +97,8 @@ const Dashboard = () => {
       disableColumnMenu: true
     },
     {
-      field: "time",
-      headerName: "Lap Time",
+      field: "modelTime",
+      headerName: "Lap Time (s)",
       flex: 2,
       cellClassName: "name-column--cell",
       headerAlign: "center",
@@ -111,7 +111,7 @@ const Dashboard = () => {
   const [apiData, setApiData] = useState(null);
   useEffect(() => {
     // Make a GET request to the models endpoint
-    fetch('http://localhost:3001/models', {
+    fetch('http://localhost:3001/raceLeaderboard', {
       method: 'GET',
     })
       // check if response is ok
@@ -387,7 +387,7 @@ const Dashboard = () => {
                 fontWeight="600"
                 color={"#fff"}
               >
-               Top 5
+                Top 5
               </Typography>
               <Typography
                 variant="h3"
