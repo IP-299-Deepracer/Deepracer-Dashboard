@@ -14,6 +14,7 @@ import { auth } from "../../../firebase";
 import { createUserWithEmailAndPassword } from "firebase/auth";
 import { useNavigate } from "react-router-dom";
 import { UserContext } from "../../../UserContext";
+import axios from "axios";
 
 // Register component
 const Register = () => {
@@ -91,6 +92,30 @@ const Register = () => {
           severity: "success",
         });
         setOpen(true);
+
+        // ADDING A USER TO OUR FIRESTORE DB
+        try {
+          const UID = userCredential.user.uid
+
+          const dbUser = {
+            email: email,
+            teamName: "",
+            UID: UID          
+          }
+          
+          // add user to db
+          axios
+          // POST TO USERS/ADDUSER ENDPOINT
+            .post('http://localhost:3001/users/addUser', dbUser)
+            .then(() => console.log('User Created in Firebase DB and Firebase Auth'))
+            .catch(err => {
+          console.error(err);
+          });
+        }
+        catch(err) {
+          console.error(err)
+        }
+          
 
         // Navigate to dashboard
         navigate("/dashboard");
