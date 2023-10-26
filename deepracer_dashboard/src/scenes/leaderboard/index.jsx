@@ -34,7 +34,7 @@ const Team = () => {
       disableColumnMenu: true
     },
     {
-      field: "name",
+      field: "modelName",
       headerName: "Model Name",
       flex: 2,
       headerAlign: "center",
@@ -43,7 +43,7 @@ const Team = () => {
       disableColumnMenu: true
     },
     {
-      field: "time",
+      field: "modelTime",
       headerName: "Lap Time",
       flex: 2,
       cellClassName: "name-column--cell",

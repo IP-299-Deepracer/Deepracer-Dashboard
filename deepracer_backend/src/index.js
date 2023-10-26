@@ -11,10 +11,12 @@ app.use(cors());
 const teamsRoute = require('./routes/teams.js')
 const modelsRoute = require('./routes/models.js')
 const usersRoute = require('./routes/users.js')
+const notebookRoute = require('./routes/notebook.js');
 // const visRoute = require('./routes/vis.js')
 app.use("/teams", teamsRoute)
 app.use("/models", modelsRoute)
 app.use("/users", usersRoute)
+app.use("/notebook", notebookRoute);
 
 // // log time of requests to backend
 // app.use(function(req, res, next){
