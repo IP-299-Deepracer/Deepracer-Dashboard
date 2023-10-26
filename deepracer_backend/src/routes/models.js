@@ -1,3 +1,4 @@
+const { json } = require('body-parser');
 const firebase = require('../firebase.js');
 
 const express = require('express')
@@ -12,8 +13,6 @@ router.get("/", (req, res) => {
         // return result (TODO: testing)
         .then((result) => {
 
-            console.log("Original data:", result); // Log the original data
-
             // Sort the data by the "modelTime" field in ascending order
             var result = result.sort((a, b) => parseInt(a.modelTime, 10) - parseInt(b.modelTime, 10));
 
@@ -24,10 +23,6 @@ router.get("/", (req, res) => {
             combinedObject.data.forEach((item, index) => {
                 item.position = index + 1;
             });
-
-
-            console.log("Sorted and numbered data:", combinedObject.data); // Log the sorted data
-
 
             const jsonString = JSON.stringify(combinedObject);
             // do not return JSON. This is converted to JSON on the frontend.
@@ -51,23 +46,6 @@ router.get("/dropdown", (req, res) =>{
         res.send(jsonString)})
     .catch((error) => {
         console.error("Error: ", error);});
-});
-
-
-
-router.get("/:name", (req, res) =>{
-    // run function to get data from database
-    const name = req.params.name
-    var collection = "models"
-    firebase.getDataFromFirebaseID(collection, name)
-    // return result (TODO: testing)
-    .then((result) => {
-        // do not return json. this is converted to json in frontend
-        res.send(result)
-    })
-    .catch((error) => {
-        console.error("Error: ", error);
-    });
 });
 
 
@@ -114,6 +92,28 @@ router.post("/addModel", (req, res) =>{
         res.status(500).json({ error: 'Data could not be added' });
         console.log(error)
     }
+});
+
+// get models based on teamname. calc position and such
+router.get("/:teamName", (req, res) =>{
+    // run function to get data from database
+    const teamName = req.params.teamName
+    firebase.getModelFromTeamName(teamName)
+    // return result (TODO: testing)
+    .then((result) => {
+        // Sort the data by the "modelTime" field in ascending order
+        var result = result.sort((a, b) => parseInt(a.modelTime, 10) - parseInt(b.modelTime, 10));
+
+        // assign positions numbered from 1 for the quickest times
+        result.forEach((item, index) => {
+            item.position = index + 1;
+        });
+        
+        res.send(result)
+    })
+    .catch((error) => {
+        console.error("Error: ", error);
+    });
 });
 
 module.exports=router;

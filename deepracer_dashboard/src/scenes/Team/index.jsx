@@ -4,6 +4,7 @@ import Grid from '@mui/material/Grid';
 import Header from "../../components/Header";
 import { motion } from 'framer-motion';
 import "../Team/team.css"
+import db from "../../firebase"
 
 
 const Team =  () => {
@@ -19,16 +20,19 @@ const Team =  () => {
         // testing to see if code is generated
         console.log("This is the generated code" + code)
 
-        // Save to Firebase Example
-        // db.collection('teams').add({
-        // teamCode: code
-        // })
-        // .then(() => {
-        //     setTeamCode(code);
-        // })
-        // .catch(error => {
-        //     console.log(error);
-        // });
+        const teamName = document.getElementById('teamName').value;
+
+        // save to firebase
+        db.collection('teams').add({
+            teamCode: code,
+            teamName: teamName
+        })
+        .then(() => {
+            setTeamCode(code);
+        })
+        .catch(error => {
+            console.log(error);
+        });
 
         // this will make the form disappear and show congratulation message
         setCreatedTeam(true)
@@ -62,7 +66,7 @@ const Team =  () => {
                 <Grid container spacing={2} display="flex" flexDirection="column" alignItems="center" justifyContent="center" marginTop="5%">
                     <Grid item xs={8}>
                         {/* This input allows the user to create a new team */}
-                        <input type="text" class="teamInput" placeholder="Give your dream team a name!" />
+                        <input type="text" id="teamName" class="teamInput" placeholder="Give your dream team a name!" />
                     </Grid>
                     <Grid item xs={8}>
                     {/* Button for submitting team name */}

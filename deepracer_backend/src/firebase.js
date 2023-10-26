@@ -73,6 +73,58 @@ exports.getDataFromFirebaseID = async (collectionName, documentName) => {
 };
 
 
+// get user from uid
+exports.getUserTeamFromUID = async (UID) => {
+    try {
+        console.log(UID)
+        const collection = db.collection("users");
+        const query = collection.where("UID", "==", UID)
+        const snapshot = await query.get()
+        // create list
+        const data = [];
+
+        // push each doc from collection to list
+        snapshot.forEach((doc) => {
+            data.push({ id: doc.id, ...doc.data() });
+        });
+
+        return data;
+
+    } 
+    // catch error
+    catch (error) {
+        console.error("Error getting data from Firebase: ", error);
+        throw error;
+    }
+};
+
+
+// get models based on teamnames
+exports.getModelFromTeamName = async (teamName) => {
+    try {
+        console.log(teamName)
+        const collection = db.collection("models");
+        const query = collection.where("teamName", "==", teamName)
+        const snapshot = await query.get()
+        // create list
+        const data = [];
+
+        // push each doc from collection to list
+        snapshot.forEach((doc) => {
+            data.push({ id: doc.id, ...doc.data() });
+        });
+
+        return data;
+
+    } 
+    // catch error
+    catch (error) {
+        console.error("Error getting data from Firebase: ", error);
+        throw error;
+    }
+};
+
+
 //list all collections by name
 exports.listAllCollections = async () => {
     try {

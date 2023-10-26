@@ -37,7 +37,7 @@ const TrainingForm = () => {
             const dbModel = {
                 modelName: modelName,
                 modelTime: timeFloat3,
-                teamName: "",
+                teamName: "", // FIXME: DYNAMIC FROM LOGGED IN USER
                 robomakerLog: fileRef1.fullPath,
                 sagemakerLog: fileRef2.fullPath,           
             }
