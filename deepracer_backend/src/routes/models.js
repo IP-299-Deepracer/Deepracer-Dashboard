@@ -81,8 +81,9 @@ router.get("/:name/avg-speed-steering", (req, res) => {
             console.error("Error: ", error);
             res.status(500).send(error.message);
         });
+    });
 
-        
+
 // insert user
 router.post("/addModel", (req, res) =>{
     var collection = "models"
@@ -99,4 +100,5 @@ router.post("/addModel", (req, res) =>{
         console.log(error)
     }
 });
+
 module.exports=router;
