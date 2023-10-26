@@ -58,7 +58,7 @@ const ModelEval = () => {
 
   // Fetching models data from the backend
   useEffect(() => {
-    axios.get('http://localhost:3001/models')
+    axios.get('http://localhost:3001/models/dropdown')
       .then(response => {
         setModels(response.data.data);
       })
