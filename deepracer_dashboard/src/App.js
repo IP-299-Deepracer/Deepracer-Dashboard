@@ -8,12 +8,7 @@ import Sidebar from "./scenes/global/Sidebar";
 import Dashboard from "./scenes/dashboard";
 import Leaderboard from "./scenes/leaderboard";
 import Footer from "./scenes/global/footer";
-import Bar from "./scenes/bar";
 import JoinTeam from "./scenes/Team/index";
-import Line from "./scenes/line";
-import Scatter from "./scenes/pie";
-import ModelEval from "./scenes/model-eval/ModelEval";
-import Pie from "./scenes/pie";
 import TrainingData from "./scenes/trainingForm";
 import LandingPage from "./scenes/landingPage";
 import RaceForm from "./scenes/RaceDayForm";
@@ -22,6 +17,7 @@ import { colourModeContext, useMode } from "./theme";
 import Login from "./scenes/Authentication/Login";
 import Register from "./scenes/Authentication/Register";
 import Otp from "./scenes/Authentication/OTP";
+import ModelEval from "./scenes/model-eval/ModelEval";
 
 function App() {
   const [theme, colorMode] = useMode(); // Theme and color mode
@@ -66,11 +62,9 @@ function App() {
                           element={<TrainingData />}
                         />
                         <Route path="/joinTeam" element={<JoinTeam />} />
-                        <Route path="/bar" element={<Bar />} />
-                        <Route path="/pie" element={<Pie />} />
-                        <Route path="/line" element={<Line />} />
                         <Route path="/raceForm" element={<RaceForm />} />
                         <Route path="/" element={<LandingPage />} />
+                        <Route path="/model-eval" element={<ModelEval />} />
                         <Route path="/login" element={<Login />} />
                         <Route path="/register" element={<Register />} />
                         <Route path="/otp" element={<Otp />} />
@@ -86,11 +80,9 @@ function App() {
                       <Route path="/leaderboard" element={<Leaderboard />} />
                       <Route path="/training-data" element={<TrainingData />} />
                       <Route path="/joinTeam" element={<JoinTeam />} />
-                      <Route path="/bar" element={<Bar />} />
-                      <Route path="/pie" element={<Pie />} />
-                      <Route path="/line" element={<Line />} />
                       <Route path="/raceForm" element={<RaceForm />} />
                       <Route path="/" element={<LandingPage />} />
+                      <Route path="/model-eval" element={<ModelEval />} />
                       <Route path="/login" element={<Login />} />
                       <Route path="/register" element={<Register />} />
                       <Route path="/otp" element={<Otp />} />
