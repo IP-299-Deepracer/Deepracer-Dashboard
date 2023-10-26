@@ -39,6 +39,21 @@ router.get("/", (req, res) => {
 });
 
 
+router.get("/dropdown", (req, res) =>{
+    // run function to get data from database
+    var collection = "models"
+    firebase.getDataFromFirebase(collection)
+    // return result (TODO: testing)
+    .then((result) => {
+        const combinedObject = { data: result };
+        const jsonString = JSON.stringify(combinedObject);
+        // do not return json. this is converted to json in frontend
+        res.send(jsonString)})
+    .catch((error) => {
+        console.error("Error: ", error);});
+});
+
+
 
 router.get("/:name", (req, res) =>{
     // run function to get data from database
