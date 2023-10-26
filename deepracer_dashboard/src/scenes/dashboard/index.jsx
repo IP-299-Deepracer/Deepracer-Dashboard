@@ -17,7 +17,7 @@ import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
 import RMIT from "../../assets/aws.png";
 import AWS from "../../assets/rmit.png"
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 import { DataGrid, GridToolbar } from "@mui/x-data-grid";
 
 const StyledTableCell = styled(TableCell)(({ theme }) => ({
@@ -56,6 +56,8 @@ function createData(name, calories, fat) {
   return { name, calories, fat,};
 }
 
+
+
 const rows = [
   createData(1, "RMIT SPEEDSTER", "0:09:09"),
   createData(2, "MUI RACER", "0:10:10"),
@@ -64,8 +66,28 @@ const rows = [
   createData(5, "RACER", "0:12:10"),
 ];
 
+const MyComponent = () => {
+  const iframeRef = useRef();
+
+  useEffect(() => {
+    const iframe = iframeRef.current;
+
+    if(iframe) {
+      iframe.addEventListener('load', () => {
+        if (iframe.contentDocument) {
+          iframe.contentDocument.cookie = 'session=eyJjc3JmX3Rva2VuIjoiMDExOTMwNjk3MWExODE0NzEzZTk0OWM5ZDQ3YmU4ZWIwNzFkZWJlZSJ9;';
+        }
+    });
+    }
+  }, []);
+  return (
+    <iframe ref={iframeRef} id="videoFrame" src="https://192.168.1.10/route?topic=/camera_pkg/display_mjpeg&width=600&height=400"></iframe>
+  );
+  };
 
 const Dashboard = () => {
+
+
   const theme = useTheme();
   const colors = tokens(theme.palette.mode);
   const columns = [
@@ -447,9 +469,8 @@ const Dashboard = () => {
             alignItems="center"
           >
           </Box>
+          <MyComponent/>
           <Box>
-            
-              {/* <img src={Track} height="400px" width="550px" m="-15px 0 0 0" alt="" /> */}
           </Box>       
         </Box>
       </Box>
