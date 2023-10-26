@@ -4,7 +4,7 @@ import { createTheme } from "@mui/material/styles";
 
 // colour design tokens
 export const tokens = (mode) => ({
-  ...(mode == "dark"
+  ...(mode === "dark"
     ? {
         grey: {
           100: "#e0e0e0",
@@ -173,7 +173,7 @@ export const themeSettings = (mode) => {
   return {
     palette: {
       mode: mode,
-      ...(mode == "dark"
+      ...(mode === "dark"
         ? {
             primary: {
               main: colours.orangeAccent[500],

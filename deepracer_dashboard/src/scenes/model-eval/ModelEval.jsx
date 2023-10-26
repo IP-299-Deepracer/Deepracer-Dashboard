@@ -1,7 +1,7 @@
 // Importing required libraries and components
 import { Box, Select, MenuItem, useTheme, Button } from "@mui/material"; // Added Button
 import Header from "../../components/Header";
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useMemo } from 'react';
 import { Line, Scatter } from 'react-chartjs-2';
 import { styled } from '@mui/material/styles';
 import { tokens } from "../../theme";
@@ -34,10 +34,11 @@ const ModelEval = () => {
   });
 
   // State initialization
-  const initialData = {
+  const initialData = useMemo(() => ({
     labels: ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12'],
     datasets: [{ label: 'Legend' }]
-  };
+  }), []);
+  
   const [selectedOption, setSelectedOption] = useState('1');
   const [data, setData] = useState(initialData);
   const [models, setModels] = useState([]);
@@ -66,7 +67,7 @@ const ModelEval = () => {
 
 
   // Reset datasets when switching graph type
-  useEffect(() => { setData(initialData) }, [selectedOption]);
+  useEffect(() => { setData(initialData) }, [initialData, selectedOption]);
 
 
   // Get average_reward metric from model

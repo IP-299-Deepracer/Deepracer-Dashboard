@@ -1,5 +1,5 @@
 import Header from "../../components/Header";
-import { Box,  Button, TextField, Typography } from "@mui/material";
+import { Box,  Button, Typography } from "@mui/material";
 // import React from 'react';
 import Grid from '@mui/material/Grid';
 import "../trainingForm/training.css"
@@ -37,7 +37,7 @@ const TrainingForm = () => {
                 .catch((error) => {
                     console.error("Get user Error: ", error);
                 });
-    },[]);
+    },[teamName, userContext.uid]);
 
     // handle the submitting of the form (upload files)
     const handleSubmit = async (event) => {

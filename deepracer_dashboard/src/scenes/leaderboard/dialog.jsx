@@ -4,16 +4,16 @@ import AppBar from '@mui/material/AppBar';
 import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
 import Slide from '@mui/material/Slide';
-import { useTheme } from '@emotion/react';
-import { tokens } from "../../theme";
+// import { useTheme } from '@emotion/react';
+// import { tokens } from "../../theme";
 
 const Transition = React.forwardRef(function Transition(props, ref) {
   return <Slide direction="up" ref={ref} {...props} />;
 });
 
 function CustomDialog({ open, onClose, rowData }) {
-    const theme = useTheme();
-    const colours = tokens(theme.palette.mode);
+    // const theme = useTheme();
+    // const colours = tokens(theme.palette.mode);
   return (
     <Dialog
       fullScreen

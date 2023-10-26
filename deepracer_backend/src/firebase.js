@@ -76,7 +76,7 @@ exports.getDataFromFirebaseID = async (collectionName, documentName) => {
 // get user doc from auth uid
 exports.getUserFromUID = async (UID) => {
     try {
-        console.log(UID)
+        // console.log(UID)
         const collection = db.collection("users");
         const query = collection.where("UID", "==", UID)
         const snapshot = await query.get()
@@ -181,7 +181,7 @@ exports.updateUserDocTeam = async (uid, newTeamName) => {
 // get models based on teamnames
 exports.getModelFromTeamName = async (teamName) => {
     try {
-        console.log(teamName)
+        // console.log(teamName)
         const collection = db.collection("models");
         const query = collection.where("teamName", "==", teamName)
         const snapshot = await query.get()

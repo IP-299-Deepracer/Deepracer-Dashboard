@@ -1,6 +1,4 @@
-import { Box, IconButton, colors, useTheme } from "@mui/material";
-import { useContext } from "react";
-import { colourModeContext, tokens } from "../../theme";
+import { Box, IconButton } from "@mui/material";
 import InputBase from "@mui/material/InputBase";
 import NotificationsOutlinedIcon from "@mui/icons-material/NotificationsOutlined";
 import SettingsOutlinedIcon from "@mui/icons-material/SettingsOutlined";
@@ -12,9 +10,7 @@ import AccountInfoPopup from "../AccountsUI";
 import PhysicalCar from "../PhysicalCarIP";
 
 const Topbar = () => {
-  const theme = useTheme();
-  const colours = tokens(theme.palette.mode);
-  const colourMode = useContext(colourModeContext);
+  // const theme = useTheme();
   const [settingsAnchorEl, setSettingsAnchorEl] = useState(null);
   const [ipAnchorEl, setIpAnchorEl] = useState(null);
   

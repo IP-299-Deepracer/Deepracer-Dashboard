@@ -32,7 +32,7 @@ const RaceForm = () => {
                 .catch((error) => {
                     console.error("Get user Error: ", error);
                 });
-    },[]);
+    },[userContext.uid]);
 
     // log teamName
     useEffect(() => {

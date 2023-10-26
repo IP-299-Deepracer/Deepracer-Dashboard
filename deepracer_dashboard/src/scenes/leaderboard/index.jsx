@@ -1,7 +1,7 @@
-import { Box, Typography, useTheme } from "@mui/material";
+import { Box, Typography } from "@mui/material";
 import React, { useState, useContext, useEffect } from 'react';
 import { DataGrid, GridToolbar } from "@mui/x-data-grid";
-import { tokens } from "../../theme";
+// import { tokens } from "../../theme";
 import Header from "../../components/Header";
 import Button from '@mui/material/Button'; // Import Button component from MUI library
 import DialogUI from '../leaderboard/dialog';
@@ -13,8 +13,8 @@ const Team = () => {
 
   const [dialogOpen, setDialogOpen] = useState(false);
   const [selectedRowData, setSelectedRowData] = useState(null);
-  const theme = useTheme();
-  const colours = tokens(theme.palette.mode);
+  // const theme = useTheme();
+  // const colours = tokens(theme.palette.mode);
   const columns = [
     { 
       field: "position", 
@@ -124,7 +124,7 @@ const Team = () => {
         .catch((error) => {
             console.error("Get user Error: ", error);
         });
-  }, []);
+  }, [userContext.uid]);
 
   useEffect(() => {
     // Make a GET request to the models endpoint
