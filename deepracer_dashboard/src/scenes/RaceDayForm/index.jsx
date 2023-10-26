@@ -2,10 +2,10 @@ import Header from "../../components/Header";
 import { Box,  Button, Typography } from "@mui/material";
 import React, { useState, useEffect, useContext } from 'react';
 import Grid from '@mui/material/Grid';
+import "../RaceDayForm/race.css"
 import "../trainingForm/training.css"
 import { UserContext } from "../../UserContext";
 import axios from "axios";
-
 
 
 const RaceForm = () => {

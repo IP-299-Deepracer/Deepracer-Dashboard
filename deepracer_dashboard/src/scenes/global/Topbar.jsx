@@ -10,11 +10,27 @@ import PersonOutlinedIcon from "@mui/icons-material/PersonOutlined";
 import SearchIcon from "@mui/icons-material/Search";
 import { PaddingTwoTone } from "@mui/icons-material";
 import RaceAws from "../../assets/RaceAWS.png";
+import Popover from "@mui/material/Popover";
+import React, { useState } from 'react';
+import AccountInfoPopup from "../AccountsUI";
+import PhysicalCar from "../PhysicalCarIP";
 
 const Topbar = () => {
   const theme = useTheme();
   const colours = tokens(theme.palette.mode);
   const colourMode = useContext(colourModeContext);
+  const [settingsAnchorEl, setSettingsAnchorEl] = useState(null);
+  const [ipAnchorEl, setIpAnchorEl] = useState(null);
+  
+  const handleSettingsClick = (event) => {
+    setSettingsAnchorEl(event.currentTarget);
+  };
+  
+  const handleIpClick = (event) => {
+    setIpAnchorEl(event.currentTarget);  
+  };
+
+
 
   return (
     <Box display="flex" justifyContent="space-between" 
@@ -52,10 +68,21 @@ const Topbar = () => {
         <IconButton>
           <NotificationsOutlinedIcon />
         </IconButton>
-        <IconButton>
+        <IconButton onClick={handleSettingsClick}>
           <SettingsOutlinedIcon />
         </IconButton>
-        <IconButton>
+        <Popover
+          open={Boolean(settingsAnchorEl)}
+          anchorEl={settingsAnchorEl}
+          onClose={() => setSettingsAnchorEl(null)} 
+          anchorOrigin={{
+            vertical: 'bottom',
+            horizontal: 'center',
+          }}
+        >
+          <AccountInfoPopup />
+        </Popover>
+        <IconButton onClick={handleIpClick}>
         <img
           alt="profile-user"
           width="50px"
@@ -67,6 +94,17 @@ const Topbar = () => {
         />        
                 
           </IconButton>
+      <Popover
+        open={Boolean(ipAnchorEl)}
+        anchorEl={ipAnchorEl}
+        onClose={() => setIpAnchorEl(null)}
+        anchorOrigin={{
+          vertical: 'bottom',
+          horizontal: 'center',
+        }}
+      >
+        <PhysicalCar /> 
+      </Popover>
       </Box>
     </Box>
   );
