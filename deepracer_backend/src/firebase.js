@@ -74,7 +74,7 @@ exports.getDataFromFirebaseID = async (collectionName, documentName) => {
 
 
 // get user from uid
-exports.getUserTeamFromUID = async (UID) => {
+exports.getUserFromUID = async (UID) => {
     try {
         console.log(UID)
         const collection = db.collection("users");
@@ -97,6 +97,33 @@ exports.getUserTeamFromUID = async (UID) => {
         throw error;
     }
 };
+
+
+// get team from teamName
+exports.getTeamFromName = async (teamName) => {
+    try {
+        // console.log(UID)
+        const collection = db.collection("teams");
+        const query = collection.where("teamName", "==", teamName)
+        const snapshot = await query.get()
+        // create list
+        const data = [];
+
+        // push each doc from collection to list
+        snapshot.forEach((doc) => {
+            data.push({ id: doc.id, ...doc.data() });
+        });
+
+        return data;
+
+    } 
+    // catch error
+    catch (error) {
+        console.error("Error getting data from Firebase: ", error);
+        throw error;
+    }
+};
+
 
 
 exports.checkTeamMembership = async (UID) => {

@@ -56,7 +56,7 @@ router.get("/checkMembership/:uid", (req, res) =>{
 });
 
 
-// check whether a user is already a member of a team
+// update user team membership on creation of team
 router.post("/updateUserDocTeam", (req, res) => {
     var collection = "teams"
     const team = req.body.team
@@ -87,6 +87,7 @@ router.post("/updateUserDocTeam", (req, res) => {
 });
 
 
+// return team based on teamName
 router.get("/:name", (req, res) =>{
     // run function to get data from database
     const name = req.params.name
@@ -102,5 +103,19 @@ router.get("/:name", (req, res) =>{
     });
 });
 
+
+// get specific team code based on teamName as a json (to avoid it thinking its a response code)
+router.get("/code/:teamName", (req, res) =>{
+    // run function to get data from database
+    var teamName = req.params.teamName
+    firebase.getTeamFromName(teamName)
+    .then((result) => {
+        // extract teamCode and return
+        var code = result[0].teamCode;
+        // console.log(code.toString());
+        res.json({"code": code})})
+    .catch((error) => {
+        console.error("Error: ", error);});
+});
 
 module.exports=router;

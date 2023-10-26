@@ -77,7 +77,7 @@ const Topbar = () => {
           onClose={() => setSettingsAnchorEl(null)} 
           anchorOrigin={{
             vertical: 'bottom',
-            horizontal: 'center',
+            horizontal: 'right',
           }}
         >
           <AccountInfoPopup />

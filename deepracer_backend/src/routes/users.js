@@ -31,12 +31,27 @@ router.get("/:uid", (req, res) =>{
     // run function to get data from database
     var userID = req.params.uid
     // var collection = "users"
-    firebase.getUserTeamFromUID(userID)
+    firebase.getUserFromUID(userID)
     // return result (TODO: testing)
     .then((result) => {
         // extract teamName and return
         var teamName = result[0].teamName;
         res.send(teamName)})
+    .catch((error) => {
+        console.error("Error: ", error);});
+});
+
+// get specific user team based on uid
+router.get("/email/:uid", (req, res) =>{
+    // run function to get data from database
+    var userID = req.params.uid
+    // var collection = "users"
+    firebase.getUserFromUID(userID)
+    // return result (TODO: testing)
+    .then((result) => {
+        // extract teamName and return
+        var email = result[0].email;
+        res.send(email)})
     .catch((error) => {
         console.error("Error: ", error);});
 });
