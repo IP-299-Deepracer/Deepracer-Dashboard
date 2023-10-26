@@ -17,23 +17,25 @@ const ModelEval = () => {
 
   // Creating a styled version of the Select component
   const StyledSelect = styled(Select)({
-    backgroundColor: "#f79400",
+    backgroundImage: 'linear-gradient(to right, #7e348d, #282441)',
     color: "#FFFFFF",
     fontSize: "14px",
     fontWeight: "bold",
     padding: "1px 25px",
     margin: "10px",
-    width: "400px"
+    width: "400px",
+    borderRadius: "5px"
   });
 
   // Creating a styled version of the Button component
   const StyledButton = styled(Button)({
-    backgroundColor: "#f79400",
+    backgroundImage: 'linear-gradient(to right, #7e348d, #282441)',
     color: "#FFFFFF",
     fontSize: "18px",
     fontWeight: "bold",
     padding: "8px 25px",
     margin: "10px",
+    borderRadius: "5px"
   });
 
   // State initialization
@@ -147,7 +149,8 @@ const ModelEval = () => {
               position: 'left',
               title: {
                 display: true,
-                text: 'Average Speed'
+                text: 'Average Speed',
+                color: '#FFFFFF'
               }
             },
             steer: {
@@ -155,15 +158,17 @@ const ModelEval = () => {
               position: 'right',
               title: {
                 display: true,
-                text: 'Average Steer'
+                text: 'Average Steer',
+                color: '#FFFFFF'
               }
             },
             x: {
               title: {
                 display: true,
-                text: 'Checkpoint'
+                text: 'Checkpoint',
+                color: '#FFFFFF'
               }
-            }
+            },
           },
           layout: { padding: { right: 0, bottom: 0 } },
           plugins: { legend: { align: 'end' } },
@@ -210,14 +215,16 @@ const ModelEval = () => {
           x: {
             title: {
               display: true,
-              text: 'Iteration'
+              text: 'Iteration',
+              color: '#FFFFFF'
             }
           },
           y: {
             beginAtZero: true,
             title: {
               display: true,
-              text: 'Reward'
+              text: 'Reward',
+              color: '#FFFFFF'
             }
           }
         },
@@ -268,7 +275,7 @@ const ModelEval = () => {
             maxHeight: "1700px",
             minWidth: "200px",
             minHeight: "100px",
-            backgroundColor: "#f79400",
+            backgroundImage: 'linear-gradient(to right, #7e348d, #282441)',
             borderRadius: "10px",
           }}>
           <Box width="100%" height="100%">
