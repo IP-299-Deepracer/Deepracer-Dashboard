@@ -1,9 +1,12 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import { Box, Button, Typography} from "@mui/material";
 import Grid from '@mui/material/Grid';
 import Header from "../../components/Header";
 import { motion } from 'framer-motion';
 import "../Team/team.css"
+import db from "../../firebase"
+import { UserContext } from "../../UserContext";
+import axios from "axios";
 
 
 const Team =  () => {
@@ -12,34 +15,62 @@ const Team =  () => {
     // the below are used to check if users have either joined or created a team
     const [createdTeam, setCreatedTeam] = useState(false);
     const [joinedTeam, setJoinedTeam] = useState(false);
+    const userContext = useContext(UserContext);
+    const [alreadyMember, setAlreadyMember] = useState(false);
 
     const handleCreateTeam = () => {
-        // this function will generate 6 digit code when the user creates a new team
-        const code = Math.floor(100000 + Math.random() * 900000);
-        // testing to see if code is generated
-        console.log("This is the generated code" + code)
+        // FIXME: You can create and join an empty name team. Don't though
+        // user ID from usercontext
+        const currentUID = userContext.uid;
 
-        // Save to Firebase Example
-        // db.collection('teams').add({
-        // teamCode: code
-        // })
-        // .then(() => {
-        //     setTeamCode(code);
-        // })
-        // .catch(error => {
-        //     console.log(error);
-        // });
+        // check membership
+        axios
+        // get membership status from 'teams'
+            .get('http://localhost:3001/teams/checkMembership/', currentUID)
+            .then((alreadyMember) => {
+                if (alreadyMember === true){
+                    alert("You are already a member of a team. You cannot join more than one team!")
+                    setAlreadyMember(alreadyMember)
+                }
+                else {
+                    console.log("Not already a member");
+                }
+            })
+            .catch(err => {
+        console.error(err);
+        });
 
-        // this will make the form disappear and show congratulation message
-        setCreatedTeam(true)
+        if (alreadyMember === false){
+            // this function will generate 6 digit code when the user creates a new team
+            const code = Math.floor(100000 + Math.random() * 900000);
+            // testing to see if code is generated
+            console.log("This is the generated code: " + code)
+            
+            const teamName = document.getElementById('teamName').value;
+
+            const team = {"teamName": teamName, "teamCode": code, "members": [currentUID]}
+
+            // update teamName entry in users table
+            axios
+                .post('http://localhost:3001/teams/updateUserDocTeam/', {team: team, uid: currentUID, teamName: teamName})
+                .then(() => console.log('updated teamname entry in users and added team to teams collection'))
+                .catch(err => {
+                    console.error(err);
+                });
+
+            // this will make the form disappear and show congratulation message
+            setCreatedTeam(true)
+            }     
     }
 
     // Catching join team code
     const handleJoinTeam = () => {
+        // TODO: Joining doesnt work. It is not a feature of this build. A team can have the owner/ creator but other members cannot join
         // reads the value from the join team input
         const code = document.getElementById('joinTeamCode').value;
         // testing to see if read correctly
         console.log('Join code entered:', code);
+
         // this will be placed at the end of the function, when team has been joined. It will show congratulation message
         setJoinedTeam(true)
         // Firebase query...
@@ -62,7 +93,7 @@ const Team =  () => {
                 <Grid container spacing={2} display="flex" flexDirection="column" alignItems="center" justifyContent="center" marginTop="5%">
                     <Grid item xs={8}>
                         {/* This input allows the user to create a new team */}
-                        <input type="text" class="teamInput" placeholder="Give your dream team a name!" />
+                        <input type="text" id="teamName" required class="teamInput" placeholder="Give your dream team a name!" />
                     </Grid>
                     <Grid item xs={8}>
                     {/* Button for submitting team name */}
@@ -81,7 +112,7 @@ const Team =  () => {
                     </Grid>
                     <Grid item xs={8} marginTop='2.5%'>
                         {/* This input allows the user to create a new team */}
-                        <input type="text" id="joinTeamCode" class="teamInput" placeholder="Enter Code to Dream Team! " />
+                        <input type="text" id="joinTeamCode" required class="teamInput" placeholder="Enter Code to Dream Team! " />
                     </Grid>
                     <Grid item xs={8}>
                         {/* Button for submitting team code */}

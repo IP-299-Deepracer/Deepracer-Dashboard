@@ -1,6 +1,5 @@
 import { createContext, useState, useMemo } from "react";
 import { createTheme } from "@mui/material/styles";
-import { motionDefaultProps } from "@nivo/core";
 import { create } from "@mui/material/styles/createTransitions";
 
 

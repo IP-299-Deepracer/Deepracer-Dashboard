@@ -8,15 +8,20 @@ app.use(express.json());
 var cors = require("cors");
 app.use(cors());
 
-const teamsRoute = require('./routes/teams.js')
-const modelsRoute = require('./routes/models.js')
-const usersRoute = require('./routes/users.js')
+const teamsRoute = require('./routes/teams.js');
+const modelsRoute = require('./routes/models.js');
+const usersRoute = require('./routes/users.js');
+const raceLeaderboardRoute = require('./routes/raceLeaderboard.js');
 const notebookRoute = require('./routes/notebook.js');
+
+// ADD ALL THE ROUTES TO THE APP
 // const visRoute = require('./routes/vis.js')
-app.use("/teams", teamsRoute)
-app.use("/models", modelsRoute)
-app.use("/users", usersRoute)
+app.use("/teams", teamsRoute);
+app.use("/models", modelsRoute);
+app.use("/users", usersRoute);
+app.use("/raceLeaderboard", raceLeaderboardRoute);
 app.use("/notebook", notebookRoute);
+
 
 // // log time of requests to backend
 // app.use(function(req, res, next){

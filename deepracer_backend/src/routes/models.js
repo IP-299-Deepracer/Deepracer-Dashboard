@@ -1,3 +1,4 @@
+const { json } = require('body-parser');
 const firebase = require('../firebase.js');
 
 const express = require('express')
@@ -12,8 +13,6 @@ router.get("/", (req, res) => {
         // return result (TODO: testing)
         .then((result) => {
 
-            console.log("Original data:", result); // Log the original data
-
             // Sort the data by the "modelTime" field in ascending order
             var result = result.sort((a, b) => parseInt(a.modelTime, 10) - parseInt(b.modelTime, 10));
 
@@ -25,10 +24,6 @@ router.get("/", (req, res) => {
                 item.position = index + 1;
             });
 
-
-            console.log("Sorted and numbered data:", combinedObject.data); // Log the sorted data
-
-
             const jsonString = JSON.stringify(combinedObject);
             // do not return JSON. This is converted to JSON on the frontend.
             res.send(jsonString);
@@ -39,21 +34,45 @@ router.get("/", (req, res) => {
 });
 
 
-
-router.get("/:name", (req, res) =>{
-    // run function to get data from database
-    const name = req.params.name
-    var collection = "models"
-    firebase.getDataFromFirebaseID(collection, name)
-    // return result (TODO: testing)
+router.get("/dropdown", (req, res) =>{
+    // run function to list all collections from database
+    firebase.listAllCollections()
     .then((result) => {
+        const combinedObject = { data: result };
+        const jsonString = JSON.stringify(combinedObject);
         // do not return json. this is converted to json in frontend
-        res.send(result)
-    })
+        res.send(jsonString)})
     .catch((error) => {
-        console.error("Error: ", error);
-    });
+        console.error("Error: ", error);});
 });
+
+
+//Get Average_Rewards from Reward_Metrics doccument of selected Collection/model.
+router.get("/:name/reward-metrics", (req, res) => {
+    const collectionName = req.params.name;
+    firebase.getRewardMetrics(collectionName)
+        .then((average_rewards) => {
+            res.send({ average_rewards });
+        })
+        .catch((error) => {
+            console.error("Error: ", error);
+            res.status(500).send(error.message);
+        });
+});
+
+
+//Get speed and steer angle by checkpoint data of selected collection/model.
+router.get("/:name/avg-speed-steering", (req, res) => {
+    const collectionName = req.params.name;
+    firebase.getSpeedAndSteer(collectionName)
+        .then((avg_speed_steering) => {
+            res.send({ avg_speed_steering });
+        })
+        .catch((error) => {
+            console.error("Error: ", error);
+            res.status(500).send(error.message);
+        });
+    });
 
 
 // insert user
@@ -71,6 +90,28 @@ router.post("/addModel", (req, res) =>{
         res.status(500).json({ error: 'Data could not be added' });
         console.log(error)
     }
+});
+
+// get models based on teamname. calc position and such
+router.get("/:teamName", (req, res) =>{
+    // run function to get data from database
+    const teamName = req.params.teamName
+    firebase.getModelFromTeamName(teamName)
+    // return result (TODO: testing)
+    .then((result) => {
+        // Sort the data by the "modelTime" field in ascending order
+        var result = result.sort((a, b) => parseInt(a.modelTime, 10) - parseInt(b.modelTime, 10));
+
+        // assign positions numbered from 1 for the quickest times
+        result.forEach((item, index) => {
+            item.position = index + 1;
+        });
+        
+        res.send(result)
+    })
+    .catch((error) => {
+        console.error("Error: ", error);
+    });
 });
 
 module.exports=router;
