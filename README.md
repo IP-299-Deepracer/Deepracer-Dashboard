@@ -8,7 +8,7 @@ Deepracer Dash provides a comprehensive, high-resolution interface designed to l
 
 ### TECH STACK
 - The image below displays the tech stack used throughout the project.
-<img src="deepracer_dashboard/src/assets/techStack.png" height="400px" width="400px" alt="Technology Stack Image">
+<img src="deepracer_dashboard/src/assets/techStack.png" height="400px" width="600px" alt="Technology Stack Image">
 
 #### FRONT-END
 
