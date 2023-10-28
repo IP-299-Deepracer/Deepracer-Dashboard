@@ -13,7 +13,16 @@ Deepracer Dash provides a comprehensive, high-resolution interface designed to l
 #### FRONT-END
 
 - The front-end of Deepracer Dash is built using the React framework and MaterialUI, providing a sleek and modern user interface.
-- 
+- React & MUI was used to develop the UI for the pages in the application, while the ChartJs framework was used to the create the intractable graphs for the 'Model Evaluation' feature.
+
+#### FRONT-END RUNNING INSTRUCTION
+- Once repository has been cloned to local machine, use the terminal:
+1. cd deepracer_dashboard
+2. npm install firebase (This will ensure you have firebase installed before running the application otherwise application won't execute)
+3. npm install (This ensure all the other dependencies are installed)
+4. npm run start (To start the application)
+5. Once the application has been run it should be accessible at http://localhost:3000/
+6. Ensure you also start the backend (instructions located under "Back-End" section) to see the full potential of the website.
 
 
 #### AUTHENTICATION
