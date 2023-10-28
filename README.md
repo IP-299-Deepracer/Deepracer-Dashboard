@@ -70,7 +70,7 @@ Deepracer Dash provides a comprehensive, high-resolution interface designed to l
 
 #### DEPLOYMENT
 
-- [Details about how the application is integrated and deployed]
+- Leading to time constraints, deployment was not implemented. 
 
 ### TEAM
 
