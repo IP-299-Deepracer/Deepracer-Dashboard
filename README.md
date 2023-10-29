@@ -66,7 +66,16 @@ Deepracer Dash provides a comprehensive, high-resolution interface designed to l
 
 #### LOGS
 
-- [Details about logging]
+- Ensure you have python 3.10 or above installed to run the notebook
+- The notebook can only read files if the model was trained using the Discrete action space configuration
+- DO NOT RUN ALL CELLS AT ONCE. This will cause the notebook to fail 
+    - Open Jupyter notebook file called “Log Analysis-Firebase.ipynb”.
+    - Ensure that you have installed all the prerequisites in the first cell
+    - Ensure paths to log file are correct for the logs you want to analyse
+    - Ensure that the track the model trained on is present in the “Tracks” folder if you wish to generate racing lines
+    - Run all cells one at a time. Wait for the previous cell to finish before running the next
+    - Ensure service account credentials for Firebase are updated if you are using another database instance.
+- NOTE: Your model must be competent enough for the notebook to generate graphs.  
 
 #### DEPLOYMENT
 
