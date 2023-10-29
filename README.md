@@ -6,26 +6,24 @@ Welcome to our Programming Project repository for Deepracer Dash, a cloud-based 
 
 Deepracer Dash provides a comprehensive, high-resolution interface designed to leverage the capabilities of the Global Operations Visualization (GOV) Lab's 40-megapixel tiled display wall at RMIT City Campus. It combines high-resolution views and training diagnostics in a unified interface.
 
-### TECH STACK OVERVIEW
+### TECH STACK
+- The image below displays the tech stack used throughout the project.
+<img src="deepracer_dashboard/src/assets/techStack.png" height="400px" width="600px" alt="Technology Stack Image">
 
 #### FRONT-END
 
 - The front-end of Deepracer Dash is built using the React framework and MaterialUI, providing a sleek and modern user interface.
-- The application features two main pages: 'Dashboard' and 'Leaderboard'.
-- The Top bar, consistent across all pages, includes a search bar, settings icon, and the DeepRacer Logo.
-- The side bar, also consistent across all pages, features a hamburger icon for collapsibility, the DeepRacer Logo, and a list of different pages.
+- React & MUI was used to develop the UI for the pages in the application, while the ChartJs framework was used to the create the intractable graphs for the 'Model Evaluation' feature.
 
-##### DASHBOARD
+#### FRONT-END RUNNING INSTRUCTION
+- Once repository has been cloned to local machine, use the terminal to:
+  - cd deepracer_dashboard
+  - Run "npm install firebase" (This will ensure you have firebase installed before running the application otherwise application won't execute)
+  - Run "npm install" (This ensure all the other dependencies are installed)
+  - Run "npm run start" (To start the application)
+  - Once the application has been run it should be accessible at http://localhost:3000/
+  - Ensure you also start the backend (instructions located under "Back-End" section) to see the full potential of the website.
 
-- The Dashboard displays key metrics including the fastest model name, time, rewards earned, and another stat to be determined.
-- A mini leaderboard displays the top 5 models, with the top 3 highlighted in Gold, Silver, and Bronze.
-- Note: The leaderboard displayed on the dashboard is currently manually filled and requires backend integration.
-- The final component is a map displaying the training of models.
-
-##### LEADERBOARD
-
-- The Leaderboard page provides a complete view of all models and their statistics.
-- Each row in the leaderboard is associated with a "View Stats" button. Clicking this button opens a dialog box containing a graphical view of all statistics related to the model.
 
 #### AUTHENTICATION
 
@@ -68,11 +66,20 @@ Deepracer Dash provides a comprehensive, high-resolution interface designed to l
 
 #### LOGS
 
-- [Details about logging]
+- Ensure you have python 3.10 or above installed to run the notebook
+- The notebook can only read files if the model was trained using the Discrete action space configuration
+- DO NOT RUN ALL CELLS AT ONCE. This will cause the notebook to fail 
+    - Open Jupyter notebook file called “Log Analysis-Firebase.ipynb”.
+    - Ensure that you have installed all the prerequisites in the first cell
+    - Ensure paths to log file are correct for the logs you want to analyse
+    - Ensure that the track the model trained on is present in the “Tracks” folder if you wish to generate racing lines
+    - Run all cells one at a time. Wait for the previous cell to finish before running the next
+    - Ensure service account credentials for Firebase are updated if you are using another database instance.
+- NOTE: Your model must be competent enough for the notebook to generate graphs.  
 
-#### INTEGRATION & DEPLOYMENT
+#### DEPLOYMENT
 
-- [Details about how the application is integrated and deployed]
+- Leading to time constraints, deployment was not implemented. 
 
 ### TEAM
 
